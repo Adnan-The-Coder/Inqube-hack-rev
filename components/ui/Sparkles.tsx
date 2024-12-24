@@ -80,7 +80,8 @@ export const SparklesCore = (props: ParticlesProps) => {
                   enable: false,
                   mode: "repulse",
                 },
-                resize: true as any,
+                //resize: true as any,
+                resize: true, // Adnan Did this to resolve type error while deployemeny
               },
               modes: {
                 push: {
