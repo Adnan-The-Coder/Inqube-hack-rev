@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 //import React, { useId, useMemo } from "react"; // Unused useMemo causing unused lint error
-import React, {useID} from "react";
+import React, {useId} from "react";
 import { useEffect, useState } from "react";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import type { Container, SingleOrMultiple } from "@tsparticles/engine";
@@ -81,8 +82,8 @@ export const SparklesCore = (props: ParticlesProps) => {
                   enable: false,
                   mode: "repulse",
                 },
-                //resize: true as any,
-                resize: true, // Adnan Did this to resolve type error while deployemeny
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                resize: true as any,
               },
               modes: {
                 push: {
