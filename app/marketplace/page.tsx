@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion } from "framer-motion";
+import { Menu, X } from 'lucide-react';
 
 interface Startup {
   id: number;
@@ -65,216 +66,261 @@ const startups: Startup[] = [
   ];
   
 
-const Page: React.FC = () => {
-  const [price, setPrice] = useState<number>(100000000);
-  const [selectedIndustries, setSelectedIndustries] = useState<string[]>([]);
-  const [selectedStatuses, setSelectedStatuses] = useState<string[]>([]);
-  const [selectedRegions, setSelectedRegions] = useState<string[]>([]);
-  const [isClient, setIsClient] = useState<boolean>(false);
-
-  const [currentPage, setCurrentPage] = useState<number>(1);
-  const startupsPerPage = 6;
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-
-  const handlePriceChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setPrice(Number(event.target.value));
-  };
-
-  const handleFilterChange = (filterType: 'industry' | 'status' | 'region', value: string) => {
-    switch (filterType) {
-      case 'industry':
-        setSelectedIndustries((prev) =>
-          prev.includes(value) ? prev.filter((item) => item !== value) : [...prev, value]
-        );
-        break;
-      case 'status':
-        setSelectedStatuses((prev) =>
-          prev.includes(value) ? prev.filter((item) => item !== value) : [...prev, value]
-        );
-        break;
-      case 'region':
-        setSelectedRegions((prev) =>
-          prev.includes(value) ? prev.filter((item) => item !== value) : [...prev, value]
-        );
-        break;
-      default:
-        break;
-    }
-  };
-
-  const filteredStartups = startups.filter((startup) => {
-    const matchesIndustry =
-      selectedIndustries.length === 0 || selectedIndustries.includes(startup.industry);
-    const matchesStatus =
-      selectedStatuses.length === 0 || selectedStatuses.includes(startup.status);
-    const matchesRegion =
-      selectedRegions.length === 0 || selectedRegions.includes(startup.region);
-    const matchesPrice = startup.price <= price;
-
-    return matchesIndustry && matchesStatus && matchesRegion && matchesPrice;
-  });
-
-  const indexOfLastStartup = currentPage * startupsPerPage;
-  const indexOfFirstStartup = indexOfLastStartup - startupsPerPage;
-  const currentStartups = filteredStartups.slice(indexOfFirstStartup, indexOfLastStartup);
-
-  const totalPages = Math.ceil(filteredStartups.length / startupsPerPage);
-
-  const nextPage = () => {
-    if (currentPage < totalPages) {
-      setCurrentPage(currentPage + 1);
-    }
-  };
-
-  const prevPage = () => {
-    if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
-    }
-  };
-
-  if (!isClient) {
-    return null;
-  }
-
-  return (
-    <div className="h-screen flex flex-col lg:flex-row">
-      <div className="bg-[#76b900] w-full lg:w-64 h-screen shadow-lg flex flex-col p-4">
-        <div className="mb-4">
-          <input
-            type="text"
-            placeholder="Search startups or investors"
-            className="w-full p-2 border rounded-full border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#5c7409]"
-          />
-        </div>
-        <div>
-          <h3 className="text-lg font-semibold text-white mb-2">Filters</h3>
-          <div className="mb-4">
-            <h4 className="text-sm font-medium text-white mb-1">Startup Industry</h4>
-            <ul className="space-y-2">
-              {['Technology', 'Healthcare', 'Finance', 'Education', 'E-commerce'].map((category, index) => (
-                <li key={index} className="flex items-center">
-                  <input
-                    type="checkbox"
-                    id={`industry-${index}`}
-                    className="mr-2"
-                    onChange={() => handleFilterChange('industry', category)}
-                  />
-                  <label htmlFor={`industry-${index}`} className="text-white text-sm cursor-pointer">
-                    {category}
-                  </label>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="mb-4">
-            <h4 className="text-sm font-medium text-white mb-1">Project Status</h4>
-            <ul className="space-y-2">
-              {['Raw Idea', 'Under Development', 'Developed', 'Ready to launch in Market'].map((stage, index) => (
-                <li key={index} className="flex items-center">
-                  <input
-                    type="checkbox"
-                    id={`stage-${index}`}
-                    className="mr-2"
-                    onChange={() => handleFilterChange('status', stage)}
-                  />
-                  <label htmlFor={`stage-${index}`} className="text-white text-sm cursor-pointer">
-                    {stage}
-                  </label>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="mb-4">
-            <h4 className="text-sm font-medium text-white mb-1">Region</h4>
-            <ul className="space-y-2">
-              {['North America', 'Europe', 'Asia', 'Africa'].map((region, index) => (
-                <li key={index} className="flex items-center">
-                  <input
-                    type="checkbox"
-                    id={`region-${index}`}
-                    className="mr-2"
-                    onChange={() => handleFilterChange('region', region)}
-                  />
-                  <label htmlFor={`region-${index}`} className="text-white text-sm cursor-pointer">
-                    {region}
-                  </label>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="mb-4">
-            <h4 className="text-sm font-medium text-white mb-1">Price Range</h4>
+  const Page: React.FC = () => {
+    const [price, setPrice] = useState<number>(100000000);
+    const [selectedIndustries, setSelectedIndustries] = useState<string[]>([]);
+    const [selectedStatuses, setSelectedStatuses] = useState<string[]>([]);
+    const [selectedRegions, setSelectedRegions] = useState<string[]>([]);
+    const [isClient, setIsClient] = useState<boolean>(false);
+    const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(true);
+    const [currentPage, setCurrentPage] = useState<number>(1);
+    const [isMobileView, setIsMobileView] = useState<boolean>(false);
+    
+    const startupsPerPage = isMobileView ? 4 : 6;
+  
+    useEffect(() => {
+      setIsClient(true);
+      const handleResize = () => {
+        const isMobile = window.innerWidth < 768;
+        setIsMobileView(isMobile);
+        setIsSidebarOpen(!isMobile); // Set sidebar open when switching to desktop
+      };
+      
+      handleResize();
+      window.addEventListener('resize', handleResize);
+      return () => window.removeEventListener('resize', handleResize);
+    }, []);
+  
+    const handlePriceChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+      setPrice(Number(event.target.value));
+    };
+  
+    const handleFilterChange = (filterType: 'industry' | 'status' | 'region', value: string) => {
+      switch (filterType) {
+        case 'industry':
+          setSelectedIndustries((prev) =>
+            prev.includes(value) ? prev.filter((item) => item !== value) : [...prev, value]
+          );
+          break;
+        case 'status':
+          setSelectedStatuses((prev) =>
+            prev.includes(value) ? prev.filter((item) => item !== value) : [...prev, value]
+          );
+          break;
+        case 'region':
+          setSelectedRegions((prev) =>
+            prev.includes(value) ? prev.filter((item) => item !== value) : [...prev, value]
+          );
+          break;
+      }
+    };
+  
+    const filteredStartups = startups.filter((startup) => {
+      const matchesIndustry = selectedIndustries.length === 0 || selectedIndustries.includes(startup.industry);
+      const matchesStatus = selectedStatuses.length === 0 || selectedStatuses.includes(startup.status);
+      const matchesRegion = selectedRegions.length === 0 || selectedRegions.includes(startup.region);
+      const matchesPrice = startup.price <= price;
+  
+      return matchesIndustry && matchesStatus && matchesRegion && matchesPrice;
+    });
+  
+    const indexOfLastStartup = currentPage * startupsPerPage;
+    const indexOfFirstStartup = indexOfLastStartup - startupsPerPage;
+    const currentStartups = filteredStartups.slice(indexOfFirstStartup, indexOfLastStartup);
+    const totalPages = Math.ceil(filteredStartups.length / startupsPerPage);
+  
+    const nextPage = () => {
+      if (currentPage < totalPages) setCurrentPage(currentPage + 1);
+    };
+  
+    const prevPage = () => {
+      if (currentPage > 1) setCurrentPage(currentPage - 1);
+    };
+  
+    if (!isClient) return null;
+  
+    return (
+      <div className="min-h-screen flex flex-col md:flex-row relative">
+        {/* Sidebar Toggle Button */}
+        <button
+          onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+          className="md:hidden fixed top-4 left-4 z-50 p-2 bg-[#76b900] rounded-full text-white"
+        >
+          {isSidebarOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+  
+        {/* Sidebar */}
+        <motion.div
+          initial={{ x: isMobileView ? -300 : 0 }}
+          animate={{ x: isSidebarOpen ? 0 : -300 }}
+          transition={{ duration: 0.3 }}
+          className={`bg-[#76b900] w-full md:w-64 fixed md:relative h-screen z-40 shadow-lg flex flex-col p-4 overflow-y-auto ${
+            isSidebarOpen ? 'block' : 'hidden md:block'
+          }`}
+        >
+          <div className="mb-4 mt-12 md:mt-0">
             <input
-              type="range"
-              min="0"
-              max="100000000"
-              step="1000000"
-              className="w-full"
-              id="price-range"
-              value={price}
-              onChange={handlePriceChange}
+              type="text"
+              placeholder="Search startups or investors"
+              className="w-full p-2 border rounded-full border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#5c7409]"
             />
-            <div className="flex justify-between text-sm text-white mt-2">
-              <span>₹0</span>
-              <span>₹1,00,00,000</span>
+          </div>
+          
+          {/* Filter sections */}
+          <div className="space-y-4 overflow-y-auto flex-1">
+            <h3 className="text-lg font-semibold text-white">Filters</h3>
+            
+            {/* Industry Filter */}
+            <div className="mb-4">
+              <h4 className="text-sm font-medium text-white mb-1">Startup Industry</h4>
+              <ul className="space-y-2">
+                {['Technology', 'Healthcare', 'Finance', 'Education', 'E-commerce'].map((category, index) => (
+                  <li key={index} className="flex items-center">
+                    <input
+                      type="checkbox"
+                      id={`industry-${index}`}
+                      className="mr-2"
+                      onChange={() => handleFilterChange('industry', category)}
+                    />
+                    <label htmlFor={`industry-${index}`} className="text-white text-sm cursor-pointer">
+                      {category}
+                    </label>
+                  </li>
+                ))}
+              </ul>
             </div>
-            <div className="text-white text-center mt-4">Selected Price: ₹{price.toLocaleString()}</div>
+  
+            {/* Status Filter */}
+            <div className="mb-4">
+              <h4 className="text-sm font-medium text-white mb-1">Project Status</h4>
+              <ul className="space-y-2">
+                {['Raw Idea', 'Under Development', 'Developed', 'Ready to launch in Market'].map((stage, index) => (
+                  <li key={index} className="flex items-center">
+                    <input
+                      type="checkbox"
+                      id={`stage-${index}`}
+                      className="mr-2"
+                      onChange={() => handleFilterChange('status', stage)}
+                    />
+                    <label htmlFor={`stage-${index}`} className="text-white text-sm cursor-pointer">
+                      {stage}
+                    </label>
+                  </li>
+                ))}
+              </ul>
+            </div>
+  
+            {/* Region Filter */}
+            <div className="mb-4">
+              <h4 className="text-sm font-medium text-white mb-1">Region</h4>
+              <ul className="space-y-2">
+                {['North America', 'Europe', 'Asia', 'Africa'].map((region, index) => (
+                  <li key={index} className="flex items-center">
+                    <input
+                      type="checkbox"
+                      id={`region-${index}`}
+                      className="mr-2"
+                      onChange={() => handleFilterChange('region', region)}
+                    />
+                    <label htmlFor={`region-${index}`} className="text-white text-sm cursor-pointer">
+                      {region}
+                    </label>
+                  </li>
+                ))}
+              </ul>
+            </div>
+  
+            {/* Price Range */}
+            <div className="mb-4">
+              <h4 className="text-sm font-medium text-white mb-1">Price Range</h4>
+              <input
+                type="range"
+                min="0"
+                max="100000000"
+                step="1000000"
+                className="w-full"
+                id="price-range"
+                value={price}
+                onChange={handlePriceChange}
+              />
+              <div className="flex justify-between text-sm text-white mt-2">
+                <span>₹0</span>
+                <span>₹1,00,00,000</span>
+              </div>
+              <div className="text-white text-center mt-4">
+                Selected Price: ₹{price.toLocaleString()}
+              </div>
+            </div>
+          </div>
+        </motion.div>
+  
+        {/* Main Content */}
+        <div className="flex-1 bg-black p-4 md:p-6 text-white">
+          <h1 className="text-2xl font-bold mb-6 mt-12 md:mt-0">Marketplace</h1>
+  
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+            {currentStartups.map((startup) => (
+              <motion.div
+                key={startup.id}
+                className="bg-white rounded-lg shadow-lg p-4 md:p-6 hover:shadow-xl transition-all"
+              >
+                <div className="flex items-start mb-4">
+                  <div className="w-10 h-10 bg-[#76b900] rounded-full flex items-center justify-center mr-3">
+                    <span className="text-white text-lg font-bold">{startup.name.charAt(0)}</span>
+                  </div>
+                  <div>
+                    <h2 className="text-lg font-semibold text-gray-900">{startup.name}</h2>
+                    <p className="text-sm text-gray-600">by {startup.industry} Innovators</p>
+                  </div>
+                </div>
+                
+                <p className="text-sm text-gray-600 mb-4 line-clamp-2">
+                  A {startup.industry.toLowerCase()} startup focusing on {startup.status.toLowerCase()} phase with innovative solutions.
+                </p>
+  
+                <div className="flex flex-wrap gap-2 mb-4">
+                  <div className="flex items-center">
+                    <span className="text-sm text-gray-700">Equity: </span>
+                    <span className="ml-1 text-sm font-semibold text-gray-900">15%</span>
+                  </div>
+                  <div className="flex items-center ml-4">
+                    <span className="text-sm text-gray-700">Goal: </span>
+                    <span className="ml-1 text-sm font-semibold text-gray-900">₹{startup.price.toLocaleString()}</span>
+                  </div>
+                  <span className="px-2 py-1 text-xs font-medium text-gray-700 bg-gray-100 rounded-full">
+                    {startup.industry}
+                  </span>
+                </div>
+  
+                <button className="w-full py-2 px-4 bg-[#0f172a] text-white rounded-lg hover:bg-[#1e293b] transition-colors">
+                  View Details
+                </button>
+              </motion.div>
+            ))}
+          </div>
+  
+          <div className="flex justify-between items-center mt-6">
+            <button
+              className="px-3 py-2 bg-[#76b900] text-white rounded-full text-xl disabled:opacity-50"
+              onClick={prevPage}
+              disabled={currentPage === 1}
+            >
+              &#x2190;
+            </button>
+            <span className="text-white text-sm md:text-base">
+              Page {currentPage} of {totalPages}
+            </span>
+            <button
+              className="px-3 py-2 bg-[#76b900] text-white rounded-full text-xl disabled:opacity-50"
+              onClick={nextPage}
+              disabled={currentPage === totalPages}
+            >
+              &#x2192;
+            </button>
           </div>
         </div>
       </div>
-      <div className="flex-1 bg-black p-6 text-white">
-        <h1 className="text-2xl font-bold mb-6">Marketplace</h1>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          {currentStartups.map((startup) => (
-            <motion.div
-              key={startup.id}
-              className="bg-white p-6 rounded-lg shadow-lg flex flex-col items-center justify-between hover:translate-y-[-2px] transition-all"
-            >
-              <h2 className="text-3xl font-bold text-black mb-4">{startup.name}</h2>
-              <div className="flex flex-col space-y-2 text-black">
-                <p className="text-lg">
-                  <span className="text-[#76b900] font-semibold">Industry:</span> {startup.industry}
-                </p>
-                <p className="text-lg">
-                  <span className="text-[#76b900] font-semibold">Status:</span> {startup.status}
-                </p>
-                <p className="text-lg">
-                  <span className="text-[#76b900] font-semibold">Region:</span> {startup.region}
-                </p>
-                <p className="text-lg">
-                  <span className="text-[#76b900] font-semibold">Price:</span> ₹{startup.price.toLocaleString()}
-                </p>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-
-        <div className="flex justify-between mt-6">
-          <button
-            className="px-3 py-2 bg-[#76b900] text-white rounded-full text-xl"
-            onClick={prevPage}
-            disabled={currentPage === 1}
-          >
-            &#x2190;
-          </button>
-          <span className="text-white">
-            Page {currentPage} of {totalPages}
-          </span>
-          <button
-            className="px-3 py-2 bg-[#76b900] text-white rounded-full text-xl"
-            onClick={nextPage}
-            disabled={currentPage === totalPages}
-          >
-            &#x2192;
-          </button>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-export default Page;
+    );
+  };
+  
+  export default Page;
