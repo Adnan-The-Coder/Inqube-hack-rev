@@ -29,7 +29,7 @@ export function Homepage() {
             Explore
           </Link>
           <Link
-            href="/"
+            href="/marketplace"
             className="border-[#76b900] border px-6 py-3 rounded-lg text-sm md:text-md font-medium hover:bg-[#76b900] transition duration-300"
           >
             Marketplace
@@ -37,8 +37,8 @@ export function Homepage() {
         </div>
         <Image src={home} alt="Home" className="w-64 md:w-96 rounded-lg shadow-lg" />
       </div>
-      <div className="z-10 mt-32 md:mt-16">
-        <div className="flex flex-wrap justify-center items-center gap-10 md:gap-32 px-4">
+      <div className="z-10 mt-28 md:mt-16 mb-24">
+        <div className="flex flex-wrap justify-center items-center gap-10 md:gap-32 px-2">
           {[brand1, brand2, brand3, brand4, brand5].map((brand, index) => (
             <Image
               key={index}
