@@ -83,7 +83,7 @@ const startups: Startup[] = [
       const handleResize = () => {
         const isMobile = window.innerWidth < 768;
         setIsMobileView(isMobile);
-        setIsSidebarOpen(!isMobile); // Set sidebar open when switching to desktop
+        setIsSidebarOpen(!isMobile); 
       };
       
       handleResize();
@@ -141,20 +141,17 @@ const startups: Startup[] = [
   
     return (
       <div className="min-h-screen flex flex-col md:flex-row relative">
-        {/* Sidebar Toggle Button */}
         <button
           onClick={() => setIsSidebarOpen(!isSidebarOpen)}
           className="md:hidden fixed top-4 left-4 z-50 p-2 bg-[#76b900] rounded-full text-white"
         >
           {isSidebarOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
-  
-        {/* Sidebar */}
         <motion.div
           initial={{ x: isMobileView ? -300 : 0 }}
           animate={{ x: isSidebarOpen ? 0 : -300 }}
           transition={{ duration: 0.3 }}
-          className={`bg-[#76b900] w-full md:w-64 fixed md:relative h-screen z-40 shadow-lg flex flex-col p-4 overflow-y-auto ${
+          className={`bg-[#76b900] w-full md:w-64 fixed md:relative h-screen z-40 shadow-lg flex flex-col p-3 overflow-y-auto ${
             isSidebarOpen ? 'block' : 'hidden md:block'
           }`}
         >
@@ -165,12 +162,8 @@ const startups: Startup[] = [
               className="w-full p-2 border rounded-full border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#5c7409]"
             />
           </div>
-          
-          {/* Filter sections */}
           <div className="space-y-4 overflow-y-auto flex-1">
             <h3 className="text-lg font-semibold text-white">Filters</h3>
-            
-            {/* Industry Filter */}
             <div className="mb-4">
               <h4 className="text-sm font-medium text-white mb-1">Startup Industry</h4>
               <ul className="space-y-2">
@@ -189,8 +182,6 @@ const startups: Startup[] = [
                 ))}
               </ul>
             </div>
-  
-            {/* Status Filter */}
             <div className="mb-4">
               <h4 className="text-sm font-medium text-white mb-1">Project Status</h4>
               <ul className="space-y-2">
@@ -209,8 +200,6 @@ const startups: Startup[] = [
                 ))}
               </ul>
             </div>
-  
-            {/* Region Filter */}
             <div className="mb-4">
               <h4 className="text-sm font-medium text-white mb-1">Region</h4>
               <ul className="space-y-2">
@@ -229,8 +218,6 @@ const startups: Startup[] = [
                 ))}
               </ul>
             </div>
-  
-            {/* Price Range */}
             <div className="mb-4">
               <h4 className="text-sm font-medium text-white mb-1">Price Range</h4>
               <input
@@ -253,8 +240,6 @@ const startups: Startup[] = [
             </div>
           </div>
         </motion.div>
-  
-        {/* Main Content */}
         <div className="flex-1 bg-black p-4 md:p-6 text-white">
           <h1 className="text-2xl font-bold mb-6 mt-12 md:mt-0">Marketplace</h1>
   
