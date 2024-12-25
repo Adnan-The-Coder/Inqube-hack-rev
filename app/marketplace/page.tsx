@@ -140,7 +140,7 @@ const startups: Startup[] = [
     if (!isClient) return null;
   
     return (
-      <div className="min-h-screen flex flex-col md:flex-row relative">
+      <div className="h-screen flex flex-col md:flex-row relative">
         <button
           onClick={() => setIsSidebarOpen(!isSidebarOpen)}
           className="md:hidden fixed top-4 left-4 z-50 p-2 bg-[#76b900] rounded-full text-white"
@@ -158,8 +158,8 @@ const startups: Startup[] = [
           <div className="mb-4 mt-12 md:mt-0">
             <input
               type="text"
-              placeholder="Search startups or investors"
-              className="w-full p-2 border rounded-full border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#5c7409]"
+              placeholder="Search startups"
+              className="w-full p-2  border rounded-full border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#5c7409]"
             />
           </div>
           <div className="space-y-4 overflow-y-auto flex-1">
