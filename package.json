@@ -19,10 +19,12 @@
     "@tsparticles/engine": "^3.7.1",
     "@tsparticles/react": "^3.0.0",
     "@tsparticles/slim": "^3.7.1",
+    "chart.js": "^4.4.7",
     "clsx": "^2.1.1",
     "framer-motion": "^11.15.0",
     "next": "^15.1.2",
     "react": "^19.0.0",
+    "react-chartjs-2": "^5.2.0",
     "react-dom": "^19.0.0",
     "tailwind-merge": "^2.6.0"
   },
