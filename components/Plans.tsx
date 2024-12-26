@@ -1,14 +1,13 @@
 import React from "react";
 import Image from "next/image";
-import pattern from "../Images/pattern.png"; // Adjust the path as needed
+import pattern from "../Images/pattern.png"; 
 
 const Plans: React.FC = () => {
   return (
     <div
-      className="h-full w-full flex flex-col items-center justify-center pb-10 pt-[900px] md:pt-[20px] bg-[#0a0a0a] text-white relative"
+      className="h-full w-full flex flex-col items-center justify-center pb-10 pt-[900px] md:pt-[20px] bg-[#0a0a0a] text-white relative overflow-hidden"
       id="plans"
     >
-      {/* Floating Background Patterns */}
       <Image
         src={pattern}
         alt="Pattern"
@@ -21,8 +20,6 @@ const Plans: React.FC = () => {
         className="absolute top-[-50px] left-10 w-80 h-auto opacity-40 blur-sm rotate-[60deg] scale-125 pointer-events-none floating-reverse"
         priority
       />
-
-      {/* Header Section */}
       <div className="text-center flex flex-col gap-5 z-10">
         <h1 className="text-[#76b900] text-4xl md:text-5xl font-semibold">
           Elevate Your Business:
@@ -31,10 +28,7 @@ const Plans: React.FC = () => {
           Flexible Plans For Every Business
         </h2>
       </div>
-
-      {/* Plans Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-5 pt-10 gap-10 items-center z-10 relative">
-        {/* Starter Plan */}
         <div className="p-8 h-[450px] w-[320px] bg-[rgba(30,30,30,0.85)] rounded-lg flex flex-col gap-4 shadow-2xl border border-gray-700 hover:scale-105 transition-transform">
           <h3 className="text-gray-400 text-sm">Starter Plan</h3>
           <h1 className="text-5xl font-bold text-white">$85.45</h1>
@@ -50,8 +44,6 @@ const Plans: React.FC = () => {
             Select Plan
           </button>
         </div>
-
-        {/* Professional Plan */}
         <div className="p-8 h-[450px] w-[320px] bg-[rgba(118,185,0,0.85)] rounded-lg flex flex-col gap-4 shadow-2xl border border-gray-700 hover:scale-105 transition-transform">
           <h3 className="text-gray-800 text-sm">Professional Plan</h3>
           <h1 className="text-5xl font-bold text-black">$100</h1>
@@ -67,8 +59,6 @@ const Plans: React.FC = () => {
             Select Plan
           </button>
         </div>
-
-        {/* Expert Plan */}
         <div className="p-8 h-[450px] w-[320px] bg-[rgba(30,30,30,0.85)] rounded-lg flex flex-col gap-4 shadow-2xl border border-gray-700 hover:scale-105 transition-transform">
           <h3 className="text-gray-400 text-sm">Expert Plan</h3>
           <h1 className="text-5xl font-bold text-white">$155.80</h1>
