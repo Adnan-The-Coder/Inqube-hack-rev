@@ -2,6 +2,8 @@
 import Additional from "@/components/Additional";
 import Header from "@/components/Header";
 import { Homepage } from "@/components/Homepage";
+import Plans from "@/components/Plans";
+import Services from "@/components/Services";
 import React from "react";
 
 export default function SparklesPreview() {
@@ -10,6 +12,8 @@ export default function SparklesPreview() {
         <Header/>
         <Homepage/>
         <Additional/>
+        <Services/>
+        <Plans/>
     </div>
   );
 }

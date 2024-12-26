@@ -14,7 +14,7 @@ export function Homepage() {
   return (
     <div className="relative flex flex-col items-center justify-center min-h-screen w-full bg-neutral-950 text-white overflow-hidden rounded-md antialiased">
       <BackgroundBeams />
-      <div className="z-10 flex flex-col items-center justify-center px-6 md:px-12 gap-6 text-center mt-16">
+      <div className="z-10 flex flex-col items-center justify-center px-6 md:px-12 gap-6 text-center mt-32 md:mt-28">
         <h1 className="text-4xl md:text-6xl font-extrabold leading-tight tracking-tight mt-1">
           Bridge the Gap Between <br />
           <span className="text-[#76b900] text-3xl md:text-5xl">
