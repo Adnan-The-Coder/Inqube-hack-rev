@@ -24,7 +24,7 @@ const Header = () => {
 
   return (
     <div
-      className={`fixed w-full top-0 left-0 z-50 ${
+      className={`fixed w-full top-0 left-0 z_class ${
         isScrolled ? "bg-[#0a0a0a] shadow-lg" : "bg-transparent"
       } transition-all duration-300`}
     >

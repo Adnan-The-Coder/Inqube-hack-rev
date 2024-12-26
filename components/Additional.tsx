@@ -16,7 +16,7 @@ const Additional = () => {
                     Our platform simplifies connecting with investors, offering resources and guidance to accelerate your startup growth.
                     </p>
                 </div>
-                <Image src="https://img.icons8.com/?size=100&id=61&format=png&color=FFFFFF" alt='arrow' className='cursor-pointer w-[50px] border hover:bg-[#76b900] transition-all ease-out duration-200 border-white rounded-full p-3'/>
+                <Image src="https://img.icons8.com/?size=100&id=61&format=png&color=FFFFFF" alt='arrow' width={10} height={10} className='cursor-pointer w-[50px] border hover:bg-[#76b900] transition-all ease-out duration-200 border-white rounded-full p-3'/>
             </div>
         </div>
         <hr className='border border-[#505050] w-full md:w-[75rem]'/>
@@ -32,7 +32,7 @@ const Additional = () => {
                     Find investors who align with your vision and access valuable advice and resources to grow your startup.
                     </p>
                 </div>
-                <Image src="https://img.icons8.com/?size=100&id=61&format=png&color=FFFFFF" alt='arrow' className='cursor-pointer w-[50px] border hover:bg-[#76b900] transition-all ease-out duration-200 border-white rounded-full p-3'/>
+                <Image src="https://img.icons8.com/?size=100&id=61&format=png&color=FFFFFF" alt='arrow' width={10} height={10} className='cursor-pointer w-[50px] border hover:bg-[#76b900] transition-all ease-out duration-200 border-white rounded-full p-3'/>
             </div>
         </div>
     </div>

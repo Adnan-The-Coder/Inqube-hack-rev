@@ -5,7 +5,7 @@ import pattern from "../Images/pattern.png";
 const Plans: React.FC = () => {
   return (
     <div
-      className="h-full w-full flex flex-col items-center justify-center pb-10 pt-[900px] md:pt-[20px] bg-[#0a0a0a] text-white relative overflow-hidden"
+      className="h-full w-full flex flex-col items-center justify-center pb-10 pt-[900px] md:pt-[20px] bg-[#0a0a0a] text-white relative"
       id="plans"
     >
       <Image
@@ -29,7 +29,7 @@ const Plans: React.FC = () => {
         </h2>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-5 pt-10 gap-10 items-center z-10 relative">
-        <div className="p-8 h-[450px] w-[320px] bg-[rgba(30,30,30,0.85)] rounded-lg flex flex-col gap-4 shadow-2xl border border-gray-700 hover:scale-105 transition-transform">
+        <div className="p-8 h-[450px] w-[320px] bg-[rgba(30,30,30,0.85)] rounded-lg flex flex-col gap-4 shadow-2xl border border-gray-900 hover:scale-105 transition-transform">
           <h3 className="text-gray-400 text-sm">Starter Plan</h3>
           <h1 className="text-5xl font-bold text-white">$85.45</h1>
           <h4 className="text-gray-400 text-md">/service</h4>
@@ -44,7 +44,7 @@ const Plans: React.FC = () => {
             Select Plan
           </button>
         </div>
-        <div className="p-8 h-[450px] w-[320px] bg-[rgba(118,185,0,0.85)] rounded-lg flex flex-col gap-4 shadow-2xl border border-gray-700 hover:scale-105 transition-transform">
+        <div className="p-8 h-[450px] w-[320px] bg-[rgba(118,185,0,0.85)] rounded-lg flex flex-col gap-4 shadow-2xl border border-gray-900 hover:scale-105 transition-transform">
           <h3 className="text-gray-800 text-sm">Professional Plan</h3>
           <h1 className="text-5xl font-bold text-black">$100</h1>
           <h4 className="text-gray-800 text-md">/service</h4>
@@ -59,7 +59,7 @@ const Plans: React.FC = () => {
             Select Plan
           </button>
         </div>
-        <div className="p-8 h-[450px] w-[320px] bg-[rgba(30,30,30,0.85)] rounded-lg flex flex-col gap-4 shadow-2xl border border-gray-700 hover:scale-105 transition-transform">
+        <div className="p-8 h-[450px] w-[320px] bg-[rgba(30,30,30,0.85)] rounded-lg flex flex-col gap-4 shadow-2xl border border-gray-900 hover:scale-105 transition-transform">
           <h3 className="text-gray-400 text-sm">Expert Plan</h3>
           <h1 className="text-5xl font-bold text-white">$155.80</h1>
           <h4 className="text-gray-400 text-md">/service</h4>
