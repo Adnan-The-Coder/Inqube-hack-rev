@@ -7,82 +7,82 @@ import { Menu, X } from 'lucide-react';
 interface Startup {
   id: number;
   name: string;
-  industry: string;
+  tag: string;
   status: string;
   region: string;
   price: number;
 }
 const startups: Startup[] = [
-  { id: 1, name: 'Tech Innovators', industry: 'Technology', status: 'Ready to launch in Market', region: 'North America', price: 50000000 },
-  { id: 2, name: 'HealthFirst', industry: 'Healthcare', status: 'Under Development', region: 'Asia', price: 20000000 },
-  { id: 3, name: 'EduSpark', industry: 'Education', status: 'Developed', region: 'Europe', price: 10000000 },
-  { id: 4, name: 'E-Mart', industry: 'E-commerce', status: 'Ready to launch in Market', region: 'North America', price: 80000000 },
-  { id: 5, name: 'FinServe', industry: 'Finance', status: 'Raw Idea', region: 'Africa', price: 30000000 },
-  { id: 6, name: 'GreenTech Solutions', industry: 'Technology', status: 'Developed', region: 'Europe', price: 60000000 },
-  { id: 7, name: 'FoodFusion', industry: 'Food & Beverage', status: 'Under Development', region: 'Asia', price: 40000000 },
-  { id: 8, name: 'Meditech Pro', industry: 'Healthcare', status: 'Ready to launch in Market', region: 'North America', price: 90000000 },
-  { id: 9, name: 'SmartEd', industry: 'Education', status: 'Raw Idea', region: 'Africa', price: 5000000 },
-  { id: 10, name: 'StyleSphere', industry: 'Fashion', status: 'Under Development', region: 'Europe', price: 15000000 },
-  { id: 11, name: 'AutoPilot', industry: 'Automotive', status: 'Ready to launch in Market', region: 'North America', price: 120000000 },
-  { id: 12, name: 'AgriTech Hub', industry: 'Agriculture', status: 'Developed', region: 'Asia', price: 25000000 },
-  { id: 13, name: 'FinGrowth', industry: 'Finance', status: 'Under Development', region: 'Europe', price: 40000000 },
-  { id: 14, name: 'BioGenics', industry: 'Healthcare', status: 'Raw Idea', region: 'North America', price: 10000000 },
-  { id: 15, name: 'EcoHome', industry: 'Real Estate', status: 'Developed', region: 'Asia', price: 70000000 },
-  { id: 16, name: 'ShopEase', industry: 'E-commerce', status: 'Ready to launch in Market', region: 'Europe', price: 45000000 },
-  { id: 17, name: 'Eventify', industry: 'Event Management', status: 'Under Development', region: 'Africa', price: 20000000 },
-  { id: 18, name: 'RideSmart', industry: 'Automotive', status: 'Raw Idea', region: 'Asia', price: 15000000 },
-  { id: 19, name: 'GameOn', industry: 'Gaming', status: 'Developed', region: 'North America', price: 60000000 },
-  { id: 20, name: 'PetCare', industry: 'Pets', status: 'Ready to launch in Market', region: 'Europe', price: 25000000 },
-  { id: 21, name: 'TravelBuddy', industry: 'Travel', status: 'Under Development', region: 'Asia', price: 30000000 },
-  { id: 22, name: 'Artify', industry: 'Art & Design', status: 'Raw Idea', region: 'Africa', price: 8000000 },
-  { id: 23, name: 'SolarGen', industry: 'Renewable Energy', status: 'Developed', region: 'North America', price: 90000000 },
-  { id: 24, name: 'DigitalDocs', industry: 'Healthcare', status: 'Ready to launch in Market', region: 'Asia', price: 50000000 },
-  { id: 25, name: 'LearnNest', industry: 'Education', status: 'Under Development', region: 'Europe', price: 20000000 },
-  { id: 26, name: 'GadgetPro', industry: 'Technology', status: 'Raw Idea', region: 'Africa', price: 10000000 },
-  { id: 27, name: 'BuildSmart', industry: 'Construction', status: 'Developed', region: 'Asia', price: 75000000 },
-  { id: 28, name: 'FitPulse', industry: 'Fitness', status: 'Under Development', region: 'North America', price: 40000000 },
-  { id: 29, name: 'CleanWave', industry: 'Environment', status: 'Ready to launch in Market', region: 'Europe', price: 55000000 },
-  { id: 30, name: 'PlantPure', industry: 'Agriculture', status: 'Raw Idea', region: 'Africa', price: 15000000 },
-  { id: 31, name: 'CloudStream', industry: 'Cloud Computing', status: 'Ready to launch in Market', region: 'North America', price: 70000000 },
-  { id: 32, name: 'CyberDefend', industry: 'Cybersecurity', status: 'Under Development', region: 'Europe', price: 30000000 },
-  { id: 33, name: 'FinTechWave', industry: 'Finance', status: 'Developed', region: 'Asia', price: 60000000 },
-  { id: 34, name: 'AgroGrow', industry: 'Agriculture', status: 'Ready to launch in Market', region: 'Africa', price: 45000000 },
-  { id: 35, name: 'UrbanSmart', industry: 'Smart Cities', status: 'Under Development', region: 'Europe', price: 50000000 },
-  { id: 36, name: 'AutoTech', industry: 'Automotive', status: 'Developed', region: 'North America', price: 120000000 },
-  { id: 37, name: 'FinAssist', industry: 'Finance', status: 'Ready to launch in Market', region: 'Africa', price: 25000000 },
-  { id: 38, name: 'AquaCare', industry: 'Environment', status: 'Raw Idea', region: 'Asia', price: 15000000 },
-  { id: 39, name: 'UrbanGreen', industry: 'Real Estate', status: 'Under Development', region: 'North America', price: 70000000 },
-  { id: 40, name: 'NextGenBio', industry: 'Biotechnology', status: 'Ready to launch in Market', region: 'Europe', price: 80000000 },
-  { id: 41, name: 'MediTechX', industry: 'Healthcare', status: 'Developed', region: 'Asia', price: 95000000 },
-  { id: 42, name: 'CleanTech Innovations', industry: 'Renewable Energy', status: 'Under Development', region: 'Africa', price: 60000000 },
-  { id: 43, name: 'PureGreen', industry: 'Environment', status: 'Ready to launch in Market', region: 'North America', price: 40000000 },
-  { id: 44, name: 'FashionForward', industry: 'Fashion', status: 'Developed', region: 'Europe', price: 30000000 },
-  { id: 45, name: 'FastFoodie', industry: 'Food & Beverage', status: 'Under Development', region: 'Africa', price: 20000000 },
-  { id: 46, name: 'EduLink', industry: 'Education', status: 'Ready to launch in Market', region: 'Asia', price: 60000000 },
-  { id: 47, name: 'TechHaven', industry: 'Technology', status: 'Developed', region: 'North America', price: 75000000 },
-  { id: 48, name: 'HealthSync', industry: 'Healthcare', status: 'Under Development', region: 'Europe', price: 35000000 },
-  { id: 49, name: 'TechHive', industry: 'Technology', status: 'Ready to launch in Market', region: 'Africa', price: 20000000 },
-  { id: 50, name: 'HomeSmart', industry: 'Smart Homes', status: 'Developed', region: 'North America', price: 100000000 },
-  { id: 51, name: 'QuantumX', industry: 'Quantum Computing', status: 'Raw Idea', region: 'Asia', price: 40000000 },
-  { id: 52, name: 'SolarEdge', industry: 'Renewable Energy', status: 'Ready to launch in Market', region: 'Europe', price: 70000000 },
-  { id: 53, name: 'BioWave', industry: 'Biotechnology', status: 'Developed', region: 'North America', price: 80000000 },
-  { id: 54, name: 'HealthyBytes', industry: 'Food & Beverage', status: 'Under Development', region: 'Asia', price: 35000000 },
-  { id: 55, name: 'SmartHomes Inc', industry: 'Real Estate', status: 'Ready to launch in Market', region: 'Africa', price: 65000000 },
-  { id: 56, name: 'UrbanBytes', industry: 'Technology', status: 'Developed', region: 'North America', price: 50000000 },
-  { id: 57, name: 'Travelogue', industry: 'Travel', status: 'Raw Idea', region: 'Europe', price: 20000000 },
-  { id: 58, name: 'E-Health Solutions', industry: 'Healthcare', status: 'Ready to launch in Market', region: 'Asia', price: 95000000 },
-  { id: 59, name: 'EventFlare', industry: 'Event Management', status: 'Under Development', region: 'North America', price: 25000000 },
-  { id: 60, name: 'GreenFit', industry: 'Fitness', status: 'Developed', region: 'Africa', price: 40000000 },
-  { id: 61, name: 'EcoLiving', industry: 'Environment', status: 'Raw Idea', region: 'Asia', price: 15000000 },
-  { id: 62, name: 'SmartBuild', industry: 'Construction', status: 'Ready to launch in Market', region: 'Europe', price: 85000000 },
-  { id: 63, name: 'FutureEats', industry: 'Food & Beverage', status: 'Developed', region: 'North America', price: 60000000 },
-  { id: 64, name: 'TechImpact', industry: 'Technology', status: 'Under Development', region: 'Africa', price: 50000000 },
-  { id: 65, name: 'CyberCore', industry: 'Cybersecurity', status: 'Raw Idea', region: 'Asia', price: 10000000 },
-  { id: 66, name: 'FashionHub', industry: 'Fashion', status: 'Ready to launch in Market', region: 'Europe', price: 40000000 },
-  { id: 67, name: 'AgriFuture', industry: 'Agriculture', status: 'Under Development', region: 'North America', price: 45000000 },
-  { id: 68, name: 'GameZone', industry: 'Gaming', status: 'Developed', region: 'Asia', price: 55000000 },
-  { id: 69, name: 'PetZone', industry: 'Pets', status: 'Ready to launch in Market', region: 'Europe', price: 70000000 },
-  { id: 70, name: 'UrbanTech', industry: 'Smart Cities', status: 'Developed', region: 'North America', price: 100000000 }
+  { id: 1, name: 'Tech Innovators', tag: 'Technology', status: 'Ready to launch in Market', region: 'North America', price: 50000000 },
+  { id: 2, name: 'HealthFirst', tag: 'Healthcare', status: 'Under Development', region: 'Asia', price: 20000000 },
+  { id: 3, name: 'EduSpark', tag: 'Education', status: 'Developed', region: 'Europe', price: 10000000 },
+  { id: 4, name: 'E-Mart', tag: 'E-commerce', status: 'Ready to launch in Market', region: 'North America', price: 80000000 },
+  { id: 5, name: 'FinServe', tag: 'Finance', status: 'Raw Idea', region: 'Africa', price: 30000000 },
+  { id: 6, name: 'GreenTech Solutions', tag: 'Technology', status: 'Developed', region: 'Europe', price: 60000000 },
+  { id: 7, name: 'FoodFusion', tag: 'Food & Beverage', status: 'Under Development', region: 'Asia', price: 40000000 },
+  { id: 8, name: 'Meditech Pro', tag: 'Healthcare', status: 'Ready to launch in Market', region: 'North America', price: 90000000 },
+  { id: 9, name: 'SmartEd', tag: 'Education', status: 'Raw Idea', region: 'Africa', price: 5000000 },
+  { id: 10, name: 'StyleSphere', tag: 'Fashion', status: 'Under Development', region: 'Europe', price: 15000000 },
+  { id: 11, name: 'AutoPilot', tag: 'Automotive', status: 'Ready to launch in Market', region: 'North America', price: 120000000 },
+  { id: 12, name: 'AgriTech Hub', tag: 'Agriculture', status: 'Developed', region: 'Asia', price: 25000000 },
+  { id: 13, name: 'FinGrowth', tag: 'Finance', status: 'Under Development', region: 'Europe', price: 40000000 },
+  { id: 14, name: 'BioGenics', tag: 'Healthcare', status: 'Raw Idea', region: 'North America', price: 10000000 },
+  { id: 15, name: 'EcoHome', tag: 'Real Estate', status: 'Developed', region: 'Asia', price: 70000000 },
+  { id: 16, name: 'ShopEase', tag: 'E-commerce', status: 'Ready to launch in Market', region: 'Europe', price: 45000000 },
+  { id: 17, name: 'Eventify', tag: 'Event Management', status: 'Under Development', region: 'Africa', price: 20000000 },
+  { id: 18, name: 'RideSmart', tag: 'Automotive', status: 'Raw Idea', region: 'Asia', price: 15000000 },
+  { id: 19, name: 'GameOn', tag: 'Gaming', status: 'Developed', region: 'North America', price: 60000000 },
+  { id: 20, name: 'PetCare', tag: 'Pets', status: 'Ready to launch in Market', region: 'Europe', price: 25000000 },
+  { id: 21, name: 'TravelBuddy', tag: 'Travel', status: 'Under Development', region: 'Asia', price: 30000000 },
+  { id: 22, name: 'Artify', tag: 'Art & Design', status: 'Raw Idea', region: 'Africa', price: 8000000 },
+  { id: 23, name: 'SolarGen', tag: 'Renewable Energy', status: 'Developed', region: 'North America', price: 90000000 },
+  { id: 24, name: 'DigitalDocs', tag: 'Healthcare', status: 'Ready to launch in Market', region: 'Asia', price: 50000000 },
+  { id: 25, name: 'LearnNest', tag: 'Education', status: 'Under Development', region: 'Europe', price: 20000000 },
+  { id: 26, name: 'GadgetPro', tag: 'Technology', status: 'Raw Idea', region: 'Africa', price: 10000000 },
+  { id: 27, name: 'BuildSmart', tag: 'Construction', status: 'Developed', region: 'Asia', price: 75000000 },
+  { id: 28, name: 'FitPulse', tag: 'Fitness', status: 'Under Development', region: 'North America', price: 40000000 },
+  { id: 29, name: 'CleanWave', tag: 'Environment', status: 'Ready to launch in Market', region: 'Europe', price: 55000000 },
+  { id: 30, name: 'PlantPure', tag: 'Agriculture', status: 'Raw Idea', region: 'Africa', price: 15000000 },
+  { id: 31, name: 'CloudStream', tag: 'Cloud Computing', status: 'Ready to launch in Market', region: 'North America', price: 70000000 },
+  { id: 32, name: 'CyberDefend', tag: 'Cybersecurity', status: 'Under Development', region: 'Europe', price: 30000000 },
+  { id: 33, name: 'FinTechWave', tag: 'Finance', status: 'Developed', region: 'Asia', price: 60000000 },
+  { id: 34, name: 'AgroGrow', tag: 'Agriculture', status: 'Ready to launch in Market', region: 'Africa', price: 45000000 },
+  { id: 35, name: 'UrbanSmart', tag: 'Smart Cities', status: 'Under Development', region: 'Europe', price: 50000000 },
+  { id: 36, name: 'AutoTech', tag: 'Automotive', status: 'Developed', region: 'North America', price: 120000000 },
+  { id: 37, name: 'FinAssist', tag: 'Finance', status: 'Ready to launch in Market', region: 'Africa', price: 25000000 },
+  { id: 38, name: 'AquaCare', tag: 'Environment', status: 'Raw Idea', region: 'Asia', price: 15000000 },
+  { id: 39, name: 'UrbanGreen', tag: 'Real Estate', status: 'Under Development', region: 'North America', price: 70000000 },
+  { id: 40, name: 'NextGenBio', tag: 'Biotechnology', status: 'Ready to launch in Market', region: 'Europe', price: 80000000 },
+  { id: 41, name: 'MediTechX', tag: 'Healthcare', status: 'Developed', region: 'Asia', price: 95000000 },
+  { id: 42, name: 'CleanTech Innovations', tag: 'Renewable Energy', status: 'Under Development', region: 'Africa', price: 60000000 },
+  { id: 43, name: 'PureGreen', tag: 'Environment', status: 'Ready to launch in Market', region: 'North America', price: 40000000 },
+  { id: 44, name: 'FashionForward', tag: 'Fashion', status: 'Developed', region: 'Europe', price: 30000000 },
+  { id: 45, name: 'FastFoodie', tag: 'Food & Beverage', status: 'Under Development', region: 'Africa', price: 20000000 },
+  { id: 46, name: 'EduLink', tag: 'Education', status: 'Ready to launch in Market', region: 'Asia', price: 60000000 },
+  { id: 47, name: 'TechHaven', tag: 'Technology', status: 'Developed', region: 'North America', price: 75000000 },
+  { id: 48, name: 'HealthSync', tag: 'Healthcare', status: 'Under Development', region: 'Europe', price: 35000000 },
+  { id: 49, name: 'TechHive', tag: 'Technology', status: 'Ready to launch in Market', region: 'Africa', price: 20000000 },
+  { id: 50, name: 'HomeSmart', tag: 'Smart Homes', status: 'Developed', region: 'North America', price: 100000000 },
+  { id: 51, name: 'QuantumX', tag: 'Quantum Computing', status: 'Raw Idea', region: 'Asia', price: 40000000 },
+  { id: 52, name: 'SolarEdge', tag: 'Renewable Energy', status: 'Ready to launch in Market', region: 'Europe', price: 70000000 },
+  { id: 53, name: 'BioWave', tag: 'Biotechnology', status: 'Developed', region: 'North America', price: 80000000 },
+  { id: 54, name: 'HealthyBytes', tag: 'Food & Beverage', status: 'Under Development', region: 'Asia', price: 35000000 },
+  { id: 55, name: 'SmartHomes Inc', tag: 'Real Estate', status: 'Ready to launch in Market', region: 'Africa', price: 65000000 },
+  { id: 56, name: 'UrbanBytes', tag: 'Technology', status: 'Developed', region: 'North America', price: 50000000 },
+  { id: 57, name: 'Travelogue', tag: 'Travel', status: 'Raw Idea', region: 'Europe', price: 20000000 },
+  { id: 58, name: 'E-Health Solutions', tag: 'Healthcare', status: 'Ready to launch in Market', region: 'Asia', price: 95000000 },
+  { id: 59, name: 'EventFlare', tag: 'Event Management', status: 'Under Development', region: 'North America', price: 25000000 },
+  { id: 60, name: 'GreenFit', tag: 'Fitness', status: 'Developed', region: 'Africa', price: 40000000 },
+  { id: 61, name: 'EcoLiving', tag: 'Environment', status: 'Raw Idea', region: 'Asia', price: 15000000 },
+  { id: 62, name: 'SmartBuild', tag: 'Construction', status: 'Ready to launch in Market', region: 'Europe', price: 85000000 },
+  { id: 63, name: 'FutureEats', tag: 'Food & Beverage', status: 'Developed', region: 'North America', price: 60000000 },
+  { id: 64, name: 'TechImpact', tag: 'Technology', status: 'Under Development', region: 'Africa', price: 50000000 },
+  { id: 65, name: 'CyberCore', tag: 'Cybersecurity', status: 'Raw Idea', region: 'Asia', price: 10000000 },
+  { id: 66, name: 'FashionHub', tag: 'Fashion', status: 'Ready to launch in Market', region: 'Europe', price: 40000000 },
+  { id: 67, name: 'AgriFuture', tag: 'Agriculture', status: 'Under Development', region: 'North America', price: 45000000 },
+  { id: 68, name: 'GameZone', tag: 'Gaming', status: 'Developed', region: 'Asia', price: 55000000 },
+  { id: 69, name: 'PetZone', tag: 'Pets', status: 'Ready to launch in Market', region: 'Europe', price: 70000000 },
+  { id: 70, name: 'UrbanTech', tag: 'Smart Cities', status: 'Developed', region: 'North America', price: 100000000 }
 ];
 
   const Page: React.FC = () => {
@@ -114,9 +114,9 @@ const startups: Startup[] = [
       setPrice(Number(event.target.value));
     };
   
-    const handleFilterChange = (filterType: 'industry' | 'status' | 'region', value: string) => {
+    const handleFilterChange = (filterType: 'tag' | 'status' | 'region', value: string) => {
       switch (filterType) {
-        case 'industry':
+        case 'tag':
           setSelectedIndustries((prev) =>
             prev.includes(value) ? prev.filter((item) => item !== value) : [...prev, value]
           );
@@ -135,12 +135,12 @@ const startups: Startup[] = [
     };
   
     const filteredStartups = startups.filter((startup) => {
-      const matchesIndustry = selectedIndustries.length === 0 || selectedIndustries.includes(startup.industry);
+      const matchestag = selectedIndustries.length === 0 || selectedIndustries.includes(startup.tag);
       const matchesStatus = selectedStatuses.length === 0 || selectedStatuses.includes(startup.status);
       const matchesRegion = selectedRegions.length === 0 || selectedRegions.includes(startup.region);
       const matchesPrice = startup.price <= price;
   
-      return matchesIndustry && matchesStatus && matchesRegion && matchesPrice;
+      return matchestag && matchesStatus && matchesRegion && matchesPrice;
     });
   
     const indexOfLastStartup = currentPage * startupsPerPage;
@@ -184,17 +184,17 @@ const startups: Startup[] = [
           <div className="space-y-4 overflow-y-auto flex-1">
             <h3 className="text-lg font-semibold text-white">Filters</h3>
             <div className="mb-4">
-              <h4 className="text-sm font-medium text-white mb-1">Startup Industry</h4>
+              <h4 className="text-sm font-medium text-white mb-1">Startup tag</h4>
               <ul className="space-y-2">
                 {['Technology', 'Healthcare', 'Finance', 'Education', 'E-commerce'].map((category, index) => (
                   <li key={index} className="flex items-center">
                     <input
                       type="checkbox"
-                      id={`industry-${index}`}
+                      id={`tag-${index}`}
                       className="mr-2"
-                      onChange={() => handleFilterChange('industry', category)}
+                      onChange={() => handleFilterChange('tag', category)}
                     />
-                    <label htmlFor={`industry-${index}`} className="text-white text-sm cursor-pointer">
+                    <label htmlFor={`tag-${index}`} className="text-white text-sm cursor-pointer">
                       {category}
                     </label>
                   </li>
@@ -274,12 +274,12 @@ const startups: Startup[] = [
                   </div>
                   <div>
                     <h2 className="text-lg font-semibold text-gray-900">{startup.name}</h2>
-                    <p className="text-sm text-gray-600">by {startup.industry} Innovators</p>
+                    <p className="text-sm text-gray-600">by {startup.tag} Innovators</p>
                   </div>
                 </div>
                 
                 <p className="text-sm text-gray-600 mb-4 line-clamp-2">
-                  A {startup.industry.toLowerCase()} startup focusing on {startup.status.toLowerCase()} phase with innovative solutions.
+                  A {startup.tag.toLowerCase()} startup focusing on {startup.status.toLowerCase()} phase with innovative solutions.
                 </p>
   
                 <div className="flex flex-wrap gap-2 mb-4">
@@ -292,7 +292,7 @@ const startups: Startup[] = [
                     <span className="ml-1 text-sm font-semibold text-gray-900">₹{startup.price.toLocaleString()}</span>
                   </div>
                   <span className="px-2 py-1 text-xs font-medium text-gray-700 bg-gray-100 rounded-full">
-                    {startup.industry}
+                    {startup.tag}
                   </span>
                 </div>
   
