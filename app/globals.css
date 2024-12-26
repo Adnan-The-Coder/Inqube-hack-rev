@@ -37,3 +37,6 @@
 .floating-reverse {
   animation: float-reverse 6s ease-in-out infinite;
 }
+.z_class{
+  z-index: 1000000000 !important;
+}
