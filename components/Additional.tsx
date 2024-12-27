@@ -4,14 +4,11 @@ import React from 'react';
 const Additional = () => {
   return (
     <div className='flex flex-col items-center justify-center text-white gap-16 px-6 md:px-12 lg:px-20 py-10 bg-[#0a0a0a]'>
-      {/* First Section */}
       <div className='flex flex-col lg:flex-row items-center justify-between w-full max-w-7xl gap-8'>
-        {/* Left Content */}
         <div className='flex flex-col items-center lg:items-start gap-3'>
           <h1 className='text-5xl sm:text-6xl lg:text-7xl text-gray-300 font-light'>30%</h1>
           <p className='text-center lg:text-left text-lg md:text-xl'>Connect with the Right Investors</p>
         </div>
-        {/* Right Content */}
         <div className='flex flex-col lg:flex-row items-center gap-6'>
           <div className='text-center lg:text-left'>
             <h2 className='text-2xl md:text-3xl font-semibold'>Right Investors</h2>
@@ -28,18 +25,12 @@ const Additional = () => {
           />
         </div>
       </div>
-
-      {/* Divider */}
       <hr className='border border-gray-700 w-full max-w-7xl' />
-
-      {/* Second Section */}
       <div className='flex flex-col lg:flex-row items-center justify-between w-full max-w-7xl gap-8'>
-        {/* Left Content */}
         <div className='flex flex-col items-center lg:items-start gap-3'>
           <h1 className='text-5xl sm:text-6xl lg:text-7xl text-gray-300 font-light'>70%</h1>
-          <p className='text-center lg:text-left text-lg md:text-xl'>Fuel Your Startup's Potential</p>
+          <p className='text-center lg:text-left text-lg md:text-xl'>Fuel Your Startup`s Potential</p>
         </div>
-        {/* Right Content */}
         <div className='flex flex-col lg:flex-row items-center gap-6'>
           <div className='text-center lg:text-left'>
             <h2 className='text-2xl md:text-3xl font-semibold'>Investor Connections</h2>

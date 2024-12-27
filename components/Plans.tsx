@@ -29,7 +29,7 @@ const Additional = () => {
       <div className='flex flex-col md:flex-row items-center justify-between w-full max-w-6xl gap-6'>
         <div className='flex flex-col gap-2 text-center md:text-left'>
           <h1 className='text-4xl md:text-6xl lg:text-7xl text-gray-300 font-thin'>70%</h1>
-          <p className='text-base lg:text-lg'>Fuel Your Startup's Potential</p>
+          <p className='text-base lg:text-lg'>Fuel Your Startup`s Potential</p>
         </div>
         <div className='flex flex-col md:flex-row gap-5 items-center justify-center'>
           <div className='flex flex-col items-center md:items-start gap-3'>
