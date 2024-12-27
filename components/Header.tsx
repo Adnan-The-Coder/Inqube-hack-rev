@@ -34,7 +34,7 @@ const Header = () => {
             <Image src={logo} alt="logo" className="w-32 md:w-44" />
           </Link>
         </div>
-        <div className="md:hidden">
+        <div className="lg:hidden">
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="text-3xl focus:outline-none"
@@ -42,7 +42,7 @@ const Header = () => {
             {isMenuOpen ? "✖" : "☰"}
           </button>
         </div>
-        <div className="hidden md:flex">
+        <div className="hidden lg:flex">
           <ul className="flex space-x-6">
             {["Home", "About", "Dashboard", "Marketplace", "Contact us"].map(
               (item, index) => (
@@ -58,7 +58,7 @@ const Header = () => {
             )}
           </ul>
         </div>
-        <div className="hidden md:block">
+        <div className="hidden lg:block">
           <Link href="/">
             <button className="bg-[#76b900] px-5 py-2 rounded-full hover:bg-[#5e9400] transition-all">
               Sign in
