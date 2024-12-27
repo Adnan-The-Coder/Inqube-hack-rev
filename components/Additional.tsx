@@ -37,7 +37,7 @@ const Additional = () => {
         {/* Left Content */}
         <div className='flex flex-col items-center lg:items-start gap-3'>
           <h1 className='text-5xl sm:text-6xl lg:text-7xl text-gray-300 font-light'>70%</h1>
-          <p className='text-center lg:text-left text-lg md:text-xl'>Fuel Your Startup's Potential</p>
+          <p className='text-center lg:text-left text-lg md:text-xl'>Fuel Your Startup`s Potential</p>
         </div>
         {/* Right Content */}
         <div className='flex flex-col lg:flex-row items-center gap-6'>
