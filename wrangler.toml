@@ -2,4 +2,6 @@ name = "inqube-hack-rev"
 compatibility_date = "2024-07-29"
 compatibility_flags = ["nodejs_compat"]
 pages_build_output_dir = ".vercel/output/static"
-NODE_VERSION=20.0.0
+
+[vars]
+NODE_VERSION="20.0.0"
