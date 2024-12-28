@@ -6,6 +6,7 @@ import logo from "../Images/logo.png";
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -42,24 +43,39 @@ const Header = () => {
             {isMenuOpen ? "✖" : "☰"}
           </button>
         </div>
-        <div className="hidden lg:flex">
+        <div className="hidden lg:flex flex-1 justify-center">
           <ul className="flex space-x-6">
-            {["Home", "About", "Dashboard", "Marketplace", "Contact us"].map(
-              (item, index) => (
-                <li
-                  key={index}
-                  className="m-2 hover:text-[#76b900] transition-all ease-in-out"
-                >
-                  <Link href={item === "Marketplace" ? "/marketplace" : "/"}>
-                    {item}
-                  </Link>
-                </li>
-              )
-            )}
+            {["Home", "About", "Marketplace","Contact us"].map((item, index) => (
+              <li
+                key={index}
+                className="m-2 hover:text-[#76b900] transition-all ease-in-out"
+              >
+                <Link href={item === "Marketplace" ? "/marketplace" : "/"}>{item}</Link>
+              </li>
+            ))}
+            <li
+              className="relative m-2 group"
+              onMouseEnter={() => setIsDropdownOpen(true)}
+              onMouseLeave={() => setIsDropdownOpen(false)}
+            >
+              <span className="cursor-pointer">Dashboard ↓</span>
+              <div
+                className={`absolute left-0 w-48 bg-[#0a0a0a] text-white shadow-lg rounded-md transform scale-95 opacity-0 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300 ease-in-out`}
+              >
+                <ul className="mt-5">
+                  <li className="px-4 py-2 hover:bg-[#76b900] rounded-lg">
+                    <Link href="/developer">Developer</Link>
+                  </li>
+                  <li className="px-4 py-2 hover:bg-[#76b900] rounded-lg">
+                    <Link href="/investor">Investor</Link>
+                  </li>
+                </ul>
+              </div>
+            </li>
           </ul>
         </div>
         <div className="hidden lg:block">
-          <Link href="/">
+          <Link href="/contact-us">
             <button className="bg-[#76b900] px-5 py-2 rounded-full hover:bg-[#5e9400] transition-all">
               Sign in
             </button>
@@ -77,21 +93,44 @@ const Header = () => {
             ✖
           </button>
           <ul className="flex flex-col space-y-6 text-center">
-            {["Home", "About", "Dashboard", "Marketplace", "Contact us"].map(
-              (item, index) => (
-                <li
-                  key={index}
-                  className="text-xl font-medium hover:text-[#76b900] transition-all"
-                >
-                  <Link
-                    href={item === "Marketplace" ? "/marketplace" : "/"}
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    {item}
-                  </Link>
-                </li>
-              )
-            )}
+            {["Home", "About", "Marketplace","Contact us"].map((item, index) => (
+              <li
+                key={index}
+                className="text-xl font-medium hover:text-[#76b900] transition-all"
+              >
+                <Link href={item === "Marketplace" ? "/marketplace" : "/"} onClick={() => setIsMenuOpen(false)}>
+                  {item}
+                </Link>
+              </li>
+            ))}
+            <li
+              className="relative text-xl font-medium hover:text-[#76b900] transition-all"
+              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+            >
+              <span className="cursor-pointer">Dashboard ↓</span>
+              {isDropdownOpen && (
+                <ul className="absolute left-0 bg-[#0a0a0a] text-white shadow-lg rounded-md w-full">
+                  <li className="px-4 py-2 hover:bg-[#76b900]">
+                    <Link href="/developer" onClick={() => setIsMenuOpen(false)}>
+                      Developer
+                    </Link>
+                  </li>
+                  <li className="px-4 py-2 hover:bg-[#76b900]">
+                    <Link href="/investor" onClick={() => setIsMenuOpen(false)}>
+                      Investor
+                    </Link>
+                  </li>
+                </ul>
+              )}
+            </li>
+            <li
+              className="text-xl font-medium hover:text-[#76b900] transition-all"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              <Link href="/contact-us">
+                Contact Us
+              </Link>
+            </li>
           </ul>
           <div className="mt-8">
             <Link href="/" onClick={() => setIsMenuOpen(false)}>

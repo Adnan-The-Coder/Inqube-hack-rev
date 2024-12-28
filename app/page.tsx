@@ -46,7 +46,7 @@ export default function SparklesPreview() {
         {isVisible && (
         <button
           onClick={scrollToTop}
-          className="fixed bottom-10 right-10 bg-[#76b900] text-white p-3 rounded-full shadow-lg"
+          className="fixed bottom-10 right-10 bg-[#76b900] text-white p-3 rounded-full shadow-lg z_class"
           aria-label="Back to Top"
         >
           <Image src={arrow} className="w-8" alt="back to top"/>
