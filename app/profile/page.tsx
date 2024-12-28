@@ -6,6 +6,7 @@ import Header from "@/components/Header";
 import afzal from "@/app/team/afzal.jpg";
 import profileBanner from "@/app/team/profile-banner.webp"; 
 import Image from "next/image";
+import Link from "next/link";
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -69,39 +70,39 @@ function App() {
         <section className="mb-16">
           <h2 className="text-3xl font-bold mb-6 text-[#76b900]">Achievements</h2>
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
-            <AchievementCard
-              title="Winner of National Robotics Competition"
-              year="2023"
-              description="Led the team to victory in the National Robotics Competition with innovative design and exceptional teamwork."
-            />
-            <AchievementCard
-              title="Speaker at Tech Innovators Conference"
-              year="2022"
-              description="Delivered a well-received talk on the future of AI and its implications for the tech industry."
-            />
-            <AchievementCard
-              title="Founder of E-Cell MJCET"
-              year="2021"
-              description="Founded and led the E-Cell at MJCET, fostering entrepreneurship among students and organizing key events."
-            />
+          <AchievementCard
+            title="Speaker at International Design Summit"
+            year="2023"
+            description="Presented a talk on the evolution of design thinking and its role in shaping modern technology and user experiences."
+          />
+          <AchievementCard
+            title="Creator of Award-Winning User Interface"
+            year="2022"
+            description="Designed an award-winning user interface for a mobile app that improved user engagement by 40%."
+          />
+          <AchievementCard
+            title="Lead Design at ECELL MJCET"
+            year="2021"
+            description="Founded and led the Design Club at MJCET, organizing workshops, design challenges, and collaborations with industry professionals."
+          />
           </div>
         </section>
         <section className="mb-16">
           <h2 className="text-3xl font-bold mb-6 text-[#76b900]">Testimonials</h2>
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
             <TestimonialCard
-              name="John Doe"
+              name="Syed Shujauddin"
               role="CEO, Halcyon"
               message="Afzal is an exceptional leader who brings fresh ideas and executes them flawlessly. Its always a pleasure working with him."
             />
             <TestimonialCard
-              name="Jane Smith"
-              role="Lead Developer, E-Cell MJCET"
+              name="Abid Nafi"
+              role="CTO, E-Cell MJCET"
               message="Afzal's technical expertise and collaborative approach make him an asset to any team. Highly recommended!"
             />
             <TestimonialCard
-              name="Michael Ross"
-              role="Director, Tech Innovators"
+              name="Mohammed Irfan"
+              role="CIO, E-Cell MJCET"
               message="Ive worked with Afzal on several projects, and his dedication and attention to detail are unmatched. A true professional."
             />
           </div>
@@ -120,21 +121,21 @@ function App() {
         <section className="mb-16">
           <h2 className="text-3xl font-bold mb-6 text-[#76b900]">Certifications</h2>
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
-            <CertificationCard
-              title="AWS Certified Solutions Architect"
-              issuer="Amazon Web Services"
-              year="2024"
-            />
-            <CertificationCard
-              title="Google Data Analytics Professional"
-              issuer="Google"
-              year="2023"
-            />
-            <CertificationCard
-              title="Certified AI Specialist"
-              issuer="Udemy"
-              year="2022"
-            />
+          <CertificationCard
+            title="Adobe Certified Expert"
+            issuer="Adobe"
+            year="2024"
+          />
+          <CertificationCard
+            title="Certified UX Designer"
+            issuer="Interaction Design Foundation"
+            year="2023"
+          />
+          <CertificationCard
+            title="UI/UX Design Professional"
+            issuer="Coursera"
+            year="2022"
+          />
           </div>
         </section>
         <section className="mb-16">
@@ -142,18 +143,16 @@ function App() {
           <div className="grid md:grid-cols-2 gap-6">
             <div className="bg-[#111111] rounded-xl p-6">
               <h3 className="text-xl font-bold text-[#76b900]">Email</h3>
-              <p className="text-gray-300 mt-2">afzal.hashmi@example.com</p>
-              <button className="mt-4 bg-[#76b900] text-black px-6 py-2 rounded-full font-medium hover:bg-opacity-90 transition-all">Send Email</button>
+              <p className="text-gray-300 mt-2 mb-4">afzalsyed.hs@gmail.com</p>
+              <Link href="mailto:afzalsyed.hs@gmail.com" className="mt-4 bg-[#76b900] text-black px-6 py-2 rounded-full font-medium hover:bg-opacity-90 transition-all">Send Email</Link>
             </div>
             <div className="bg-[#111111] rounded-xl p-6">
               <h3 className="text-xl font-bold text-[#76b900]">Phone</h3>
-              <p className="text-gray-300 mt-2">+123 456 7890</p>
-              <button className="mt-4 bg-[#76b900] text-black px-6 py-2 rounded-full font-medium hover:bg-opacity-90 transition-all">Call</button>
+              <p className="text-gray-300 mt-2 mb-5">+917396211824</p>
+              <Link href="tel:+917396211824" className="mt-4 bg-[#76b900] text-black px-6 py-2 rounded-full font-medium hover:bg-opacity-90 transition-all">Call</Link>
             </div>
           </div>
         </section>
-
-        {/* Get in Touch Section */}
         <section className="text-center mb-12">
           <button className="bg-[#76b900] text-black px-10 py-4 rounded-full font-medium hover:bg-opacity-90 transition-colors flex items-center mx-auto">
             <Mail className="w-5 h-5 mr-2" />
