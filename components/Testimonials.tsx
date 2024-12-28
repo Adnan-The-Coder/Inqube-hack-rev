@@ -2,7 +2,7 @@ import { HoverEffect } from "../components/ui/card-hover-effect";
 
 export function Testimonials() {
   return (
-    <div className="max-w-5xl mx-auto px-8 pt-[10rem] md:pt-[200px] lg:pt-[80px] pb-20">
+    <div className="max-w-5xl mx-auto px-8 pt-[55rem] md:pt-[200px] lg:pt-[80px] pb-20">
       <div className="text-center flex flex-col gap-5 z-10">
         <h1 className="text-[#76b900] text-4xl md:text-5xl font-semibold">
           What Our Clients Say?
