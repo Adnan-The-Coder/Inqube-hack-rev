@@ -10,6 +10,9 @@ bun run dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+## About Project
+This is a blockchain based AI integrated Platform where the market gap between developers and Investors are resolved
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
@@ -19,4 +22,4 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploed on CloudFlare
+## Deployed on CloudFlare
