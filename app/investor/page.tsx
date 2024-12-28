@@ -61,7 +61,7 @@ const Dashboard = () => {
           {["Total Invested", "ROI", "Active Projects", "Notifications"].map((item, index) => (
             <div
               key={index}
-              className="bg-[#1b1b1b] p-5 rounded-lg border border-[#76b900] shadow-md hover:shadow-lg transition"
+              className="bg-[#1b1b1b] p-5 rounded-lg border border-gray-600 shadow-md hover:shadow-lg transition"
             >
               <h3 className="text-xl font-bold">{item}</h3>
               <p className="text-2xl mt-3">
@@ -80,7 +80,7 @@ const Dashboard = () => {
           ))}
         </div>
         <h3 className="text-2xl font-bold mb-4 text-center md:text-left">My Investments</h3>
-        <div className="bg-[#1b1b1b] p-6 rounded-lg border border-[#76b900] mb-10 shadow-md">
+        <div className="bg-[#1b1b1b] p-6 rounded-lg border border-gray-600 mb-10 shadow-md">
           <h4 className="text-xl font-bold mb-4">Active Investments</h4>
           <table className="w-full text-left text-sm md:text-base">
             <thead>
@@ -108,7 +108,7 @@ const Dashboard = () => {
           </table>
         </div>
         <h3 className="text-2xl font-bold mb-4 text-center md:text-left">Transaction History</h3>
-        <div className="bg-[#1b1b1b] p-6 rounded-lg border border-[#76b900] shadow-md">
+        <div className="bg-[#1b1b1b] p-6 rounded-lg border border-gray-600 shadow-md">
           <h4 className="text-xl font-bold mb-4">Recent Transactions</h4>
           <table className="w-full text-left text-sm md:text-base">
             <thead>
