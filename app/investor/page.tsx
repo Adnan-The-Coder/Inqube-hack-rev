@@ -21,34 +21,34 @@ const Dashboard = () => {
       <div
         className={`fixed top-0 left-0 h-screen bg-[#76b900] text-white p-6 flex flex-col justify-between transition-transform duration-300 transform ${
           isMenuOpen ? "translate-x-0" : "-translate-x-full"
-        } md:static md:translate-x-0 w-4/5 md:w-1/5 z-50`}
+        } xl:static xl:translate-x-0 w-3/5 xl:w-1/5 z-50`}
       >
         <Link
           href="/"
-          className="text-4xl font-extrabold mb-8 text-center md:text-left tracking-wide"
+          className="text-4xl font-extrabold mb-8 text-center xl:text-left tracking-wide"
         >
           INQUBE
         </Link>
-        <ul className="space-y-8 text-center md:text-left">
+        <ul className="space-y-8 text-center xl:text-left">
           {links.map((item, index) => (
             <li
               key={index}
-              className="flex items-center justify-center md:justify-start gap-2 hover:text-black cursor-pointer text-md font-medium tracking-wide transition duration-200"
+              className="flex items-center justify-center xl:justify-start gap-2 hover:text-black cursor-pointer text-md font-medium tracking-wide transition duration-200"
             >
               {item.icon}
               {item.name}
             </li>
           ))}
         </ul>
-        <div className="mt-16 md:mt-auto text-center md:text-left border-t border-white/50 pt-6">
-          <p className="text-gray-200 text-md mb-4 font-semibold">Afzal Hashmi</p>
+        <div className="mt-16 xl:mt-auto text-center xl:text-left border-t border-white/50 pt-6">
+          <p className="text-gray-200 text-xl mb-4 font-semibold">Afzal Hashmi</p>
           <button className="bg-white text-black py-2 px-6 rounded-full shadow-lg tracking-wide transition hover:bg-black hover:text-white">
             Logout
           </button>
         </div>
       </div>
-      <div className="w-full md:w-4/5 bg-[#0a0a0a] text-white p-6 md:p-10 overflow-y-auto">
-        <div className="md:hidden mb-6">
+      <div className="w-full xl:w-4/5 bg-[#0a0a0a] text-white p-6 xl:p-10 overflow-y-auto">
+        <div className="xl:hidden mb-6">
             <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 className="text-white text-2xl focus:outline-none z-50 relative"
@@ -56,12 +56,12 @@ const Dashboard = () => {
                 {isMenuOpen ? <FiX /> : <FiMenu />}
             </button>
         </div>
-        <h2 className="text-3xl font-bold mb-8 text-center md:text-left">Investor Dashboard</h2>
+        <h2 className="text-3xl font-bold mb-8 text-center xl:text-left">Investor Dashboard</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
           {["Total Invested", "ROI", "Active Projects", "Notifications"].map((item, index) => (
             <div
               key={index}
-              className="bg-[#1b1b1b] p-5 rounded-lg border border-gray-600 shadow-md hover:shadow-lg transition"
+              className="bg-[#1b1b1b] p-5 rounded-lg border border-gray-600 shadow-xl hover:shadow-lg transition"
             >
               <h3 className="text-xl font-bold">{item}</h3>
               <p className="text-2xl mt-3">
@@ -79,10 +79,10 @@ const Dashboard = () => {
             </div>
           ))}
         </div>
-        <h3 className="text-2xl font-bold mb-4 text-center md:text-left">My Investments</h3>
-        <div className="bg-[#1b1b1b] p-6 rounded-lg border border-gray-600 mb-10 shadow-md">
+        <h3 className="text-2xl font-bold mb-4 text-center xl:text-left">My Investments</h3>
+        <div className="bg-[#1b1b1b] p-6 rounded-lg border border-gray-600 mb-10 shadow-xl">
           <h4 className="text-xl font-bold mb-4">Active Investments</h4>
-          <table className="w-full text-left text-sm md:text-base">
+          <table className="w-full text-left text-sm xl:text-base">
             <thead>
               <tr className="border-b border-gray-600">
                 <th className="py-2">Project</th>
@@ -107,10 +107,10 @@ const Dashboard = () => {
             </tbody>
           </table>
         </div>
-        <h3 className="text-2xl font-bold mb-4 text-center md:text-left">Transaction History</h3>
-        <div className="bg-[#1b1b1b] p-6 rounded-lg border border-gray-600 shadow-md">
+        <h3 className="text-2xl font-bold mb-4 text-center xl:text-left">Transaction History</h3>
+        <div className="bg-[#1b1b1b] p-6 rounded-lg border border-gray-600 shadow-xl">
           <h4 className="text-xl font-bold mb-4">Recent Transactions</h4>
-          <table className="w-full text-left text-sm md:text-base">
+          <table className="w-full text-left text-sm xl:text-base">
             <thead>
               <tr className="border-b border-gray-600">
                 <th className="py-2">Date</th>

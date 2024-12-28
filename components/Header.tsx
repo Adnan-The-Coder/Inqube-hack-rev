@@ -93,7 +93,7 @@ const Header = () => {
             ✖
           </button>
           <ul className="flex flex-col space-y-6 text-center">
-            {["Home", "About", "Marketplace","Contact us"].map((item, index) => (
+            {["Home", "About", "Marketplace"  ].map((item, index) => (
               <li
                 key={index}
                 className="text-xl font-medium hover:text-[#76b900] transition-all"
