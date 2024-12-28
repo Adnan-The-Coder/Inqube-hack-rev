@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { Github, Linkedin, Instagram, Mail } from "lucide-react";
 import Header from "@/components/Header";
 import afzal from "@/app/team/afzal.jpg";
+import { ExternalLink } from "lucide-react";
 import profileBanner from "@/app/team/profile-banner.webp"; 
 import Image from "next/image";
 import Link from "next/link";
@@ -22,6 +23,7 @@ function App() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  
   return (
     <div className="min-h-screen bg-[#0A0A0A] text-white">
       <Header />
@@ -65,6 +67,21 @@ function App() {
             <p className="text-gray-300 leading-relaxed">
               A creative problem-solver with a passion for leadership, collaboration, and innovation. Skilled in organizing events, effective communication, and building meaningful connections. Combines technical expertise with interpersonal skills to embrace challenges and create lasting impact.
             </p>
+          </div>
+        </section>
+        <section className="mb-16">
+          <h2 className="text-2xl font-bold mb-6">Projects</h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            <ProjectCard
+              title="Note Sync"
+              description="Developing a note-making website using ReactJS. Contributing to the development of a Stealth Project involving mobile app development."
+              year="2023"
+            />
+            <ProjectCard
+              title="Know Money"
+              description="Developed a UPI app with innovative features to help users save money, track spending, and effectively reduce expenses through smart financial insights."
+              year="2023"
+            />
           </div>
         </section>
         <section className="mb-16">
@@ -202,6 +219,33 @@ const CertificationCard = ({ title, issuer, year }: { title: string, issuer: str
     <h3 className="text-xl font-bold text-[#76b900]">{title}</h3>
     <p className="text-sm text-gray-400">{issuer}</p>
     <p className="text-gray-300 mt-2">{year}</p>
+  </div>
+);
+const ProjectCard = ({
+  title,
+  description,
+  year,
+}: {
+  title: string;
+  description: string;
+  year: string;
+}) => (
+  <div className="bg-[#111111] rounded-xl p-6 hover:bg-[#1A1A1A]">
+    <div className="flex justify-between items-start mb-4">
+      <h3 className="text-xl font-bold">{title}</h3>
+      <span className="text-sm text-gray-400">{year}</span>
+    </div>
+    <p className="text-gray-300 mb-4">{description}</p>
+    <div className="flex space-x-4">
+      <button className="text-sm text-[#76b900] hover:underline flex items-center">
+        <ExternalLink className="w-4 h-4 mr-1" />
+        Live Demo
+      </button>
+      <button className="text-sm text-[#76b900] hover:underline flex items-center">
+        <Github className="w-4 h-4 mr-1" />
+        View Code
+      </button>
+    </div>
   </div>
 );
 
