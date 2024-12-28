@@ -11,8 +11,8 @@ const Dashboard = () => {
 
   const links = [
     { name: "Dashboard", icon: <AiOutlineDashboard /> },
-    { name: "Mentorship Program", icon: <FaChalkboardTeacher /> },
-    { name: "Community Forums", icon: <FaComments /> },
+    { name: "Mentorship", icon: <FaChalkboardTeacher /> },
+    { name: "Community", icon: <FaComments /> },
     { name: "Find Teammates", icon: <AiOutlineTeam /> },
   ];
 
@@ -85,17 +85,17 @@ const Dashboard = () => {
           <table className="w-full text-left text-sm xl:text-base">
             <thead>
               <tr className="border-b border-gray-600">
-                <th className="py-2">Project</th>
-                <th className="py-2">Amount Invested</th>
-                <th className="py-2">Equity Owned</th>
-                <th className="py-2">ROI Progress</th>
+                <th className="py-2 px-2">Project</th>
+                <th className="py-2 px-2">Invested</th>
+                <th className="py-2 px-2">Equity</th>
+                <th className="py-2 px-2">ROI Progress</th>
               </tr>
             </thead>
             <tbody>
               {[
-                { project: "Project A", amount: "$50,000", equity: "5%", roi: "12%" },
-                { project: "Project B", amount: "$75,000", equity: "7.5%", roi: "15%" },
-                { project: "Project C", amount: "$100,000", equity: "10%", roi: "18%" },
+                { project: "Clt. A", amount: "$50,000", equity: "5%", roi: "12%" },
+                { project: "Clt. B", amount: "$75,000", equity: "7.5%", roi: "15%" },
+                { project: "Clt. C", amount: "$100,000", equity: "10%", roi: "18%" },
               ].map((row, index) => (
                 <tr key={index} className="border-b border-gray-700">
                   <td className="py-3">{row.project}</td>
@@ -108,7 +108,7 @@ const Dashboard = () => {
           </table>
         </div>
         <h3 className="text-2xl font-bold mb-4 text-center xl:text-left">Transaction History</h3>
-        <div className="bg-[#1b1b1b] p-6 rounded-lg border border-gray-600 shadow-xl">
+        <div className="bg-[#1b1b1b] p-5 rounded-lg border border-gray-600 shadow-xl">
           <h4 className="text-xl font-bold mb-4">Recent Transactions</h4>
           <table className="w-full text-left text-sm xl:text-base">
             <thead>
@@ -121,9 +121,9 @@ const Dashboard = () => {
             </thead>
             <tbody>
               {[
-                { date: "2023-05-01", type: "Investment", project: "Project A", amount: "$50,000" },
-                { date: "2023-06-15", type: "Return", project: "Project B", amount: "$5,000" },
-                { date: "2023-07-30", type: "Fee", project: "Platform Fee", amount: "-$500" },
+                { date: "2024-05", type: "Investment", project: "Project A", amount: "$50,000" },
+                { date: "2024-06", type: "Return", project: "Project B", amount: "$5,000" },
+                { date: "2024-07", type: "Fee", project: "Platform Fee", amount: "-$500" },
               ].map((row, index) => (
                 <tr key={index} className="border-b border-gray-700">
                   <td className="py-3">{row.date}</td>

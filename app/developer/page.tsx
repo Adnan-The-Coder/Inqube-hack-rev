@@ -11,8 +11,8 @@ const Developers: React.FC = () => {
 
   const links = [
     { name: "Dashboard", icon: <AiOutlineDashboard /> },
-    { name: "Mentorship Program", icon: <FaChalkboardTeacher /> },
-    { name: "Community Forums", icon: <FaComments /> },
+    { name: "Mentorship", icon: <FaChalkboardTeacher /> },
+    { name: "Community", icon: <FaComments /> },
     { name: "Find Teammates", icon: <AiOutlineTeam /> },
   ];
 
@@ -189,8 +189,8 @@ const Developers: React.FC = () => {
           <div className="space-y-8 mb-8">
             <div>
               <div className="flex justify-between mb-2">
-                <span className="text-xl">Project Verification</span>
-                <span className="text-xl">100%</span>
+                <span className="text-md">Project Verification</span>
+                <span className="text-md">100%</span>
               </div>
               <div className="h-2 w-full bg-gray-700 rounded-full">
                 <div className="h-full bg-white rounded-full w-full"></div>
@@ -199,8 +199,8 @@ const Developers: React.FC = () => {
 
             <div>
               <div className="flex justify-between mb-2">
-                <span className="text-xl">50% Funding Reached</span>
-                <span className="text-xl">75%</span>
+                <span className="text-md">50% Funding Reached</span>
+                <span className="text-md">75%</span>
               </div>
               <div className="h-2 w-full bg-gray-700 rounded-full">
                 <div className="h-full bg-white rounded-full w-3/4"></div>
@@ -209,8 +209,8 @@ const Developers: React.FC = () => {
 
             <div>
               <div className="flex justify-between mb-2">
-                <span className="text-xl">Community Engagement</span>
-                <span className="text-xl">60%</span>
+                <span className="text-md">Community Engagement</span>
+                <span className="text-md">60%</span>
               </div>
               <div className="h-2 w-full bg-gray-700 rounded-full">
                 <div className="h-full bg-white rounded-full w-3/5"></div>
@@ -218,19 +218,19 @@ const Developers: React.FC = () => {
             </div>
           </div>
           <div className="flex gap-4 mb-12">
-            <span className=" text-sm text-center py-2 px-0 xl:px-2 bg-[#76b900] hover:translate-y-[-2px] cursor-pointer rounded-full text-black font-semibold">
+            <span className=" text-[10px] md:text-sm text-center py-2 px-0 xl:px-2 bg-[#76b900] hover:translate-y-[-2px] cursor-pointer rounded-full text-black font-semibold">
                 💻 Verified Developer
             </span>
-            <span className=" text-sm text-center py-2 px-0 xl:px-2 bg-[#76b900] hover:translate-y-[-2px] cursor-pointer rounded-full text-black font-semibold">
+            <span className=" text-[10px] md:text-sm text-center py-2 px-0 xl:px-2 bg-[#76b900] hover:translate-y-[-2px] cursor-pointer rounded-full text-black font-semibold">
                 🏆 Top Performer
             </span>
-            <span className=" text-sm text-center py-2 px-0 xl:px-2 bg-[#76b900] hover:translate-y-[-2px] cursor-pointer rounded-full text-black font-semibold">
+            <span className=" text-[10px] md:text-sm text-center py-2 px-0 xl:px-2 bg-[#76b900] hover:translate-y-[-2px] cursor-pointer rounded-full text-black font-semibold">
                 🏅 Innovation Award
             </span>
           </div>
 
           <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
-            <div className="bg-[#181818] rounded-xl p-6">
+            <div className="bg-[#181818] rounded-xl p-4">
               <h2 className="text-2xl font-bold mb-2">Chat with Investors</h2>
               <p className="text-gray-400 mb-6">
                 Secure messaging system for direct communication
@@ -255,16 +255,16 @@ const Developers: React.FC = () => {
               <input 
                 type="text" 
                 placeholder="Type your message..." 
-                className="flex-1 bg-gray-200 rounded-xl px-4 py-2"
+                className="flex-1 bg-gray-200 rounded-xl px-4 py-2 w-10"
               />
-              <button className="bg-white text-black px-4 py-2 rounded-xl font-semibold">
+              <button className="bg-white hidden md:flex text-black px-4 py-2 rounded-xl font-semibold">
                 Send
               </button>
             </div>
           </div>
         </div>
-        <div className="bg-[#181818] rounded-xl p-6">
-          <h2 className="text-2xl font-bold mb-2">Investment Insights</h2>
+        <div className="bg-[#181818] rounded-xl p-3">
+          <h2 className="text-xl font-bold mb-2">Investment Insights</h2>
           <p className="text-gray-400 mb-6">Analyze funding trends and investor engagement</p>
           
           <div className="space-y-6 mb-6">
