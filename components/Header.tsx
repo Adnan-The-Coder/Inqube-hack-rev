@@ -31,7 +31,7 @@ const Header = () => {
         isScrolled ? "bg-[#0a0a0a] shadow-lg" : "bg-transparent"
       } transition-all duration-300`}
     >
-      <div className="flex items-center justify-between text-white p-4 md:px-8">
+      <div className="flex items-center justify-between text-white p-2 md:px-8">
         <Link href="/">
           <Image src={logo} alt="Logo" className="w-32 md:w-44" />
         </Link>
