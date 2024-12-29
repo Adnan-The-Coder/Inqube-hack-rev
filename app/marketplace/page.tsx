@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion } from "framer-motion";
 import { Menu, X } from 'lucide-react';
+import Header from '@/components/Header';
 
 interface Startup {
   id: number;
@@ -161,6 +162,7 @@ const startups: Startup[] = [
   
     return (
       <div className="h-screen flex flex-col md:flex-row relative">
+        <Header />
         <button
           onClick={() => setIsSidebarOpen(!isSidebarOpen)}
           className="md:hidden fixed top-4 left-4 z-50 p-2 bg-[#76b900] rounded-full text-white"

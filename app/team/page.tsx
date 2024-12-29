@@ -11,6 +11,7 @@ import aayan from "@/app/team/aayan.jpg";
 import afzal from "@/app/team/afzal.jpg"
 import usaid from "@/app/team/usaid.jpg";
 import adnan from "@/app/team/adnan.jpg";
+import Footer from "@/components/Footer";
 
 interface TeamMember {
   name: string;
@@ -253,6 +254,9 @@ const TeamPage: React.FC = () => {
           </motion.div>
         )}
       </AnimatePresence>
+      <div className="mt-12">  {/* Added this wrapper with margin-top */}
+        <Footer /> 
+      </div>
     </div>
   );
 };
