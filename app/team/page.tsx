@@ -116,6 +116,7 @@ const TeamPage: React.FC = () => {
   const closeModal = () => setSelectedMember(null);
 
   return (
+    <div>
     <div className="bg-[#0a0a0a] min-h-screen py-20 px-6 relative">
       <Header />
       <h1 className="text-4xl font-bold text-center text-white mb-12">
@@ -255,9 +256,10 @@ const TeamPage: React.FC = () => {
         )}
       </AnimatePresence>
       <div className="mt-12">  {/* Added this wrapper with margin-top */}
-        <Footer /> 
       </div>
     </div>
+        <Footer /> 
+        </div>
   );
 };
 
