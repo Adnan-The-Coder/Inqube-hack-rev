@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { motion } from "framer-motion";
 import { Menu, X } from 'lucide-react';
 
@@ -259,10 +260,10 @@ const startups: Startup[] = [
             </div>
           </div>
         </motion.div>
-        <div className="flex-1 bg-black p-4 md:p-6 text-white">
-          <h1 className="text-2xl font-bold mb-6 mt-12 md:mt-0">Marketplace</h1>
+        <div className="flex-1 bg-black p-4 md:p-6 text-white mt-10 md:mt-0">
+          <Link href="/" className="text-2xl font-bold mb-6 mt-12 md:mt-0">Marketplace</Link>
   
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mt-5">
             {currentStartups.map((startup) => (
               <motion.div
                 key={startup.id}

@@ -60,10 +60,10 @@ const Footer = () => {
             <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">usage</h2>
             <ul className="text-black font-medium">
                 <li className="mb-4">
-                    <Link href="/" className="hover:underline">Marketplace</Link>
+                    <Link href="/marketplace" className="hover:underline">Marketplace</Link>
                 </li>
                 <li className="mb-4">
-                    <Link href="/" className="hover:underline">Dashboard</Link>
+                    <Link href="/investor" className="hover:underline">Dashboard</Link>
                 </li>
                 <li className="mb-4">
                     <Link href="/profile" className="hover:underline">Profile</Link>
