@@ -21,7 +21,7 @@ const Dashboard = () => {
 
   return (
     <div className="flex flex-col h-screen bg-[#121212] text-white">
-      <header className="bg-[#181818] p-4 flex justify-between items-center shadow-md sticky top-0 z-50">
+      <header className="bg-[#181818] p-4 flex justify-between items-center shadow-md fixed w-full z-50">
         <Link href="/">
           <Image src={logo} alt="Logo" className="w-28" />
         </Link>
@@ -74,7 +74,7 @@ const Dashboard = () => {
         </nav>
       </header>
       <div
-        className={`fixed top-[69px] left-0 h-[calc(100%-70px)] bg-[#1b1b1b] text-white p-6 flex flex-col justify-between transition-transform duration-300 transform ${
+        className={`fixed top-[68px] left-0 h-[calc(100%-70px)] bg-[#1b1b1b] text-white p-6 flex flex-col justify-between transition-transform duration-300 transform ${
           isSidebarOpen ? "translate-x-0" : "-translate-x-full"
         } lg:translate-x-0 w-3/5 lg:w-1/5 z-50`}
       >
@@ -98,7 +98,7 @@ const Dashboard = () => {
         <Image src="https://img.icons8.com/?size=100&id=6690&format=png&color=000000" alt="dashboard" width={25} height={25}/>
       </button>
 
-      <main className="p-6 lg:ml-[20%] mt-[20px]">
+      <main className="p-6 lg:ml-[20%] mt-[80px]">
         <h2 className="text-3xl font-bold mb-8 text-center lg:text-left">Investor Dashboard</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
           {["Total Invested", "ROI", "Active Projects", "Notifications"].map((item, index) => (
