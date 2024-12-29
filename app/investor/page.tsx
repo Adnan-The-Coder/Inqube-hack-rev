@@ -4,10 +4,13 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { FiMenu, FiX } from "react-icons/fi";
 import { AiOutlineDashboard, AiOutlineTeam } from "react-icons/ai";
+import Image from "next/image";
+import logo from '@/Images/logo.png';
 import { FaChalkboardTeacher, FaComments } from "react-icons/fa";
 
 const Dashboard = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const links = [
     { name: "Dashboard", icon: <AiOutlineDashboard /> },
@@ -17,46 +20,86 @@ const Dashboard = () => {
   ];
 
   return (
-    <div className="flex h-screen">
-      <div
-        className={`fixed top-0 left-0 h-screen bg-[#76b900] text-white p-6 flex flex-col justify-between transition-transform duration-300 transform ${
-          isMenuOpen ? "translate-x-0" : "-translate-x-full"
-        } xl:static xl:translate-x-0 w-3/5 xl:w-1/5 z-50`}
-      >
-        <Link
-          href="/"
-          className="text-4xl font-extrabold mb-8 text-center xl:text-left tracking-wide"
-        >
-          INQUBE
+    <div className="flex flex-col h-screen bg-[#121212] text-white">
+      <header className="bg-[#181818] p-4 flex justify-between items-center shadow-md sticky top-0 z-50">
+        <Link href="/">
+          <Image src={logo} alt="Logo" className="w-28" />
         </Link>
-        <ul className="space-y-8 text-center xl:text-left">
+        <button
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          className="lg:hidden text-white focus:outline-none"
+          aria-label="Toggle Menu"
+        >
+          {isMenuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
+        </button>
+        <nav
+          className={`${
+            isMenuOpen ? "block" : "hidden"
+          } lg:flex lg:items-center absolute lg:static top-[70px] left-0 w-full lg:w-auto bg-[#181818] lg:bg-transparent lg:translate-y-0 transition-all`}
+        >
+          <ul className="flex flex-col lg:flex-row gap-4 p-4 lg:p-0 text-center lg:text-left">
+            <li>
+              <Link
+                href="/"
+                className="text-white hover:text-[#76b900] font-medium"
+              >
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/about"
+                className="text-white hover:text-[#76b900] font-medium"
+              >
+                About
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/marketplace"
+                className="text-white hover:text-[#76b900] font-medium"
+              >
+                Marketplace
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/contact"
+                className="text-white hover:text-[#76b900] font-medium"
+              >
+                Contact
+              </Link>
+            </li>
+          </ul>
+        </nav>
+      </header>
+      <div
+        className={`fixed top-[69px] left-0 h-[calc(100%-70px)] bg-[#1b1b1b] text-white p-6 flex flex-col justify-between transition-transform duration-300 transform ${
+          isSidebarOpen ? "translate-x-0" : "-translate-x-full"
+        } lg:translate-x-0 w-3/5 lg:w-1/5 z-50`}
+      >
+        <ul className="space-y-8 text-center lg:text-left">
           {links.map((item, index) => (
             <li
               key={index}
-              className="flex items-center justify-center xl:justify-start gap-2 hover:text-black cursor-pointer text-md font-medium tracking-wide transition duration-200"
+              className="flex items-center justify-center lg:justify-start gap-2 hover:text-black cursor-pointer text-md font-medium tracking-wide transition duration-200"
             >
               {item.icon}
               {item.name}
             </li>
           ))}
         </ul>
-        <div className="mt-16 xl:mt-auto text-center xl:text-left border-t border-white/50 pt-6">
-          <p className="text-gray-200 text-xl mb-4 font-semibold">Afzal Hashmi</p>
-          <button className="bg-white text-black py-2 px-6 rounded-full shadow-lg tracking-wide transition hover:bg-black hover:text-white">
-            Logout
-          </button>
-        </div>
       </div>
-      <div className="w-full xl:w-4/5 bg-[#0a0a0a] text-white p-6 xl:p-10 overflow-y-auto">
-        <div className="xl:hidden mb-6">
-            <button
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="text-white text-2xl focus:outline-none z-50 relative"
-            >
-                {isMenuOpen ? <FiX /> : <FiMenu />}
-            </button>
-        </div>
-        <h2 className="text-3xl font-bold mb-8 text-center xl:text-left">Investor Dashboard</h2>
+      <button
+        onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+        className="lg:hidden fixed bottom-4 right-4 bg-[#76b900] text-white p-3 rounded-full shadow-lg z-50 focus:outline-none"
+        aria-label="Toggle Sidebar"
+      >
+        <Image src="https://img.icons8.com/?size=100&id=6690&format=png&color=000000" alt="dashboard" width={25} height={25}/>
+      </button>
+
+      <main className="p-6 lg:ml-[20%] mt-[20px]">
+        <h2 className="text-3xl font-bold mb-8 text-center lg:text-left">Investor Dashboard</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
           {["Total Invested", "ROI", "Active Projects", "Notifications"].map((item, index) => (
             <div
@@ -79,10 +122,10 @@ const Dashboard = () => {
             </div>
           ))}
         </div>
-        <h3 className="text-2xl font-bold mb-4 text-center xl:text-left">My Investments</h3>
+        <h3 className="text-2xl font-bold mb-4 text-center lg:text-left">My Investments</h3>
         <div className="bg-[#1b1b1b] p-6 rounded-lg border border-gray-600 mb-10 shadow-xl">
           <h4 className="text-xl font-bold mb-4">Active Investments</h4>
-          <table className="w-full text-left text-sm xl:text-base">
+          <table className="w-full text-left text-sm lg:text-base">
             <thead>
               <tr className="border-b border-gray-600">
                 <th className="py-2 px-2">Project</th>
@@ -107,10 +150,10 @@ const Dashboard = () => {
             </tbody>
           </table>
         </div>
-        <h3 className="text-2xl font-bold mb-4 text-center xl:text-left">Transaction History</h3>
+        <h3 className="text-2xl font-bold mb-4 text-center lg:text-left">Transaction History</h3>
         <div className="bg-[#1b1b1b] p-5 rounded-lg border border-gray-600 shadow-xl">
           <h4 className="text-xl font-bold mb-4">Recent Transactions</h4>
-          <table className="w-full text-left text-sm xl:text-base">
+          <table className="w-full text-left text-sm lg:text-base">
             <thead>
               <tr className="border-b border-gray-600">
                 <th className="py-2">Date</th>
@@ -141,7 +184,7 @@ const Dashboard = () => {
             </tbody>
           </table>
         </div>
-      </div>
+      </main>
     </div>
   );
 };
