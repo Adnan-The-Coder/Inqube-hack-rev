@@ -8,6 +8,7 @@ import { ExternalLink } from "lucide-react";
 import profileBanner from "@/app/team/profile-banner.webp"; 
 import Image from "next/image";
 import Link from "next/link";
+import Footer from "@/components/Footer";
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -177,6 +178,7 @@ function App() {
           </button>
         </section>
       </main>
+      <Footer/>
     </div>
   );
 }
