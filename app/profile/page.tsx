@@ -51,14 +51,14 @@ function App() {
             </span>
 
             <div className="mt-4 flex space-x-6 animate-slideIn">
-              <SocialLink Icon={Github} href="https://github.com/nazzmeen" />
+              <SocialLink Icon={Github} href="https://github.com" />
               <SocialLink
                 Icon={Linkedin}
-                href="https://www.linkedin.com/in/nazmeen-sultana-3ab662252/"
+                href="https://www.linkedin.com/"
               />
               <SocialLink
                 Icon={Instagram}
-                href="https://www.instagram.com/n4xmeen._/"
+                href="https://www.instagram.com/"
               />
             </div>
           </div>
@@ -159,12 +159,12 @@ function App() {
           <h2 className="text-3xl font-bold mb-6 text-[#76b900]">Contact Information</h2>
           <div className="grid md:grid-cols-2 gap-6">
             <div className="bg-[#111111] rounded-xl p-6">
-              <h3 className="text-xl font-bold text-[#76b900]">Email</h3>
+              <h3 className="text-xl font-bold text-white">Email</h3>
               <p className="text-gray-300 mt-2 mb-4">afzalsyed.hs@gmail.com</p>
               <Link href="mailto:afzalsyed.hs@gmail.com" className="mt-4 bg-[#76b900] text-black px-6 py-2 rounded-full font-medium hover:bg-opacity-90 transition-all">Send Email</Link>
             </div>
             <div className="bg-[#111111] rounded-xl p-6">
-              <h3 className="text-xl font-bold text-[#76b900]">Phone</h3>
+              <h3 className="text-xl font-bold text-white">Phone</h3>
               <p className="text-gray-300 mt-2 mb-5">+917396211824</p>
               <Link href="tel:+917396211824" className="mt-4 bg-[#76b900] text-black px-6 py-2 rounded-full font-medium hover:bg-opacity-90 transition-all">Call</Link>
             </div>
@@ -186,7 +186,7 @@ const SocialLink = ({ Icon, href }: { Icon: any; href: string }) => (
     href={href}
     target="_blank"
     rel="noopener noreferrer"
-    className="text-gray-300 hover:text-[#76b900] transition-colors"
+    className="text-gray-300 hover:text-[#76b900] transition-colors hover:scale-95"
   >
     <Icon className="w-6 h-6" />
   </a>
@@ -202,7 +202,7 @@ const TestimonialCard = ({ name, role, message }: { name: string, role: string, 
 
 const AchievementCard = ({ title, year, description }: { title: string, year: string, description: string }) => (
   <div className="bg-[#111111] rounded-xl p-6 shadow-lg hover:shadow-2xl transition-all">
-    <h3 className="text-xl font-bold text-[#76b900]">{title}</h3>
+    <h3 className="text-xl font-bold text-white">{title}</h3>
     <p className="text-gray-300 mt-2">{year}</p>
     <p className="text-gray-400 mt-2">{description}</p>
   </div>
@@ -216,7 +216,7 @@ const Skill = ({ text }: { text: string }) => (
 
 const CertificationCard = ({ title, issuer, year }: { title: string, issuer: string, year: string }) => (
   <div className="bg-[#111111] rounded-xl p-6 hover:bg-[#1A1A1A] transition-all">
-    <h3 className="text-xl font-bold text-[#76b900]">{title}</h3>
+    <h3 className="text-xl font-bold text-white">{title}</h3>
     <p className="text-sm text-gray-400">{issuer}</p>
     <p className="text-gray-300 mt-2">{year}</p>
   </div>

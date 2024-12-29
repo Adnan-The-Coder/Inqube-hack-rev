@@ -45,14 +45,18 @@ const Header = () => {
         </div>
         <div className="hidden lg:flex flex-1 justify-center">
           <ul className="flex space-x-6">
-            {["Home", "About", "Marketplace","Contact us"].map((item, index) => (
-              <li
-                key={index}
-                className="m-2 hover:text-[#76b900] transition-all ease-in-out"
-              >
-                <Link href={item === "Marketplace" ? "/marketplace" : "/"}>{item}</Link>
-              </li>
-            ))}
+            <li className="m-2 hover:text-[#76b900] transition-all ease-in-out">
+              <Link href="/">Home</Link>
+            </li>
+            <li className="m-2 hover:text-[#76b900] transition-all ease-in-out">
+              <Link href="/about">About</Link>
+            </li>
+            <li className="m-2 hover:text-[#76b900] transition-all ease-in-out">
+              <Link href="/marketplace">Marketplace</Link>
+            </li>
+            <li className="m-2 hover:text-[#76b900] transition-all ease-in-out">
+              <Link href="/contact">Contact</Link>
+            </li>
             <li
               className="relative m-2 group"
               onMouseEnter={() => setIsDropdownOpen(true)}
@@ -75,7 +79,7 @@ const Header = () => {
           </ul>
         </div>
         <div className="hidden lg:block">
-          <Link href="/contact-us">
+          <Link href="/sign-in">
             <button className="bg-[#76b900] px-5 py-2 rounded-full hover:bg-[#5e9400] transition-all">
               Sign in
             </button>
@@ -93,16 +97,26 @@ const Header = () => {
             ✖
           </button>
           <ul className="flex flex-col space-y-6 text-center">
-            {["Home", "About", "Marketplace"  ].map((item, index) => (
-              <li
-                key={index}
-                className="text-xl font-medium hover:text-[#76b900] transition-all"
-              >
-                <Link href={item === "Marketplace" ? "/marketplace" : "/"} onClick={() => setIsMenuOpen(false)}>
-                  {item}
-                </Link>
-              </li>
-            ))}
+            <li className="text-xl font-medium hover:text-[#76b900] transition-all">
+              <Link href="/" onClick={() => setIsMenuOpen(false)}>
+                Home
+              </Link>
+            </li>
+            <li className="text-xl font-medium hover:text-[#76b900] transition-all">
+              <Link href="/about" onClick={() => setIsMenuOpen(false)}>
+                About
+              </Link>
+            </li>
+            <li className="text-xl font-medium hover:text-[#76b900] transition-all">
+              <Link href="/marketplace" onClick={() => setIsMenuOpen(false)}>
+                Marketplace
+              </Link>
+            </li>
+            <li className="text-xl font-medium hover:text-[#76b900] transition-all">
+              <Link href="/contact" onClick={() => setIsMenuOpen(false)}>
+                Contact
+              </Link>
+            </li>
             <li
               className="relative text-xl font-medium hover:text-[#76b900] transition-all"
               onClick={() => setIsDropdownOpen(!isDropdownOpen)}
@@ -123,17 +137,9 @@ const Header = () => {
                 </ul>
               )}
             </li>
-            <li
-              className="text-xl font-medium hover:text-[#76b900] transition-all"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              <Link href="/contact-us">
-                Contact Us
-              </Link>
-            </li>
           </ul>
           <div className="mt-8">
-            <Link href="/" onClick={() => setIsMenuOpen(false)}>
+            <Link href="/sign-in" onClick={() => setIsMenuOpen(false)}>
               <button className="bg-[#76b900] px-6 py-3 rounded-full hover:bg-[#5e9400] transition-all">
                 Sign in
               </button>
