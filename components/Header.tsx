@@ -32,42 +32,36 @@ const Header = () => {
       } transition-all duration-300`}
     >
       <div className="flex items-center justify-between text-white p-4 md:px-8">
-        {/* Logo */}
         <Link href="/">
           <Image src={logo} alt="Logo" className="w-32 md:w-44" />
         </Link>
-
-        {/* Desktop Menu */}
         <ul className="hidden lg:flex space-x-6">
           {menuItems.map((item, index) => (
             <li
               key={index}
-              className="hover:text-[#76b900] transition-all ease-in-out"
+              className="hover:text-[#76b900] text-white transition-all ease-in-out"
             >
               <Link href={item.href}>{item.name}</Link>
             </li>
           ))}
-          {/* Dropdown */}
           <li
             className="relative group"
             onMouseEnter={() => setIsDropdownOpen(true)}
             onMouseLeave={() => setIsDropdownOpen(false)}
           >
-            <span className="cursor-pointer">Dashboard ↓</span>
+            <span className="cursor-pointer text-white ">Dashboard ↓</span>
             {isDropdownOpen && (
-              <ul className="absolute left-0 mt-2 w-48 bg-[#0a0a0a] rounded-md shadow-lg">
-                <li className="px-4 py-2 hover:bg-[#76b900]">
+              <ul className="absolute left-0 w-48 bg-[#0a0a0a] rounded-md shadow-lg">
+                <li className="px-4 py-2 hover:bg-[#76b900] rounded-lg">
                   <Link href="/developer">Developer</Link>
                 </li>
-                <li className="px-4 py-2 hover:bg-[#76b900]">
+                <li className="px-4 py-2 hover:bg-[#76b900] rounded-lg">
                   <Link href="/investor">Investor</Link>
                 </li>
               </ul>
             )}
           </li>
         </ul>
-
-        {/* Sign-in Button */}
         <div className="hidden lg:block">
           <Link href="/sign-in">
             <button className="bg-[#76b900] px-5 py-2 rounded-full hover:bg-[#5e9400]">
@@ -75,8 +69,6 @@ const Header = () => {
             </button>
           </Link>
         </div>
-
-        {/* Mobile Menu Button */}
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           className="lg:hidden text-3xl"
@@ -84,8 +76,6 @@ const Header = () => {
           {isMenuOpen ? "✖" : "☰"}
         </button>
       </div>
-
-      {/* Mobile Menu */}
       <div
         className={`fixed inset-0 bg-black bg-opacity-90 z-40 flex flex-col items-center justify-center transform ${
           isMenuOpen ? "translate-x-0" : "-translate-x-full"
@@ -100,19 +90,19 @@ const Header = () => {
         <ul className="space-y-6 text-center">
           {menuItems.map((item, index) => (
             <li key={index} onClick={() => setIsMenuOpen(false)}>
-              <Link href={item.href} className="text-xl hover:text-[#76b900]">
-                {item.name}
+              <Link href={item.href} className="text-xl text-white  hover:text-[#76b900]">
+                {item.name} 
               </Link>
             </li>
           ))}
           <li onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
-            <span className="cursor-pointer text-xl">Dashboard ↓</span>
+            <span className="cursor-pointer text-xl text-white ">Dashboard ↓</span>
             {isDropdownOpen && (
               <ul className="bg-[#0a0a0a] rounded-md mt-2">
-                <li className="px-4 py-2 hover:bg-[#76b900]">
+                <li className="px-4 py-2 hover:bg-[#76b900] rounded-lg text-white">
                   <Link href="/developer">Developer</Link>
                 </li>
-                <li className="px-4 py-2 hover:bg-[#76b900]">
+                <li className="px-4 py-2 hover:bg-[#76b900] rounded-lg text-white">
                   <Link href="/investor">Investor</Link>
                 </li>
               </ul>

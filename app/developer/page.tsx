@@ -1,14 +1,17 @@
 "use client";
 
 import React, { useState } from "react";
+import logo from '@/Images/logo.png'
 import { FiSearch, FiMenu, FiX } from "react-icons/fi";
 import { MessageCircle } from "lucide-react";
-import Header from "@/components/Header";
+import Image from "next/image";
+import Link from "next/link";
 
 const Developers: React.FC = () => {
   const [selectedChat, setSelectedChat] = useState<number | null>(null);
   const [messageInput, setMessageInput] = useState("");
   const [isChatOpen, setIsChatOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const chats = [
     {
@@ -48,8 +51,60 @@ const Developers: React.FC = () => {
 
   return (
     <div className="flex flex-col h-screen bg-[#121212] text-white">
-      <Header />
-      <div className="flex flex-1 overflow-hidden pt-4">
+      <header className="bg-[#181818] p-4 flex justify-between items-center shadow-md sticky top-0 z-50">
+        <Link href="/">
+          <Image src={logo} alt="Logo" className="w-28" />
+        </Link>
+      <button
+        onClick={() => setIsMenuOpen(!isMenuOpen)}
+        className="lg:hidden text-white focus:outline-none"
+        aria-label="Toggle Menu"
+      >
+        {isMenuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
+      </button>
+      <nav
+        className={`${
+          isMenuOpen ? "block" : "hidden"
+        } lg:flex lg:items-center absolute lg:static top-[70px] left-0 w-full lg:w-auto bg-[#181818] lg:bg-transparent lg:translate-y-0 transition-all`}
+      >
+        <ul className="flex flex-col lg:flex-row gap-4 p-4 lg:p-0 text-center lg:text-left">
+          <li>
+            <Link
+              href="/"
+              className="text-white hover:text-[#76b900] font-medium"
+            >
+              Home
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="/about"
+              className="text-white hover:text-[#76b900] font-medium"
+            >
+              About
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="/marketplace"
+              className="text-white hover:text-[#76b900] font-medium"
+            >
+              Marketplace
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="/contact"
+              className="text-white hover:text-[#76b900] font-medium"
+            >
+              Contact
+            </Link>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+      <div className="flex flex-1 overflow-hidden">
         {/* Mobile Chat Toggle Button */}
         <button
           onClick={() => setIsChatOpen(!isChatOpen)}
@@ -65,9 +120,6 @@ const Developers: React.FC = () => {
           } lg:translate-x-0 fixed lg:static left-0 top-0 h-full w-80 border-r border-gray-800 bg-[#181818] flex flex-col transition-transform duration-300 ease-in-out z-40 mt-16 lg:mt-0`}
         >
           <div className="p-4 border-b border-gray-800">
-            <div className="flex items-center justify-between mb-4">
-              <MessageCircle className="w-5 h-5" />
-            </div>
             <div className="relative">
               <FiSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
               <input
@@ -113,6 +165,7 @@ const Developers: React.FC = () => {
             ))}
           </div>
         </div>
+
         {/* Main Content */}
         <div className="flex-1 overflow-y-auto bg-[#181818] p-4 lg:p-6 xl:p-10">
           <div className="mb-8">
@@ -140,42 +193,41 @@ const Developers: React.FC = () => {
             ))}
           </div>
 
-        {/* Projects Section */}
-        <div className="mt-12">
-          <h2 className="text-2xl font-bold text-white mb-4">My Projects</h2>
-          <div className="flex items-center space-x-6 mb-4">
-            <button className="text-white font-bold border-b-2 border-[#76b900]">Active</button>
-            <button className="text-gray-400 hover:text-white">Completed</button>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {[
-              {
-                title: "Decentralized Identity Solution",
-                description: "Blockchain-based identity verification system.",
-                funding: "75%",
-              },
-              {
-                title: "Smart Contract Auditing Tool",
-                description: "AI-powered security analysis for smart contracts.",
-                funding: "40%",
-              },
-            ].map((project, index) => (
-              <div key={index} className="bg-[#242424] p-6 rounded-xl border border-gray-600">
-                <h3 className="text-xl font-bold text-gray-300">{project.title}</h3>
-                <p className="text-gray-400 mt-2 text-sm">{project.description}</p>
-                <div className="flex items-center justify-between mt-4">
-                  <p className="text-gray-300">Funding: {project.funding}</p>
-                  <div className="space-x-4">
-                    <button className="px-4 py-2 bg-[#76b900] text-black font-bold rounded-xl">Edit</button>
-                    <button className="px-4 py-2 bg-gray-600 text-gray-300 font-bold rounded-xl hover:bg-gray-700">Update</button>
+          {/* Projects Section */}
+          <div className="mt-12">
+            <h2 className="text-2xl font-bold text-white mb-4">My Projects</h2>
+            <div className="flex items-center space-x-6 mb-4">
+              <button className="text-white font-bold border-b-2 border-[#76b900]">Active</button>
+              <button className="text-gray-400 hover:text-white">Completed</button>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              {[
+                {
+                  title: "Decentralized Identity Solution",
+                  description: "Blockchain-based identity verification system.",
+                  funding: "75%",
+                },
+                {
+                  title: "Smart Contract Auditing Tool",
+                  description: "AI-powered security analysis for smart contracts.",
+                  funding: "40%",
+                },
+              ].map((project, index) => (
+                <div key={index} className="bg-[#242424] p-6 rounded-xl border border-gray-600">
+                  <h3 className="text-xl font-bold text-gray-300">{project.title}</h3>
+                  <p className="text-gray-400 mt-2 text-sm">{project.description}</p>
+                  <div className="flex items-center justify-between mt-4">
+                    <p className="text-gray-300">Funding: {project.funding}</p>
+                    <div className="space-x-4">
+                      <button className="px-4 py-2 bg-[#76b900] text-black font-bold rounded-xl">Edit</button>
+                      <button className="px-4 py-2 bg-gray-600 text-gray-300 font-bold rounded-xl hover:bg-gray-700">Update</button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
-
-        {/* Milestones Section */}
+          {/* Milestones Section */}
         <div className="mt-12 p-8 bg-[#121212] rounded-xl">
           <div className="mb-12">
             <h1 className="text-4xl font-bold mb-2">Milestones & Badges</h1>
@@ -237,9 +289,9 @@ const Developers: React.FC = () => {
             </button>
           </div>
         </div>
+        </div>
       </div>
     </div>
-  </div>
   );
 };
 
