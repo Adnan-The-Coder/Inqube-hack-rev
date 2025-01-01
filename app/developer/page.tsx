@@ -54,7 +54,7 @@ import AddNewProject from "./AddNewProject";
       <div className="flex flex-col h-screen bg-[#121212] text-white">
         <header className="bg-[#181818] p-4 flex justify-between items-center shadow-md sticky top-0 z-50">
           <Link href="/">
-            <Image src={logo} alt="Logo" className="w-28" />
+            <Image src={logo} alt="Logo" width={120} height={120}/>
           </Link>
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -143,7 +143,9 @@ import AddNewProject from "./AddNewProject";
                     <Image
                       src={chat.avatar}
                       alt={chat.name}
-                      className="w-12 h-12 rounded-full object-cover"
+                      className="rounded-full object-cover"
+                      width={50}
+                      height={50}
                     />
                     {chat.online && (
                       <div className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 border-[#121212]"></div>

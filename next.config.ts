@@ -3,7 +3,7 @@ import { Images } from "lucide-react";
 
 const nextConfig = {
     images: {
-        domains: ["img.icons8.com", "images.pexels.com"],
+        domains: ["img.icons8.com", "images.pexels.com", "images.unsplash.com"],
     }
 };
 async function setup() {
