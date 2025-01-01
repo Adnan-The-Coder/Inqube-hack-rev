@@ -1,333 +1,217 @@
-'use client';
+"use client";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import Header from "@/components/Header";
 
-import React, { useState, useEffect } from 'react';
-import Link from 'next/link';
-import { motion } from "framer-motion";
-import { Menu, X } from 'lucide-react';
-import Header from '@/components/Header';
+function Page() {
+  const [data, setData] = useState<any[]>([]);
+  const [filteredData, setFilteredData] = useState<any[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
+  const [tags, setTags] = useState<string[]>([]);
+  const [selectedTags, setSelectedTags] = useState<string[]>([]);
+  const [equityRange, setEquityRange] = useState<string>("");
+  const [maxInvestment, setMaxInvestment] = useState<number>(1000000); // Default max investment value
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 
-interface Startup {
-  id: number;
-  name: string;
-  tag: string;
-  status: string;
-  region: string;
-  price: number;
-}
-const startups: Startup[] = [
-  { id: 1, name: 'Tech Innovators', tag: 'Technology', status: 'Ready to launch in Market', region: 'North America', price: 50000000 },
-  { id: 2, name: 'HealthFirst', tag: 'Healthcare', status: 'Under Development', region: 'Asia', price: 20000000 },
-  { id: 3, name: 'EduSpark', tag: 'Education', status: 'Developed', region: 'Europe', price: 10000000 },
-  { id: 4, name: 'E-Mart', tag: 'E-commerce', status: 'Ready to launch in Market', region: 'North America', price: 80000000 },
-  { id: 5, name: 'FinServe', tag: 'Finance', status: 'Raw Idea', region: 'Africa', price: 30000000 },
-  { id: 6, name: 'GreenTech Solutions', tag: 'Technology', status: 'Developed', region: 'Europe', price: 60000000 },
-  { id: 7, name: 'FoodFusion', tag: 'Food & Beverage', status: 'Under Development', region: 'Asia', price: 40000000 },
-  { id: 8, name: 'Meditech Pro', tag: 'Healthcare', status: 'Ready to launch in Market', region: 'North America', price: 90000000 },
-  { id: 9, name: 'SmartEd', tag: 'Education', status: 'Raw Idea', region: 'Africa', price: 5000000 },
-  { id: 10, name: 'StyleSphere', tag: 'Fashion', status: 'Under Development', region: 'Europe', price: 15000000 },
-  { id: 11, name: 'AutoPilot', tag: 'Automotive', status: 'Ready to launch in Market', region: 'North America', price: 120000000 },
-  { id: 12, name: 'AgriTech Hub', tag: 'Agriculture', status: 'Developed', region: 'Asia', price: 25000000 },
-  { id: 13, name: 'FinGrowth', tag: 'Finance', status: 'Under Development', region: 'Europe', price: 40000000 },
-  { id: 14, name: 'BioGenics', tag: 'Healthcare', status: 'Raw Idea', region: 'North America', price: 10000000 },
-  { id: 15, name: 'EcoHome', tag: 'Real Estate', status: 'Developed', region: 'Asia', price: 70000000 },
-  { id: 16, name: 'ShopEase', tag: 'E-commerce', status: 'Ready to launch in Market', region: 'Europe', price: 45000000 },
-  { id: 17, name: 'Eventify', tag: 'Event Management', status: 'Under Development', region: 'Africa', price: 20000000 },
-  { id: 18, name: 'RideSmart', tag: 'Automotive', status: 'Raw Idea', region: 'Asia', price: 15000000 },
-  { id: 19, name: 'GameOn', tag: 'Gaming', status: 'Developed', region: 'North America', price: 60000000 },
-  { id: 20, name: 'PetCare', tag: 'Pets', status: 'Ready to launch in Market', region: 'Europe', price: 25000000 },
-  { id: 21, name: 'TravelBuddy', tag: 'Travel', status: 'Under Development', region: 'Asia', price: 30000000 },
-  { id: 22, name: 'Artify', tag: 'Art & Design', status: 'Raw Idea', region: 'Africa', price: 8000000 },
-  { id: 23, name: 'SolarGen', tag: 'Renewable Energy', status: 'Developed', region: 'North America', price: 90000000 },
-  { id: 24, name: 'DigitalDocs', tag: 'Healthcare', status: 'Ready to launch in Market', region: 'Asia', price: 50000000 },
-  { id: 25, name: 'LearnNest', tag: 'Education', status: 'Under Development', region: 'Europe', price: 20000000 },
-  { id: 26, name: 'GadgetPro', tag: 'Technology', status: 'Raw Idea', region: 'Africa', price: 10000000 },
-  { id: 27, name: 'BuildSmart', tag: 'Construction', status: 'Developed', region: 'Asia', price: 75000000 },
-  { id: 28, name: 'FitPulse', tag: 'Fitness', status: 'Under Development', region: 'North America', price: 40000000 },
-  { id: 29, name: 'CleanWave', tag: 'Environment', status: 'Ready to launch in Market', region: 'Europe', price: 55000000 },
-  { id: 30, name: 'PlantPure', tag: 'Agriculture', status: 'Raw Idea', region: 'Africa', price: 15000000 },
-  { id: 31, name: 'CloudStream', tag: 'Cloud Computing', status: 'Ready to launch in Market', region: 'North America', price: 70000000 },
-  { id: 32, name: 'CyberDefend', tag: 'Cybersecurity', status: 'Under Development', region: 'Europe', price: 30000000 },
-  { id: 33, name: 'FinTechWave', tag: 'Finance', status: 'Developed', region: 'Asia', price: 60000000 },
-  { id: 34, name: 'AgroGrow', tag: 'Agriculture', status: 'Ready to launch in Market', region: 'Africa', price: 45000000 },
-  { id: 35, name: 'UrbanSmart', tag: 'Smart Cities', status: 'Under Development', region: 'Europe', price: 50000000 },
-  { id: 36, name: 'AutoTech', tag: 'Automotive', status: 'Developed', region: 'North America', price: 120000000 },
-  { id: 37, name: 'FinAssist', tag: 'Finance', status: 'Ready to launch in Market', region: 'Africa', price: 25000000 },
-  { id: 38, name: 'AquaCare', tag: 'Environment', status: 'Raw Idea', region: 'Asia', price: 15000000 },
-  { id: 39, name: 'UrbanGreen', tag: 'Real Estate', status: 'Under Development', region: 'North America', price: 70000000 },
-  { id: 40, name: 'NextGenBio', tag: 'Biotechnology', status: 'Ready to launch in Market', region: 'Europe', price: 80000000 },
-  { id: 41, name: 'MediTechX', tag: 'Healthcare', status: 'Developed', region: 'Asia', price: 95000000 },
-  { id: 42, name: 'CleanTech Innovations', tag: 'Renewable Energy', status: 'Under Development', region: 'Africa', price: 60000000 },
-  { id: 43, name: 'PureGreen', tag: 'Environment', status: 'Ready to launch in Market', region: 'North America', price: 40000000 },
-  { id: 44, name: 'FashionForward', tag: 'Fashion', status: 'Developed', region: 'Europe', price: 30000000 },
-  { id: 45, name: 'FastFoodie', tag: 'Food & Beverage', status: 'Under Development', region: 'Africa', price: 20000000 },
-  { id: 46, name: 'EduLink', tag: 'Education', status: 'Ready to launch in Market', region: 'Asia', price: 60000000 },
-  { id: 47, name: 'TechHaven', tag: 'Technology', status: 'Developed', region: 'North America', price: 75000000 },
-  { id: 48, name: 'HealthSync', tag: 'Healthcare', status: 'Under Development', region: 'Europe', price: 35000000 },
-  { id: 49, name: 'TechHive', tag: 'Technology', status: 'Ready to launch in Market', region: 'Africa', price: 20000000 },
-  { id: 50, name: 'HomeSmart', tag: 'Smart Homes', status: 'Developed', region: 'North America', price: 100000000 },
-  { id: 51, name: 'QuantumX', tag: 'Quantum Computing', status: 'Raw Idea', region: 'Asia', price: 40000000 },
-  { id: 52, name: 'SolarEdge', tag: 'Renewable Energy', status: 'Ready to launch in Market', region: 'Europe', price: 70000000 },
-  { id: 53, name: 'BioWave', tag: 'Biotechnology', status: 'Developed', region: 'North America', price: 80000000 },
-  { id: 54, name: 'HealthyBytes', tag: 'Food & Beverage', status: 'Under Development', region: 'Asia', price: 35000000 },
-  { id: 55, name: 'SmartHomes Inc', tag: 'Real Estate', status: 'Ready to launch in Market', region: 'Africa', price: 65000000 },
-  { id: 56, name: 'UrbanBytes', tag: 'Technology', status: 'Developed', region: 'North America', price: 50000000 },
-  { id: 57, name: 'Travelogue', tag: 'Travel', status: 'Raw Idea', region: 'Europe', price: 20000000 },
-  { id: 58, name: 'E-Health Solutions', tag: 'Healthcare', status: 'Ready to launch in Market', region: 'Asia', price: 95000000 },
-  { id: 59, name: 'EventFlare', tag: 'Event Management', status: 'Under Development', region: 'North America', price: 25000000 },
-  { id: 60, name: 'GreenFit', tag: 'Fitness', status: 'Developed', region: 'Africa', price: 40000000 },
-  { id: 61, name: 'EcoLiving', tag: 'Environment', status: 'Raw Idea', region: 'Asia', price: 15000000 },
-  { id: 62, name: 'SmartBuild', tag: 'Construction', status: 'Ready to launch in Market', region: 'Europe', price: 85000000 },
-  { id: 63, name: 'FutureEats', tag: 'Food & Beverage', status: 'Developed', region: 'North America', price: 60000000 },
-  { id: 64, name: 'TechImpact', tag: 'Technology', status: 'Under Development', region: 'Africa', price: 50000000 },
-  { id: 65, name: 'CyberCore', tag: 'Cybersecurity', status: 'Raw Idea', region: 'Asia', price: 10000000 },
-  { id: 66, name: 'FashionHub', tag: 'Fashion', status: 'Ready to launch in Market', region: 'Europe', price: 40000000 },
-  { id: 67, name: 'AgriFuture', tag: 'Agriculture', status: 'Under Development', region: 'North America', price: 45000000 },
-  { id: 68, name: 'GameZone', tag: 'Gaming', status: 'Developed', region: 'Asia', price: 55000000 },
-  { id: 69, name: 'PetZone', tag: 'Pets', status: 'Ready to launch in Market', region: 'Europe', price: 70000000 },
-  { id: 70, name: 'UrbanTech', tag: 'Smart Cities', status: 'Developed', region: 'North America', price: 100000000 }
-];
+  async function fetchData(tableName: string): Promise<void> {
+    setLoading(true);
+    setError(null);
 
-  const Page: React.FC = () => {
-    const [price, setPrice] = useState<number>(100000000);
-    const [selectedIndustries, setSelectedIndustries] = useState<string[]>([]);
-    const [selectedStatuses, setSelectedStatuses] = useState<string[]>([]);
-    const [selectedRegions, setSelectedRegions] = useState<string[]>([]);
-    const [isClient, setIsClient] = useState<boolean>(false);
-    const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(true);
-    const [currentPage, setCurrentPage] = useState<number>(1);
-    const [isMobileView, setIsMobileView] = useState<boolean>(false);
-    
-    const startupsPerPage = isMobileView ? 4 : 6;
-  
-    useEffect(() => {
-      setIsClient(true);
-      const handleResize = () => {
-        const isMobile = window.innerWidth < 768;
-        setIsMobileView(isMobile);
-        setIsSidebarOpen(!isMobile); 
-      };
-      
-      handleResize();
-      window.addEventListener('resize', handleResize);
-      return () => window.removeEventListener('resize', handleResize);
-    }, []);
-  
-    const handlePriceChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-      setPrice(Number(event.target.value));
-    };
-  
-    const handleFilterChange = (filterType: 'tag' | 'status' | 'region', value: string) => {
-      switch (filterType) {
-        case 'tag':
-          setSelectedIndustries((prev) =>
-            prev.includes(value) ? prev.filter((item) => item !== value) : [...prev, value]
-          );
-          break;
-        case 'status':
-          setSelectedStatuses((prev) =>
-            prev.includes(value) ? prev.filter((item) => item !== value) : [...prev, value]
-          );
-          break;
-        case 'region':
-          setSelectedRegions((prev) =>
-            prev.includes(value) ? prev.filter((item) => item !== value) : [...prev, value]
-          );
-          break;
+    try {
+      const response = await axios.get(`/api/dataFetch`, {
+        params: { table: tableName },
+      });
+
+      const uniqueTags = Array.from(new Set(response.data.map((item: any) => item.Tag).filter(Boolean))) as string[];
+
+      setTags(uniqueTags);
+      setData(response.data);
+      setFilteredData(response.data);
+    } catch (error: any) {
+      setError("Error fetching data: " + error.message);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  const applyFilters = () => {
+    let filtered = data;
+
+    if (selectedTags.length > 0) {
+      filtered = filtered.filter((project) =>
+        selectedTags.includes(project.Tag)
+      );
+    }
+
+    if (equityRange) {
+      const [min, max] = equityRange.split("-").map(Number);
+      filtered = filtered.filter(
+        (project) => project.Equity >= min && project.Equity <= max
+      );
+    }
+
+    // Filter projects by max investment amount
+    filtered = filtered.filter(
+      (project) => project.Expected_Investment_amount <= maxInvestment
+    );
+
+    setFilteredData(filtered);
+  };
+
+  const handleTagChange = (tag: string) => {
+    setSelectedTags((prevSelectedTags) => {
+      if (prevSelectedTags.includes(tag)) {
+        return prevSelectedTags.filter((selectedTag) => selectedTag !== tag);
+      } else {
+        return [...prevSelectedTags, tag];
       }
-    };
-  
-    const filteredStartups = startups.filter((startup) => {
-      const matchestag = selectedIndustries.length === 0 || selectedIndustries.includes(startup.tag);
-      const matchesStatus = selectedStatuses.length === 0 || selectedStatuses.includes(startup.status);
-      const matchesRegion = selectedRegions.length === 0 || selectedRegions.includes(startup.region);
-      const matchesPrice = startup.price <= price;
-  
-      return matchestag && matchesStatus && matchesRegion && matchesPrice;
     });
-  
-    const indexOfLastStartup = currentPage * startupsPerPage;
-    const indexOfFirstStartup = indexOfLastStartup - startupsPerPage;
-    const currentStartups = filteredStartups.slice(indexOfFirstStartup, indexOfLastStartup);
-    const totalPages = Math.ceil(filteredStartups.length / startupsPerPage);
-  
-    const nextPage = () => {
-      if (currentPage < totalPages) setCurrentPage(currentPage + 1);
-    };
-  
-    const prevPage = () => {
-      if (currentPage > 1) setCurrentPage(currentPage - 1);
-    };
-  
-    if (!isClient) return null;
-  
-    return (
-      <div className="h-screen flex flex-col md:flex-row relative">
-        <Header />
-        <button
-          onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-          className="md:hidden fixed top-4 left-4 z-50 p-2 bg-[#76b900] rounded-full text-white"
-        >
-          {isSidebarOpen ? <X size={24} /> : <Menu size={24} />}
+  };
+
+  const handleEquityRangeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setEquityRange(e.target.value);
+  };
+
+  const handleMaxInvestmentChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setMaxInvestment(Number(e.target.value));
+  };
+
+  const renderProjectCards = () => {
+    if (filteredData.length === 0) {
+      return <p className="text-white">No projects found based on the filters.</p>;
+    }
+
+    return filteredData.map((project, index) => (
+      <div
+        key={index}
+        className="bg-white p-6 rounded-lg shadow-md mb-6 max-w-md mx-auto"
+      >
+        <div className="flex items-center mb-4">
+          <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white font-bold text-lg">
+            {project.name?.charAt(0).toUpperCase()}
+          </div>
+          <div className="ml-4">
+            <h3 className="text-lg font-bold text-gray-800">{project.name}</h3>
+            <p className="text-sm text-gray-600">{project.Project_Title}</p>
+            <p className="text-sm text-gray-600">by {project.Author}</p>
+          </div>
+        </div>
+        <p className="text-gray-700 mb-4">{project.Project_Desc}</p>
+        <div className="flex justify-between text-sm text-gray-600 mb-4">
+          <span>
+            <strong>Expected Investment Amount</strong> ₹
+            {project.Expected_Investment_amount || "-"}
+          </span>
+          <span>
+            <strong>Equity:</strong> {project.Equity || "-"}%
+          </span>
+        </div>
+        <span className="inline-block bg-gray-200 text-gray-800 text-xs font-semibold px-2 py-1 rounded">
+          {project.Tag || "Technology"}
+        </span>
+        <button className="mt-4 w-full py-2 bg-gray-900 text-white text-center rounded">
+          View Details
         </button>
-        <motion.div
-          initial={{ x: isMobileView ? -300 : 0 }}
-          animate={{ x: isSidebarOpen ? 0 : -300 }}
-          transition={{ duration: 0.3 }}
-          className={`bg-[#76b900] w-full md:w-64 fixed md:relative h-screen z-40 shadow-lg flex flex-col p-3 overflow-y-auto ${
-            isSidebarOpen ? 'block' : 'hidden md:block'
-          }`}
+      </div>
+    ));
+  };
+
+  useEffect(() => {
+    fetchData("Developer_Projects");
+  }, []);
+
+  useEffect(() => {
+    applyFilters();
+  }, [selectedTags, equityRange, maxInvestment, data]);
+
+  return (
+    <>
+      <Header />
+      <br />
+      <br />
+      <br />
+      <div className="flex flex-col md:flex-row">
+        {/* Filter Section */}
+        <div
+          className={`bg-[#76b900] md:w-1/6 rounded-md p-4 gap-6 ${
+            isMenuOpen ? "fixed top-12 inset-0 z-50 md:h-screen md:overflow-y-auto" : "md:h-screen md:overflow-y-auto h-full"
+          } md:sticky top-0 overflow-y-auto`}
+          style={{ zIndex: 10 }}
         >
-          <div className="mb-4 mt-12 md:mt-0">
-            <input
-              type="text"
-              placeholder="Search startups"
-              className="w-full p-2  border rounded-full border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#5c7409]"
-            />
-          </div>
-          <div className="space-y-4 overflow-y-auto flex-1">
-            <h3 className="text-lg font-semibold text-white">Filters</h3>
-            <div className="mb-4">
-              <h4 className="text-sm font-medium text-white mb-1">Startup tag</h4>
-              <ul className="space-y-2">
-                {['Technology', 'Healthcare', 'Finance', 'Education', 'E-commerce'].map((category, index) => (
-                  <li key={index} className="flex items-center">
-                    <input
-                      type="checkbox"
-                      id={`tag-${index}`}
-                      className="mr-2"
-                      onChange={() => handleFilterChange('tag', category)}
-                    />
-                    <label htmlFor={`tag-${index}`} className="text-white text-sm cursor-pointer">
-                      {category}
+          <button
+            className={`bg-gray-800 text-white px-4 py-2 rounded mb-4 md:hidden ${isMenuOpen ? "absolute top-4 right-4" : ""}`}
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            {isMenuOpen ? "Close Filters" : "Open Filters"}
+          </button>
+
+          {(isMenuOpen || !isMenuOpen) && (
+            <div className={`${isMenuOpen ? "block" : "hidden"} md:block`}>
+              <h2 className="text-white text-2xl mb-4">Filters</h2>
+              <div className="mb-4">
+                <h3 className="text-white mb-2">Tags</h3>
+                {tags.map((tag, index) => (
+                  <div key={index} className="mb-2">
+                    <label className="text-white inline-flex items-center">
+                      <input
+                        type="checkbox"
+                        className="form-checkbox text-gray-800 mr-2"
+                        checked={selectedTags.includes(tag)}
+                        onChange={() => handleTagChange(tag)}
+                      />
+                      {tag}
                     </label>
-                  </li>
+                  </div>
                 ))}
-              </ul>
-            </div>
-            <div className="mb-4">
-              <h4 className="text-sm font-medium text-white mb-1">Project Status</h4>
-              <ul className="space-y-2">
-                {['Raw Idea', 'Under Development', 'Developed', 'Ready to launch in Market'].map((stage, index) => (
-                  <li key={index} className="flex items-center">
-                    <input
-                      type="checkbox"
-                      id={`stage-${index}`}
-                      className="mr-2"
-                      onChange={() => handleFilterChange('status', stage)}
-                    />
-                    <label htmlFor={`stage-${index}`} className="text-white text-sm cursor-pointer">
-                      {stage}
-                    </label>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="mb-4">
-              <h4 className="text-sm font-medium text-white mb-1">Region</h4>
-              <ul className="space-y-2">
-                {['North America', 'Europe', 'Asia', 'Africa'].map((region, index) => (
-                  <li key={index} className="flex items-center">
-                    <input
-                      type="checkbox"
-                      id={`region-${index}`}
-                      className="mr-2"
-                      onChange={() => handleFilterChange('region', region)}
-                    />
-                    <label htmlFor={`region-${index}`} className="text-white text-sm cursor-pointer">
-                      {region}
-                    </label>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="mb-4">
-              <h4 className="text-sm font-medium text-white mb-1">Price Range</h4>
-              <input
-                type="range"
-                min="0"
-                max="100000000"
-                step="1000000"
-                className="w-full"
-                id="price-range"
-                value={price}
-                onChange={handlePriceChange}
-              />
-              <div className="flex justify-between text-sm text-white mt-2">
-                <span>₹0</span>
-                <span>₹1,00,00,000</span>
               </div>
-              <div className="text-white text-center mt-4">
-                Selected Price: ₹{price.toLocaleString()}
+              <div className="mb-4">
+                <h3 className="text-white mb-2">Equity Range</h3>
+                <select
+                  className="w-full p-2 bg-gray-700 text-white rounded"
+                  value={equityRange}
+                  onChange={handleEquityRangeChange}
+                >
+                  <option value="">All</option>
+                  <option value="0-10">0-10%</option>
+                  <option value="10-30">10-30%</option>
+                  <option value="30-50">30-50%</option>
+                  <option value="50-60">50-60%</option>
+                  <option value="60-80">60-80%</option>
+                </select>
+              </div>
+              <div className="mb-4">
+                <h3 className="text-white mb-2">Max Investment Amount</h3>
+                <input
+                  type="range"
+                  min="0"
+                  max="1000000"
+                  step="10000"
+                  value={maxInvestment}
+                  onChange={handleMaxInvestmentChange}
+                  className="w-full mb-2"
+                />
+                <div className="flex justify-between text-white">
+                  <span>₹0</span>
+                  <span>₹{maxInvestment}</span>
+                </div>
               </div>
             </div>
-          </div>
-        </motion.div>
-        <div className="flex-1 bg-black p-4 md:p-6 text-white mt-10 md:mt-0">
-          <Link href="/" className="text-2xl font-bold mb-6 mt-12 md:mt-0">Marketplace</Link>
-  
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mt-5">
-            {currentStartups.map((startup) => (
-              <motion.div
-                key={startup.id}
-                className="bg-white rounded-lg shadow-lg p-4 md:p-6 hover:shadow-xl transition-all"
-              >
-                <div className="flex items-start mb-4">
-                  <div className="w-10 h-10 bg-[#76b900] rounded-full flex items-center justify-center mr-3">
-                    <span className="text-white text-lg font-bold">{startup.name.charAt(0)}</span>
-                  </div>
-                  <div>
-                    <h2 className="text-lg font-semibold text-gray-900">{startup.name}</h2>
-                    <p className="text-sm text-gray-600">by {startup.tag} Innovators</p>
-                  </div>
-                </div>
-                
-                <p className="text-sm text-gray-600 mb-4 line-clamp-2">
-                  A {startup.tag.toLowerCase()} startup focusing on {startup.status.toLowerCase()} phase with innovative solutions.
-                </p>
-  
-                <div className="flex flex-wrap gap-2 mb-4">
-                  <div className="flex items-center">
-                    <span className="text-sm text-gray-700">Equity: </span>
-                    <span className="ml-1 text-sm font-semibold text-gray-900">15%</span>
-                  </div>
-                  <div className="flex items-center ml-4">
-                    <span className="text-sm text-gray-700">Goal: </span>
-                    <span className="ml-1 text-sm font-semibold text-gray-900">₹{startup.price.toLocaleString()}</span>
-                  </div>
-                  <span className="px-2 py-1 text-xs font-medium text-gray-700 bg-gray-100 rounded-full">
-                    {startup.tag}
-                  </span>
-                </div>
-  
-                <button className="w-full py-2 px-4 bg-[#0f172a] text-white rounded-lg hover:bg-[#1e293b] transition-colors">
-                  View Details
-                </button>
-              </motion.div>
-            ))}
-          </div>
-  
-          <div className="flex justify-between items-center mt-6">
-            <button
-              className="px-3 py-2 bg-[#76b900] text-white rounded-full text-xl disabled:opacity-50"
-              onClick={prevPage}
-              disabled={currentPage === 1}
-            >
-              &#x2190;
-            </button>
-            <span className="text-white text-sm md:text-base">
-              Page {currentPage} of {totalPages}
-            </span>
-            <button
-              className="px-3 py-2 bg-[#76b900] text-white rounded-full text-xl disabled:opacity-50"
-              onClick={nextPage}
-              disabled={currentPage === totalPages}
-            >
-              &#x2192;
-            </button>
+          )}
+        </div>
+
+        {/* Project Cards Section */}
+        <div className="md:w-5/6 px-4 md:px-8 md:h-screen md:overflow-y-auto">
+          <h1 className="text-white text-4xl mb-4">Projects</h1>
+          {loading && <p className="text-white">Loading...</p>}
+          {error && <p className="text-red-500">{error}</p>}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            {renderProjectCards()}
           </div>
         </div>
       </div>
-    );
-  };
-  
-  export default Page;
+    </>
+  );
+}
+
+export default Page;
