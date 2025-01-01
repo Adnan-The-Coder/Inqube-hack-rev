@@ -140,7 +140,7 @@ import AddNewProject from "./AddNewProject";
                   }`}
                 >
                   <div className="relative">
-                    <img
+                    <Image
                       src={chat.avatar}
                       alt={chat.name}
                       className="w-12 h-12 rounded-full object-cover"
