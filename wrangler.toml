@@ -5,3 +5,6 @@ pages_build_output_dir = ".vercel/output/static"
 
 [vars]
 NODE_VERSION = "20.0.0"
+
+[env.production]
+workers_dev = false
