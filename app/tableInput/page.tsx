@@ -33,7 +33,7 @@ const Page = () => {
 
   // Handle form input changes
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value, type, checked } = e.target;
+    const { name, value, type, checked } = e.target as HTMLInputElement;
     setFormData({
       ...formData,
       [name]: type === 'checkbox' ? checked : value,
@@ -45,7 +45,7 @@ const Page = () => {
     e.preventDefault();
     try {
       const response = await axios.post('/api/dataTransfer', {
-        table: 'Developer',
+        table: 'Developer_Projects',
         jsonData: formData,
       });
       console.log('Data inserted successfully:', response.data);
