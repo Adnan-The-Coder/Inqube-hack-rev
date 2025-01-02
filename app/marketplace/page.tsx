@@ -1,9 +1,15 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+// import axios from "axios";
+import { createClient } from '@supabase/supabase-js';
 import Header from "@/components/Header";
 
 function Page() {
+    // Initialize Supabase client
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
+  const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
+  const supabase = createClient(supabaseUrl, supabaseKey);
+
   const [data, setData] = useState<any[]>([]);
   const [filteredData, setFilteredData] = useState<any[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
@@ -14,26 +20,47 @@ function Page() {
   const [maxInvestment, setMaxInvestment] = useState<number>(1000000); // Default max investment value
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 
+
+  // Function to fetch data directly from Supabase table
   async function fetchData(tableName: string): Promise<void> {
     setLoading(true);
     setError(null);
 
     try {
-      const response = await axios.get(`/api/dataFetch`, {
-        params: { table: tableName },
-      });
+      const { data, error } = await supabase.from(tableName).select('*');
+      if (error) throw error;
 
-      const uniqueTags = Array.from(new Set(response.data.map((item: any) => item.Tag).filter(Boolean))) as string[];
+      const uniqueTags = Array.from(new Set(data.map((item: any) => item.Tag).filter(Boolean))) as string[];
 
       setTags(uniqueTags);
-      setData(response.data);
-      setFilteredData(response.data);
+      setData(data);
+      setFilteredData(data);
     } catch (error: any) {
       setError("Error fetching data: " + error.message);
     } finally {
       setLoading(false);
     }
   }
+  // async function fetchData(tableName: string): Promise<void> {
+  //   setLoading(true);
+  //   setError(null);
+
+  //   try {
+  //     const response = await axios.get(`/api/dataFetch`, {
+  //       params: { table: tableName },
+  //     });
+
+  //     const uniqueTags = Array.from(new Set(response.data.map((item: any) => item.Tag).filter(Boolean))) as string[];
+
+  //     setTags(uniqueTags);
+  //     setData(response.data);
+  //     setFilteredData(response.data);
+  //   } catch (error: any) {
+  //     setError("Error fetching data: " + error.message);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // }
 
   const applyFilters = () => {
     let filtered = data;
