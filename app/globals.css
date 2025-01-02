@@ -104,3 +104,12 @@
     @apply bg-background text-foreground;
     }
 }
+.scrollbar::-webkit-scrollbar {
+  width: 10px;
+}
+.scrollbar::-webkit-scrollbar-track {
+  background-color: #000000;
+}
+.scrollbar::-webkit-scrollbar-thumb {
+  background-color: #000000;
+}  
