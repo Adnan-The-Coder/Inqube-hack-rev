@@ -1,6 +1,5 @@
 "use client";
 import React, { useState, useEffect } from "react";
-// import axios from "axios";
 import { createClient } from '@supabase/supabase-js';
 import Header from "@/components/Header";
 
@@ -41,26 +40,6 @@ function Page() {
       setLoading(false);
     }
   }
-  // async function fetchData(tableName: string): Promise<void> {
-  //   setLoading(true);
-  //   setError(null);
-
-  //   try {
-  //     const response = await axios.get(`/api/dataFetch`, {
-  //       params: { table: tableName },
-  //     });
-
-  //     const uniqueTags = Array.from(new Set(response.data.map((item: any) => item.Tag).filter(Boolean))) as string[];
-
-  //     setTags(uniqueTags);
-  //     setData(response.data);
-  //     setFilteredData(response.data);
-  //   } catch (error: any) {
-  //     setError("Error fetching data: " + error.message);
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // }
 
   const applyFilters = () => {
     let filtered = data;
