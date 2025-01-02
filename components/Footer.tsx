@@ -21,7 +21,7 @@ const Footer = () => {
                     <Link href="/team" className="hover:underline">Our Team</Link>
                 </li>
                 <li className="mb-4">
-                    <Link href="/" className="hover:underline">Blog</Link>
+                    <Link href="/blogs" className="hover:underline">Blog</Link>
                 </li>
             </ul>
         </div>
@@ -49,7 +49,7 @@ const Footer = () => {
                     <Link href="/privacy" className="hover:underline">Privacy Policy</Link>
                 </li>
                 <li className="mb-4">
-                    <Link href="/" className="hover:underline">Licensing</Link>
+                    <Link href="/licensing" className="hover:underline">Licensing</Link>
                 </li>
                 <li className="mb-4">
                     <Link href="/terms" className="hover:underline">Terms &amp; Conditions</Link>
