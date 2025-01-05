@@ -3,6 +3,7 @@
 import Header from "@/components/Header";
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import Footer from "@/components/Footer";
 
 interface Blog {
   title: string;
@@ -187,7 +188,7 @@ const BlogsPage: React.FC = () => {
           content:
             "Investors seek startups with a clear business model, market potential, and scalability. Prepare a compelling pitch deck that highlights your value proposition, market opportunity, and traction. Build relationships by networking and showcasing your passion and expertise.",
           category: "Startup",
-          image: "https://via.placeholder.com/300x200/76b900/ffffff?text=Startup",
+          image: "https://images.pexels.com/photos/7414284/pexels-photo-7414284.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
         },
         {
           title: "Top Business Trends for 2025",
@@ -196,7 +197,7 @@ const BlogsPage: React.FC = () => {
           content:
             "Emerging trends like AI-driven analytics, remote work optimization, and sustainability are reshaping businesses. Companies focusing on green technology and ethical business practices will gain a competitive edge.",
           category: "Business",
-          image: "https://via.placeholder.com/300x200/1b1b1b/ffffff?text=Business",
+          image: "https://images.pexels.com/photos/590045/pexels-photo-590045.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
         },
         {
           title: "Scaling Your Startup Effectively",
@@ -205,7 +206,7 @@ const BlogsPage: React.FC = () => {
           content:
             "Scaling requires a strategic approach. Focus on building a strong team, automating processes, and understanding your customer base. Invest in scalable technology and software to ensure your operations can handle increased demand.",
           category: "Growth",
-          image: "https://via.placeholder.com/300x200/64a800/ffffff?text=Growth",
+          image: "https://images.pexels.com/photos/2451646/pexels-photo-2451646.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
         },
         {
           title: "Funding Options for Startups",
@@ -214,7 +215,7 @@ const BlogsPage: React.FC = () => {
           content:
             "Explore funding options like venture capital, angel investors, crowdfunding, and bootstrapping. Venture capitalists are often looking for high-growth potential startups, while angel investors may provide more flexible terms.",
           category: "Finance",
-          image: "https://via.placeholder.com/300x200/444/ffffff?text=Finance",
+          image: "https://images.pexels.com/photos/210574/pexels-photo-210574.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
         },
         {
           title: "The Power of Branding",
@@ -223,7 +224,7 @@ const BlogsPage: React.FC = () => {
           content:
             "Branding builds trust and sets your company apart. A strong brand connects emotionally with customers and ensures loyalty. It’s important to define your brand's voice, values, and message clearly.",
           category: "Marketing",
-          image: "https://via.placeholder.com/300x200/ffcc00/000000?text=Marketing",
+          image: "https://images.pexels.com/photos/1437318/pexels-photo-1437318.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
         },
         {
           title: "Digital Marketing Tips for Startups",
@@ -232,7 +233,7 @@ const BlogsPage: React.FC = () => {
           content:
             "Leverage social media, SEO, and email marketing to reach your target audience. Measure your results and adapt your strategies. A well-executed SEO strategy helps you rank higher on search engines, increasing visibility.",
           category: "Marketing",
-          image: "https://via.placeholder.com/300x200/1b1b1b/ffffff?text=Digital+Marketing",
+          image: "https://images.pexels.com/photos/95916/pexels-photo-95916.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
         },
         {
           title: "The Future of Artificial Intelligence",
@@ -241,7 +242,7 @@ const BlogsPage: React.FC = () => {
           content:
             "From autonomous vehicles to personalized healthcare, AI continues to revolutionize industries. AI-driven analytics and chatbots are transforming how businesses operate and interact with customers.",
           category: "Technology",
-          image: "https://via.placeholder.com/300x200/0000ff/ffffff?text=AI+Future",
+          image: "https://images.pexels.com/photos/373543/pexels-photo-373543.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
         },
         {
           title: "Effective Time Management for Entrepreneurs",
@@ -250,7 +251,7 @@ const BlogsPage: React.FC = () => {
           content:
             "Prioritize tasks, delegate when needed, and focus on your goals. Effective time management can help you balance professional and personal commitments.",
           category: "Productivity",
-          image: "https://via.placeholder.com/300x200/1b1b1b/ffffff?text=Time+Management",
+          image: "https://images.pexels.com/photos/210990/pexels-photo-210990.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
         },
         {
           title: "The Rise of Sustainable Startups",
@@ -259,7 +260,7 @@ const BlogsPage: React.FC = () => {
           content:
             "Sustainable startups not only attract investors but also build long-term customer loyalty. Embrace eco-friendly practices to make a difference and thrive in a competitive market.",
           category: "Sustainability",
-          image: "https://via.placeholder.com/300x200/76b900/ffffff?text=Sustainability",
+          image: "https://images.pexels.com/photos/3184352/pexels-photo-3184352.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
         },
         {
           title: "Mastering the Art of Networking",
@@ -268,7 +269,7 @@ const BlogsPage: React.FC = () => {
           content:
             "Networking is essential for personal and professional growth. Attend events, build genuine relationships, and leverage platforms like LinkedIn to expand your reach.",
           category: "Career",
-          image: "https://via.placeholder.com/300x200/444/ffffff?text=Networking",
+          image: "https://images.pexels.com/photos/2566573/pexels-photo-2566573.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
         },
         {
           title: "How Blockchain is Changing Business",
@@ -277,7 +278,7 @@ const BlogsPage: React.FC = () => {
           content:
             "Blockchain is revolutionizing industries with transparency and security. Learn how businesses are using it for supply chain, finance, and beyond.",
           category: "Technology",
-          image: "https://via.placeholder.com/300x200/1b1b1b/ffffff?text=Blockchain",
+          image: "https://images.pexels.com/photos/844127/pexels-photo-844127.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
         },
         {
           title: "Balancing Work and Life as an Entrepreneur",
@@ -286,10 +287,10 @@ const BlogsPage: React.FC = () => {
           content:
             "Entrepreneurship can be demanding. Set boundaries, take breaks, and focus on your well-being to maintain productivity and happiness.",
           category: "Lifestyle",
-          image: "https://via.placeholder.com/300x200/ffcc00/000000?text=Work-Life+Balance",
+          image: "https://images.pexels.com/photos/313690/pexels-photo-313690.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
         },
       ];
-
+      
       setBlogs(initialBlogs);
       localStorage.setItem("blogs", JSON.stringify(initialBlogs));
     }
@@ -304,7 +305,7 @@ const BlogsPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-black text-white">
       <Header />
-      <div className="container mx-auto py-8 pt-20 px-10 flex flex-col items-center">
+      <div className="container mx-auto py-8 pt-20 px-10 flex flex-col items-center mb-10">
         <h1 className="text-4xl font-bold mb-6">Blogs</h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {blogs.map((blog, index) => (
@@ -331,6 +332,7 @@ const BlogsPage: React.FC = () => {
           onAddBlog={handleAddBlog}
         />
       )}
+      <Footer/>
     </div>
   );
 };

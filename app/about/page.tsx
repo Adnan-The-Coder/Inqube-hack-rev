@@ -29,13 +29,13 @@ const AboutUs = () => {
           <section className="mt-8">
             <h2 className="text-2xl font-bold text-[#ffffff] mb-6">Our Vision</h2>
             <p className="text-gray-300 text-sm lg:text-base leading-relaxed">
-              We envision a future where innovative ideas are never constrained by resources or opportunities. <strong className="text-[#76b900]">Inqube</strong> serves as a launchpad for startups and developers to scale their ambitions and connect with investors who share their passion for transformative technology. By leveraging cutting-edge AI and blockchain technologies, we provide a secure, transparent, and scalable platform that fosters trust and builds enduring partnerships.
+              We envision a future where innovative ideas are never constrained by resources or opportunities. <strong>Inqube</strong> serves as a launchpad for startups and developers to scale their ambitions and connect with investors who share their passion for transformative technology. By leveraging cutting-edge AI and blockchain technologies, we provide a secure, transparent, and scalable platform that fosters trust and builds enduring partnerships.
             </p>
           </section>
           <section className="mt-8">
             <h3 className="text-xl font-bold text-[#ffffff] mb-4">Why Choose Inqube?</h3>
             <p className="text-gray-300 text-sm lg:text-base leading-relaxed mb-4">
-              <strong className="text-[#76b900]">Inqube</strong> stands out with its:
+              <strong>Inqube</strong> stands out with its:
             </p>
             <ul className="list-disc list-inside space-y-4 text-gray-300 text-sm lg:text-base">
               <li>
@@ -58,7 +58,7 @@ const AboutUs = () => {
           <section className="mt-8">
             <h3 className="text-xl font-bold text-[#ffffff] mb-4">What We Offer</h3>
             <p className="text-gray-300 text-sm lg:text-base leading-relaxed mb-4">
-              At <strong className="text-[#76b900]">Inqube</strong>, we are more than just a platform – we are a community where innovators and investors thrive together. Here's how we make it happen:
+              At <strong>Inqube</strong>, we are more than just a platform – we are a community where innovators and investors thrive together. Here's how we make it happen:
             </p>
             <ul className="list-disc list-inside space-y-4 text-gray-300 text-sm lg:text-base">
               <li>Comprehensive project listings with demo links, videos, and detailed descriptions.</li>
