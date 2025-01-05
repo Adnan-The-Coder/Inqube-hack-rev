@@ -82,7 +82,7 @@ const Dashboard = () => {
           {links.map((item, index) => (
             <li
               key={index}
-              className="flex items-center justify-center lg:justify-start gap-2 hover:text-black cursor-pointer text-md font-medium tracking-wide transition duration-200"
+              className="flex items-center justify-center lg:justify-start gap-2 hover:text-[#76b900] cursor-pointer text-md font-medium tracking-wide transition duration-200"
             >
               {item.icon}
               {item.name}

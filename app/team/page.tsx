@@ -11,6 +11,7 @@ import aayan from "@/app/team/aayan.jpg";
 import afzal from "@/app/team/afzal.jpg"
 import usaid from "@/app/team/usaid.jpg";
 import adnan from "@/app/team/adnan.jpg";
+import nazish from '@/app/team/nazish.jpg'
 import Footer from "@/components/Footer";
 
 interface TeamMember {
@@ -44,7 +45,7 @@ const teamMembers: TeamMember[] = [
       name: "Nazish Ahmed",
       role: "Full Stack Developer",
       image:
-        "https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        nazish,
       about:
         "Nazish Ahmed is a passionate full-stack developer with a keen focus on delivering scalable, high-performance, and user-centric web applications. With extensive experience working across both the front-end and back-end, Nazish has a deep understanding of web technologies such as JavaScript, Node.js, React, and more. His approach combines technical expertise with a strong emphasis on user experience and efficiency, ensuring seamless integration of front-end and back-end services. Nazish is dedicated to continuous learning and growth, constantly exploring new technologies to stay ahead in the fast-evolving field of web development.",
       socials: {
