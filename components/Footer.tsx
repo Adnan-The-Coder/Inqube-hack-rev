@@ -21,7 +21,7 @@ const Footer = () => {
                     <Link href="/team" className="hover:underline">Our Team</Link>
                 </li>
                 <li className="mb-4">
-                    <Link href="/blogs" className="hover:underline">Blog</Link>
+                    <Link href="/blogs" className="hover:underline">Blogs</Link>
                 </li>
             </ul>
         </div>
