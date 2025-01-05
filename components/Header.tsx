@@ -83,7 +83,7 @@ const Header = () => {
       >
         <button
           onClick={() => setIsMenuOpen(false)}
-          className="absolute top-4 right-4 text-3xl"
+          className="absolute top-4 right-4 text-3xl text-white"
         >
           ✖
         </button>
