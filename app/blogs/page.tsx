@@ -305,7 +305,7 @@ const BlogsPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-black text-white">
       <Header />
-      <div className="container mx-auto py-8 pt-20 px-10 flex flex-col items-center mb-10">
+      <div className="container mx-auto py-8 pt-20 px-5 md:px-10 flex flex-col items-center mb-10">
         <h1 className="text-4xl font-bold mb-6">Blogs</h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {blogs.map((blog, index) => (

@@ -10,7 +10,7 @@ const TermsAndConditions: React.FC = () => {
     <div className="min-h-screen bg-[#1b1b1b] text-white p-8">
       <Header />
       <div className="max-w-4xl mx-auto pt-20 pb-20">
-        <h1 className="text-3xl font-bold mb-8">Terms & Conditions</h1>
+        <h1 className="text-3xl md:text-4xl font-bold mb-8">Terms & Conditions</h1>
         <p className="mb-6">
           Welcome to our platform. By using our services, you agree to comply with and be bound by the following terms and conditions. Please review them carefully before using our platform.
         </p>

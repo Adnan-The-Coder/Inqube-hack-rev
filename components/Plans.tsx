@@ -5,7 +5,7 @@ import pattern from "../Images/pattern.png";
 const Plans: React.FC = () => {
   return (
     <div
-      className="h-full w-full flex flex-col items-center justify-center pb-10 pt-[900px] md:pt-[390px] lg:pt-[0px] bg-[#0a0a0a] text-white relative"
+      className="h-full w-full flex flex-col items-center justify-center pb-10 pt-[900px] md:pt-[390px] lg:pt-[100px] bg-[#0a0a0a] text-white relative"
       id="plans"
     >
       <Image
