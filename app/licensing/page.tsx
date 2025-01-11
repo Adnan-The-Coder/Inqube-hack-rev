@@ -10,7 +10,7 @@ const Licensing: React.FC = () => {
       <div className="min-h-screen bg-[#1b1b1b] text-white p-8">
         <Header />
         <div className="max-w-4xl mx-auto mt-20 mb-20">
-          <h1 className="text-3xl font-bold mb-8">Licensing Information</h1>
+          <h1 className="text-2xl md:text-4xl font-bold mb-8">Licensing Information</h1>
           <p className="mb-6">
             Welcome to our platform, a dedicated space connecting startups and investors. Below, we outline the licensing terms and information governing the use of our platform.
           </p>
