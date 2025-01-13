@@ -112,4 +112,10 @@
 }
 .scrollbar::-webkit-scrollbar-thumb {
   background-color: #0a0a0a;
-}  
+} 
+.custom-scrollbar::-webkit-scrollbar {
+  width: 0px;
+}
+.custom-scrollbar {
+  scrollbar-width: none; 
+}

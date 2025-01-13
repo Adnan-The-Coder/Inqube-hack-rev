@@ -14,7 +14,7 @@ const ResultPage = ({ result, resetGame }: { result: string; resetGame: () => vo
       }
       return acc;
     }, []);
-  
+
     return (
       <div className="flex flex-col items-center justify-center h-screen w-full mt-28 mb-20 md:mt-6 p-3">
         <h2 className="text-3xl font-bold mb-6">Your Startup Journey</h2>
