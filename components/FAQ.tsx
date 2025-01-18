@@ -47,7 +47,7 @@ const Features: React.FC = () => {
   ];
 
   return (
-    <div className="max-w-7xl mx-auto px-4 pb-20">
+    <div className="max-w-7xl mx-auto px-4 sm:pb-40 pb-20">
       <div className="space-y-6">
         {features.map((feature) => (
           <div 
