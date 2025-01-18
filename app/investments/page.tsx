@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import CountUp from "react-countup";
 import { ShootingStars } from "./shooting-stars";
 import { StarsBackground } from "./stars-background";
+import Footer from "@/components/Footer";
 
 export default function TotalInvestments() {
   const [investment, setInvestment] = useState<number | null>(null);
@@ -46,6 +47,7 @@ export default function TotalInvestments() {
       <ShootingStars />
       <StarsBackground />
     </div>
+    <Footer/>
       </div>
   );
 }

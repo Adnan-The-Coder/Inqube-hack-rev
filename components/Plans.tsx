@@ -30,45 +30,45 @@ const Plans: React.FC = () => {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-5 pt-10 gap-10 items-center z-10 relative">
         <div className="p-8 h-[450px] w-[320px] bg-[rgba(30,30,30,0.85)] rounded-lg flex flex-col gap-4 shadow-2xl border border-gray-900 hover:scale-105 transition-transform">
-          <h3 className="text-gray-400 text-sm">Starter Plan</h3>
-          <h1 className="text-5xl font-bold text-white">$85.45</h1>
+          <h3 className="text-gray-400 text-sm">Basic Plan</h3>
+          <h1 className="text-5xl font-bold text-white">$2.00</h1>
           <h4 className="text-gray-400 text-md">/service</h4>
           <hr className="border-gray-600" />
           <ul className="text-gray-300 space-y-2 text-sm">
-            <li>✔ Access essential tools & digital marketing</li>
-            <li>✔ Create & manage email campaigns</li>
-            <li>✔ Basic management of social media</li>
-            <li>✔ Monitor performance of your campaigns</li>
+            <li>✔ Access to basic investor profiles</li>
+            <li>✔ Submit one startup proposal per month</li>
+            <li>✔ Access to general startup resources</li>
+            <li>✔ Participate in community forums</li>
           </ul>
-          <button className="mt-auto bg-[rgba(118,185,0,0.85)] text-black py-2 px-4 rounded-lg hover:bg-white transition">
+          <button className="mt-auto bg-[rgba(118,185,0,0.85)] text-white py-2 px-4 rounded-lg hover:bg-white hover:text-black transition">
             Select Plan
           </button>
         </div>
         <div className="p-8 h-[450px] w-[320px] bg-[rgba(118,185,0,0.85)] rounded-lg flex flex-col gap-4 shadow-2xl border border-gray-900 hover:scale-105 transition-transform">
           <h3 className="text-gray-800 text-sm">Professional Plan</h3>
-          <h1 className="text-5xl font-bold text-black">$100</h1>
-          <h4 className="text-gray-800 text-md">/service</h4>
+          <h1 className="text-5xl font-bold text-black">$99.99</h1>
+          <h4 className="text-gray-800 text-md">/month</h4>
           <hr className="border-gray-500" />
           <ul className="text-black space-y-2 text-sm">
-            <li>✔ Utilize a broader range of tools</li>
-            <li>✔ Send customized marketing strategies</li>
-            <li>✔ Advanced management and scheduling</li>
-            <li>✔ AI-driven analytics & expert support</li>
+            <li>✔ Access to detailed investor insights</li>
+            <li>✔ Unlimited startup proposal submissions</li>
+            <li>✔ Customized pitch deck templates</li>
+            <li>✔ Priority listing in investor searches</li>
           </ul>
           <button className="mt-auto bg-black text-[#76b900] py-2 px-4 rounded-lg hover:bg-[#76b900] hover:text-[#ffffff] transition">
             Select Plan
           </button>
         </div>
         <div className="p-8 h-[450px] w-[320px] bg-[rgba(30,30,30,0.85)] rounded-lg flex flex-col gap-4 shadow-2xl border border-gray-900 hover:scale-105 transition-transform">
-          <h3 className="text-gray-400 text-sm">Expert Plan</h3>
-          <h1 className="text-5xl font-bold text-white">$155.80</h1>
-          <h4 className="text-gray-400 text-md">/service</h4>
+          <h3 className="text-gray-400 text-sm">Premium Plan</h3>
+          <h1 className="text-5xl font-bold text-white">$199.99</h1>
+          <h4 className="text-gray-400 text-md">/month</h4>
           <hr className="border-gray-600" />
           <ul className="text-gray-300 space-y-2 text-sm">
-            <li>✔ Access to all marketing tools</li>
-            <li>✔ Personalized support from a dedicated team</li>
-            <li>✔ Tailored marketing strategies</li>
-            <li>✔ Comprehensive management of campaigns</li>
+            <li>✔ Full access to all investor profiles</li>
+            <li>✔ Dedicated account manager</li>
+            <li>✔ Personalized matchmaking with investors</li>
+            <li>✔ Exclusive access to investor webinars</li>
             <li>✔ Round-the-clock support</li>
           </ul>
           <button className="mt-auto bg-[rgba(118,185,0,0.85)] text-black py-2 px-4 rounded-lg hover:bg-white transition">
