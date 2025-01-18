@@ -1,6 +1,12 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 const Services = () => {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const services = [
     {
       title: "AI-Based Matchmaking",
@@ -33,6 +39,10 @@ const Services = () => {
       icon: "https://img.icons8.com/ios/50/76b900/teamwork.png",
     },
   ];
+
+  if (!mounted) {
+    return null; // Render nothing on the server side
+  }
 
   return (
     <div className="relative min-h-screen bg-[#0a0a0a] text-white flex items-center justify-center overflow-hidden mb-20">
