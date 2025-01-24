@@ -2,92 +2,136 @@
 
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
-import React from "react";
+import React, { useState } from "react";
 
 const ContactPage = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formStatus, setFormStatus] = useState<string | null>(null);
+
+  interface FormData {
+    name: string;
+    email: string;
+    message: string;
+  }
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData((prevFormData: FormData) => ({
+      ...prevFormData,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setFormStatus(null);
+
+    const formEndpoint = "https://formspree.io/f/mqaeaelp";
+
+    try {
+      const response = await fetch(formEndpoint, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setFormStatus("Your message has been sent successfully!");
+        setFormData({ name: "", email: "", message: "" });
+      } else {
+        setFormStatus("Oops! Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error sending message:", error);
+      setFormStatus("Oops! Something went wrong. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <div>
-    <div className="bg-[#0a0a0a] text-white min-h-screen p-8">
-      <Header />
-      <main className="flex flex-col lg:flex-row justify-between items-start mt-20 gap-8">
-        <section className="lg:w-1/2">
-          <h2 className="text-3xl font-bold mb-4">Have questions? Connect with us.</h2>
-          <p className="text-gray-400 mb-6">
-            Welcome to our platform – where startups meet investors. We bridge the gap between your
-            groundbreaking ideas and the resources needed to bring them to life.
-          </p>
-          <p className="text-gray-400">
-            If you have a query, feedback, or need assistance, please choose the most relevant category
-            below and fill out the form to get in touch with us.
-          </p>
+      <div className="bg-[#0a0a0a] text-white min-h-screen pt-16 p-6 lg:p-0 lg:pt-16">
+        <Header />
+        <main>
+          <section className="max-w-4xl mx-auto py-10">
+            <div className="flex items-center justify-center flex-col">
+              <h2 className="text-3xl font-bold mb-4">Contact Us</h2>
+              <p className="text-md mb-6 text-[#6b6b6b] text-center">
+                Whether you are an investor looking to discover innovative startups or a startup seeking investment opportunities, we are here to help! Reach out to us with your queries or to discuss potential partnerships.
+              </p>
+            </div>
 
-          <ul className="mt-6 space-y-4 text-[#76b900]">
-            <li>1. I want to pitch my startup to investors</li>
-            <li>2. I am an investor looking for opportunities</li>
-            <li>3. I want to partner with your platform</li>
-            <li>4. I need help with my account</li>
-            <li>5. I want to report an issue</li>
-            <li>6. I have general feedback</li>
-          </ul>
-        </section>
-        <section className="lg:w-1/2 bg-[#1b1b1b] p-6 rounded-lg shadow-lg">
-          <form>
-            <label className="block text-gray-300 mb-2">Category</label>
-            <select
-              className="w-full p-3 mb-4 bg-[#0a0a0a] text-white rounded-lg border border-gray-700"
-              required
-            >
-              <option value="">Select a category</option>
-              <option value="pitch">I want to pitch my startup to investors</option>
-              <option value="investor">I am an investor looking for opportunities</option>
-              <option value="partner">I want to partner with your platform</option>
-              <option value="help">I need help with my account</option>
-              <option value="issue">I want to report an issue</option>
-              <option value="feedback">I have general feedback</option>
-            </select>
+            <form onSubmit={handleSubmit} className="bg-[#2b2b2b] p-6 rounded-lg shadow-lg">
+              <div className="mb-4">
+                <label htmlFor="name" className="block text-lg mb-2">Your Name</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  className="w-full p-3 bg-[#333333] text-white rounded-md border border-gray-600"
+                  placeholder="Enter your name"
+                  required
+                />
+              </div>
+              
+              <div className="mb-4">
+                <label htmlFor="email" className="block text-lg mb-2">Your Email</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  className="w-full p-3 bg-[#333333] text-white rounded-md border border-gray-600"
+                  placeholder="Enter your email"
+                  required
+                />
+              </div>
 
-            <label className="block text-gray-300 mb-2">Your Name</label>
-            <input
-              type="text"
-              className="w-full p-3 mb-4 bg-[#0a0a0a] text-white rounded-lg border border-gray-700"
-              placeholder="Enter your name"
-              required
-            />
+              <div className="mb-4">
+                <label htmlFor="message" className="block text-lg mb-2">Message</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  rows={4}
+                  className="w-full p-3 bg-[#333333] text-white rounded-md border border-gray-600"
+                  placeholder="How can we assist you?"
+                  required
+                ></textarea>
+              </div>
 
-            <label className="block text-gray-300 mb-2">Your Email</label>
-            <input
-              type="email"
-              className="w-full p-3 mb-4 bg-[#0a0a0a] text-white rounded-lg border border-gray-700"
-              placeholder="Enter your email"
-              required
-            />
+              <button
+                type="submit"
+                className="w-full py-3 bg-[#76b900] text-white font-bold rounded-md hover:bg-[#75b900d7] transition duration-200"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? "Submitting..." : "Submit"}
+              </button>
+            </form>
 
-            <label className="block text-gray-300 mb-2">Your Message</label>
-            <textarea
-              className="w-full p-3 mb-4 bg-[#0a0a0a] text-white rounded-lg border border-gray-700"
-              placeholder="Type your message"
-              rows={4}
-              required
-            ></textarea>
-
-            <label className="block text-gray-300 mb-2">Screenshot (optional)</label>
-            <input
-              type="file"
-              className="w-full p-3 bg-[#0a0a0a] text-white rounded-lg border border-gray-700"
-            />
-
-            <button
-              type="submit"
-              className="mt-6 w-full bg-[#76b900] text-gray-900 font-bold py-3 rounded-lg transition"
-            >
-              Submit
-            </button>
-          </form>
-        </section>
-      </main>
-    </div>
-      <Footer/>
+            {formStatus && (
+              <div className="mt-4 text-center text-lg">
+                <p>{formStatus}</p>
+              </div>
+            )}
+          </section>
+        </main>
       </div>
+      <Footer />
+    </div>
   );
 };
 
