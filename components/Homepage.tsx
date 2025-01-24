@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import { BackgroundBeams } from "../components/ui/background-beams";
 import Link from "next/link";
 import home from "../Images/home.jpg";
 import Image from "next/image";
@@ -9,11 +8,12 @@ import brand2 from "../Images/brand2.webp";
 import brand3 from "../Images/brand3.webp";
 import brand4 from "../Images/brand4.webp";
 import brand5 from "../Images/brand5.webp";
+import { Boxes } from "./ui/background-boxes";
 
 export function Homepage() {
   return (
     <div className="relative flex flex-col items-center justify-center min-h-screen w-full bg-neutral-950 text-white overflow-hidden rounded-md antialiased">
-      <BackgroundBeams />
+            <Boxes/>
       <div className="z-10 flex flex-col items-center justify-center px-6 md:px-12 gap-6 text-center mt-32 md:mt-28">
         <h1 className="text-4xl md:text-6xl font-extrabold leading-tight tracking-tight mt-1">
           Bridge the Gap Between <br />
