@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
-const page: React.FC = () => {
+const Page: React.FC = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -141,4 +141,4 @@ const page: React.FC = () => {
   );
 };
 
-export default page;
+export default Page;
