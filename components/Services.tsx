@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Image from "next/image";
 
 const Services = () => {
   const [mounted, setMounted] = useState(false);
@@ -83,7 +84,9 @@ const Services = () => {
                       </p>
                     </div>
                     <div className="absolute inset-0 opacity-0 group-hover:opacity-60 transition-all duration-500 rounded-xl z-0"></div>
-                    <img
+                    <Image
+                      width={40}
+                      height={40}
                       src={service.icon}
                       alt={service.title}
                       className="absolute bottom-2 left-24 mt-2 p-1 w-10 h-10"

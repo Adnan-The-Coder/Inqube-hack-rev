@@ -23,9 +23,11 @@ const BlogCard: React.FC<{
       className="bg-[#1b1b1b] text-white p-6 rounded-lg shadow-lg hover:translate-y-[-2px] hover:shadow-2xl transition-transform cursor-pointer overflow-hidden"
       onClick={onClick}
     >
-      <img
+      <Image
         src={blog.image}
         alt={blog.title}
+        width={400}
+        height={400}
         className="w-full h-48 object-cover rounded-md mb-4"
       />
       <h2 className="text-2xl font-bold mb-2">{blog.title}</h2>
@@ -49,9 +51,11 @@ const Modal: React.FC<{
   return (
     <div className="fixed inset-0 bg-black bg-opacity-90 flex justify-center items-center z-50 p-5">
       <div className="bg-[#1b1b1b] text-white p-8 rounded-lg max-w-4xl mx-auto shadow-lg relative">
-        <img
+        <Image
           src={blog.image}
           alt={blog.title}
+          width={400}
+          height={400}
           className="w-full h-64 object-cover rounded-md mb-6"
         />
         <h2 className="text-3xl font-bold mb-4">{blog.title}</h2>
