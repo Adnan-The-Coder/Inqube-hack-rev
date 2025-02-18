@@ -87,6 +87,7 @@ const Page: React.FC = () => {
             </div>
           </div>
           <h2 className="text-2xl font-semibold text-[#ffffff] mt-8 mb-4">Contact Us</h2>
+          <div className='bg-[#2a2a2b] p-5 rounded-lg'>
           {formStatus && <p className="mb-4 text-sm text-gray-400">{formStatus}</p>}
           <form onSubmit={handleSubmit} className="space-y-6">
             <div>
@@ -94,7 +95,7 @@ const Page: React.FC = () => {
               <input
                 type="text"
                 name="name"
-                className="mt-1 block w-full bg-[#76b900] text-[#0a0a0a] rounded-md shadow-md px-4 py-2 placeholder-black focus:outline-none focus:ring-2 focus:ring-lime-300"
+                className="mt-1 block w-full bg-[#323233] text-[#0a0a0a] rounded-md shadow-md px-4 py-2 placeholder-white border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500"
                 placeholder="Your Name"
                 value={formData.name}
                 onChange={handleChange}
@@ -106,7 +107,7 @@ const Page: React.FC = () => {
               <input
                 type="email"
                 name="email"
-                className="mt-1 block w-full bg-[#76b900] text-[#0a0a0a] rounded-md shadow-md px-4 py-2 placeholder-black focus:outline-none focus:ring-2 focus:ring-lime-300"
+                className="mt-1 block w-full bg-[#323233] text-[#0a0a0a] rounded-md shadow-md px-4 py-2 placeholder-white border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500"
                 placeholder="Your Email"
                 value={formData.email}
                 onChange={handleChange}
@@ -117,7 +118,7 @@ const Page: React.FC = () => {
               <label className="block text-sm font-medium text-gray-300">Message</label>
               <textarea
                 name="message"
-                className="mt-1 block w-full bg-[#76b900] text-[#0a0a0a] rounded-md shadow-md px-4 py-2 placeholder-black focus:outline-none focus:ring-2 focus:ring-lime-300"
+                className="mt-1 block w-full bg-[#323233] text-[#0a0a0a] rounded-md shadow-md px-4 py-2 placeholder-white border-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-500"
                 rows={5}
                 placeholder="Write your message here..."
                 value={formData.message}
@@ -134,6 +135,7 @@ const Page: React.FC = () => {
               </button>
             </div>
           </form>
+          </div>
         </section>
       </main>
       <Footer />
