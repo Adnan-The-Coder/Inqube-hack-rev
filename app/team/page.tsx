@@ -95,11 +95,11 @@ const teamMembers: TeamMember[] = [
   },
 },
     {
-      name: "Syed Usaid Minhaj",
+      name: "Haseeb Rahman",
       role: "Support Specialist",
       image: usaid,
       about:
-        "Syed Usaid Minhaj is a dedicated and results-driven Support Specialist, known for providing exceptional customer service and technical support. With an in-depth understanding of the company's products and services, Usaid excels at troubleshooting issues, guiding customers through problem-solving processes, and ensuring that users receive the best possible experience. His approach emphasizes clear communication, empathy, and efficiency, ensuring prompt resolution of customer queries and issues. Syed Usaid Minhaj is always focused on delivering high-quality support, enhancing user satisfaction, and maintaining strong customer relationships.",
+        "Haseeb Rahman is a dedicated and results-driven Support Specialist, known for providing exceptional customer service and technical support. With an in-depth understanding of the company's products and services, Haseeb excels at troubleshooting issues, guiding customers through problem-solving processes, and ensuring that users receive the best possible experience. His approach emphasizes clear communication, empathy, and efficiency, ensuring prompt resolution of customer queries and issues. Haseeb is always focused on delivering high-quality support, enhancing user satisfaction, and maintaining strong customer relationships.",
       socials: {
         linkedin: "https://linkedin.com",
         twitter: "https://x.com",
