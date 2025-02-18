@@ -63,7 +63,7 @@ const Header = () => {
           </li>
         </ul>
         <div className="hidden lg:block">
-          <Link href="/sign-in">
+          <Link href="/signin">
             <button className="bg-[#76b900] px-5 py-2 rounded-full hover:bg-[#5e9400]">
               Sign in
             </button>
@@ -110,7 +110,7 @@ const Header = () => {
           </li>
         </ul>
         <div className="mt-8">
-          <Link href="/sign-in">
+          <Link href="/signin">
             <button className="bg-[#76b900] px-6 py-3 rounded-full hover:bg-[#5e9400]">
               Sign in
             </button>
