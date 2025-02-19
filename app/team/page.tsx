@@ -9,7 +9,7 @@ import Header from "@/components/Header";
 import mudassir from "@/app/team/mudassir.jpg";
 import aayan from "@/app/team/aayan.jpg";
 import afzal from "@/app/team/afzal.jpg"
-import usaid from "@/app/team/usaid.jpg";
+import haseeb from "@/app/team/haseeb.jpg";
 import adnan from "@/app/team/adnan.jpg";
 import nazish from '@/app/team/nazish.jpg'
 import Footer from "@/components/Footer";
@@ -97,7 +97,7 @@ const teamMembers: TeamMember[] = [
     {
       name: "Haseeb Rahman",
       role: "Support Specialist",
-      image: usaid,
+      image: haseeb,
       about:
         "Haseeb Rahman is a dedicated and results-driven Support Specialist, known for providing exceptional customer service and technical support. With an in-depth understanding of the company's products and services, Haseeb excels at troubleshooting issues, guiding customers through problem-solving processes, and ensuring that users receive the best possible experience. His approach emphasizes clear communication, empathy, and efficiency, ensuring prompt resolution of customer queries and issues. Haseeb is always focused on delivering high-quality support, enhancing user satisfaction, and maintaining strong customer relationships.",
       socials: {
