@@ -7,11 +7,11 @@ import { AiOutlineDashboard, AiOutlineTeam } from "react-icons/ai";
 import Image from "next/image";
 import { FaChalkboardTeacher, FaComments } from "react-icons/fa";
 
-import logo from '@/Images/logo.png';
-
 const Dashboard = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  const logo = "/assets/Images/logo.png";
 
   const links = [
     { name: "Dashboard", icon: <AiOutlineDashboard /> },
@@ -24,7 +24,7 @@ const Dashboard = () => {
     <div className="flex h-screen flex-col bg-[#121212] text-white">
       <header className="fixed z-50 flex w-full items-center justify-between bg-[#181818] p-4 shadow-md">
         <Link href="/">
-          <Image src={logo} alt="Logo" className="w-28" />
+          <Image src={logo} width={500} height={500} alt="Logo" className="w-28" />
         </Link>
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}

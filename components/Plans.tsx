@@ -1,9 +1,9 @@
 import React from "react";
 import Image from "next/image";
 
-import pattern from "../Images/pattern.png"; 
-
 const Plans: React.FC = () => {
+  const pattern = "/assets/Images/pattern.png";
+
   return (
     <div
       className="relative flex size-full flex-col items-center justify-center bg-[#0a0a0a] pb-10 pt-[900px] text-white md:pt-[390px] lg:pt-[100px]"
@@ -12,12 +12,16 @@ const Plans: React.FC = () => {
       <Image
         src={pattern}
         alt="Pattern"
+        width={500}
+        height={500}
         className="floating pointer-events-none absolute bottom-[-70px] right-20 h-auto w-96 rotate-[20deg] scale-110 opacity-30 blur-md"
         priority
       />
       <Image
         src={pattern}
         alt="Pattern"
+        width={500}
+        height={500}
         className="floating-reverse pointer-events-none absolute left-10 top-[-50px] h-auto w-80 rotate-[60deg] scale-125 opacity-40 blur-sm"
         priority
       />

@@ -6,8 +6,6 @@ import { MessageCircle } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-import logo from '@/Images/logo.png';
-
 import AddNewProject from "./AddNewProject";
 import ChatSection from "./ChatSection";
 
@@ -16,6 +14,8 @@ const Developers: React.FC = () => {
   const [messageInput, setMessageInput] = useState("");
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const logo = "/assets/Images/logo.png";
 
   const chats = [
     {
