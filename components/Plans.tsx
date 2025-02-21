@@ -25,7 +25,7 @@ const Plans: React.FC = () => {
         <h1 className="text-4xl font-semibold text-[#76b900] md:text-5xl">
           Elevate Your Business:
         </h1>
-        <h2 className="text-xl font-medium text-white md:text-2xl">
+        <h2 className="text-xl font-medium text-[#858585] md:text-2xl">
           Flexible Plans For Every Business
         </h2>
       </div>
@@ -47,7 +47,7 @@ const Plans: React.FC = () => {
         </div>
         <div className="flex h-[450px] w-[320px] flex-col gap-4 rounded-lg border border-gray-900 bg-[rgba(118,185,0,0.85)] p-8 shadow-2xl transition-transform hover:scale-105">
           <h3 className="text-sm text-gray-800">Professional Plan</h3>
-          <h1 className="text-5xl font-bold text-black">$99.99</h1>
+          <h1 className="text-5xl font-bold text-black">$50.00</h1>
           <h4 className="text-md text-gray-800">/month</h4>
           <hr className="border-gray-500" />
           <ul className="space-y-2 text-sm text-black">
@@ -62,7 +62,7 @@ const Plans: React.FC = () => {
         </div>
         <div className="flex h-[450px] w-[320px] flex-col gap-4 rounded-lg border border-gray-900 bg-[rgba(30,30,30,0.85)] p-8 shadow-2xl transition-transform hover:scale-105">
           <h3 className="text-sm text-gray-400">Premium Plan</h3>
-          <h1 className="text-5xl font-bold text-white">$199.99</h1>
+          <h1 className="text-5xl font-bold text-white">$150.00</h1>
           <h4 className="text-md text-gray-400">/month</h4>
           <hr className="border-gray-600" />
           <ul className="space-y-2 text-sm text-gray-300">

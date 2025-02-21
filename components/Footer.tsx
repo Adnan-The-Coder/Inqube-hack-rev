@@ -62,7 +62,7 @@ const Footer = () => {
                   <Link href="/marketplace" className="hover:underline">Marketplace</Link>
                 </li>
                 <li className="mb-4">
-                  <Link href="/investor" className="hover:underline">Dashboard</Link>
+                  <Link href="/authenticate" className="hover:underline">Dashboard</Link>
                 </li>
                 <li className="mb-4">
                   <Link href="/profile" className="hover:underline">Profile</Link>

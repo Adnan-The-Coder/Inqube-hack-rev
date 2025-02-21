@@ -12,6 +12,7 @@ import Services from "@/components/Services";
 import { Testimonials } from "@/components/Testimonials";
 
 import arrow from "../Images/arrow.png";
+import General from "@/components/General";
 
 export default function SparklesPreview() {
   const [isVisible, setIsVisible] = useState(false);
@@ -45,6 +46,7 @@ return (
     <FAQ/>
     <Plans/>
     <Testimonials/>
+    <General/>
     <Footer/>
     {isVisible && (
     <button

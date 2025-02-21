@@ -3,6 +3,7 @@
 import React, { useState, useEffect, createContext, useContext } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { initializeApp } from "firebase/app";
 import {
   getAuth,
@@ -49,6 +50,7 @@ const provider = new GoogleAuthProvider();
 export const UserProvider = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
   const [authError, setAuthError] = useState<string | null>(null);
+  const router = useRouter();
 
   useEffect(() => {
     const savedUser = localStorage.getItem("user");
@@ -68,7 +70,7 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
       }
     });
 
-return () => unsubscribe();
+    return () => unsubscribe();
   }, []);
 
   const handleSignIn = async () => {
@@ -77,6 +79,7 @@ return () => unsubscribe();
       const result = await signInWithPopup(auth, provider);
       setUser(result.user);
       localStorage.setItem("user", JSON.stringify(result.user));
+      router.push("/profile"); // Redirect to profile page after successful sign in
     } catch (error: any) {
       console.error("Error signing in:", error);
       setAuthError("An unexpected error occurred. Please try again.");
@@ -89,6 +92,7 @@ return () => unsubscribe();
       .then(() => {
         setUser(null);
         localStorage.removeItem("user");
+        router.push("/"); // Redirect to homepage after successful sign out
       })
       .catch((error) => {
         console.error("Error signing out:", error);
@@ -110,23 +114,36 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isProfileHovered, setIsProfileHovered] = useState(false);
   const { user, handleSignIn, handleSignOut, authError } = useUser();
+  const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 10);
     window.addEventListener("scroll", handleScroll);
     
-return () => window.removeEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const menuItems = [
     { name: "Home", href: "/" },
     { name: "About", href: "/about" },
+    {name: "Authenticate", href: "/authenticate"},
     { name: "Marketplace", href: "/marketplace" },
-    { name: "Contact", href: "/contact" },
+    { name: "Contact", href: "/contact" }
   ];
 
   // **Force Update Profile Picture**
   const profileImage = user?.photoURL ? `${user.photoURL}?t=${new Date().getTime()}` : "/default-avatar.png";
+
+  // Local handlers
+  const handleLocalSignIn = () => {
+    setIsMenuOpen(false);
+    handleSignIn();
+  };
+  
+  const handleLocalSignOut = () => {
+    setIsMenuOpen(false);
+    handleSignOut();
+  };
 
   return (
     <div className={`fixed left-0 top-0 z-50 w-full ${isScrolled ? "bg-[#0a0a0a] shadow-lg" : "bg-transparent"} transition-all duration-300`}>
@@ -162,14 +179,14 @@ return () => window.removeEventListener("scroll", handleScroll);
               {isProfileHovered && (
                 <div className="absolute right-0 top-10 w-36 rounded-lg bg-[#1a1a1a] p-3 text-white shadow-xl">
                   <Link href="/profile" className="block px-3 py-2 text-sm hover:text-[#76b900]">Profile</Link>
-                  <button onClick={handleSignOut} className="w-full rounded-md bg-red-600 px-4 py-2 text-sm text-white hover:bg-red-700">
+                  <button onClick={handleLocalSignOut} className="w-full rounded-md bg-red-600 px-4 py-2 text-sm text-white hover:bg-red-700">
                     Sign Out
                   </button>
                 </div>
               )}
             </div>
           ) : (
-            <button onClick={handleSignIn} className="rounded-full bg-[#76b900] px-5 py-2 text-white shadow-md hover:scale-105 hover:bg-[#5e9400]">
+            <button onClick={handleLocalSignIn} className="rounded-full bg-[#76b900] px-5 py-2 text-white shadow-md hover:scale-105 hover:bg-[#5e9400]">
               Sign in
             </button>
           )}
@@ -198,27 +215,27 @@ return () => window.removeEventListener("scroll", handleScroll);
           <div className="mt-5">
             {user ? (
               <div className="relative" onMouseEnter={() => setIsProfileHovered(true)} onMouseLeave={() => setIsProfileHovered(false)}>
-                <Link href="/profile">
+                <Link href="/profile" onClick={() => setIsMenuOpen(false)}>
                   <Image
-                  src={profileImage}
-                  alt="User Profile"
-                  width={50}
-                  height={50}
-                  priority={true}
-                  className="cursor-pointer rounded-full object-cover shadow-md"
-                />
+                    src={profileImage}
+                    alt="User Profile"
+                    width={50}
+                    height={50}
+                    priority={true}
+                    className="cursor-pointer rounded-full object-cover shadow-md"
+                  />
                 </Link>
                 <div className="absolute right-[-50px] top-14 w-36 rounded-lg p-3 text-white shadow-xl">
-                  <button onClick={handleSignOut} className="w-full rounded-md bg-red-600 px-4 py-2 text-sm text-white hover:bg-red-700">
+                  <button onClick={handleLocalSignOut} className="w-full rounded-md bg-red-600 px-4 py-2 text-sm text-white hover:bg-red-700">
                     Sign Out
                   </button>
                 </div>
               </div>
-          ) : (
-            <button onClick={handleSignIn} className="rounded-full bg-[#76b900] px-5 py-2 text-white shadow-md hover:scale-105 hover:bg-[#5e9400]">
-              Sign in
-            </button>
-          )}
+            ) : (
+              <button onClick={handleLocalSignIn} className="rounded-full bg-[#76b900] px-5 py-2 text-white shadow-md hover:scale-105 hover:bg-[#5e9400]">
+                Sign in
+              </button>
+            )}
           </div>
         </div>
       )}
