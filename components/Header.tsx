@@ -67,8 +67,7 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
         localStorage.setItem("user", JSON.stringify(currentUser));
       }
     });
-
-    return () => unsubscribe();
+return () => unsubscribe();
   }, []);
 
   const handleSignIn = async () => {
