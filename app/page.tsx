@@ -1,4 +1,7 @@
 "use client";
+import React, { useState, useEffect } from "react";
+import Image from "next/image";
+
 import Additional from "@/components/Additional";
 import FAQ from "@/components/FAQ";
 import Footer from "@/components/Footer";
@@ -7,10 +10,8 @@ import { Homepage } from "@/components/Homepage";
 import Plans from "@/components/Plans";
 import Services from "@/components/Services";
 import { Testimonials } from "@/components/Testimonials";
-import React from "react";
-import { useState, useEffect } from "react";
+
 import arrow from "../Images/arrow.png";
-import Image from "next/image";
 
 export default function SparklesPreview() {
   const [isVisible, setIsVisible] = useState(false);
@@ -31,27 +32,29 @@ export default function SparklesPreview() {
   };
   useEffect(() => {
     window.addEventListener("scroll", toggleVisibility);
-    return () => window.removeEventListener("scroll", toggleVisibility);
+    
+return () => window.removeEventListener("scroll", toggleVisibility);
   }, []);
-  return (
-    <div className="bg-black h-screen">
-        <Header/>
-        <Homepage/>
-        <Additional/>
-        <Services/>
-        <FAQ/>
-        <Plans/>
-        <Testimonials/>
-        <Footer/>
-        {isVisible && (
-        <button
+  
+return (
+  <div className="h-screen bg-black">
+    <Header/>
+    <Homepage/>
+    <Additional/>
+    <Services/>
+    <FAQ/>
+    <Plans/>
+    <Testimonials/>
+    <Footer/>
+    {isVisible && (
+    <button
           onClick={scrollToTop}
-          className="fixed bottom-10 right-10 bg-[#76b900] text-white p-3 rounded-full shadow-lg z_class"
+          className="z_class fixed bottom-10 right-10 rounded-full bg-[#76b900] p-3 text-white shadow-lg"
           aria-label="Back to Top"
         >
-          <Image src={arrow} className="w-8" alt="back to top"/>
-        </button>
+      <Image src={arrow} className="w-8" alt="back to top"/>
+    </button>
       )}
-    </div>
-  );
+  </div>
+);
 }

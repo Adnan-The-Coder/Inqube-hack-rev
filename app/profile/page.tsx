@@ -1,16 +1,17 @@
+/* eslint-disable tailwindcss/migration-from-tailwind-2 */
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Github, Linkedin, Instagram, Mail } from "lucide-react";
-import Header, { useUser } from "@/components/Header";
-import defaultpic from "@/app/team/defaultpic.jpg";
-import { ExternalLink } from "lucide-react";
-import profileBanner from "@/app/team/profile-banner.webp";
+import { Github, Linkedin, Instagram, Mail , ExternalLink } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import Footer from "@/components/Footer";
 import { useRouter } from "next/navigation";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+
+import Footer from "@/components/Footer";
+import defaultpic from "@/app/team/defaultpic.jpg";
+import Header, { useUser } from "@/components/Header";
+import profileBanner from "@/app/team/profile-banner.webp";
 
 const seedRandom = (seed: string): number => {
   let hash = 0;
@@ -19,11 +20,13 @@ const seedRandom = (seed: string): number => {
     hash = ((hash << 5) - hash) + char;
     hash = hash & hash; 
   }
-  return Math.abs(hash) / 2147483647;
+  
+return Math.abs(hash) / 2147483647;
 };
 const getSeededItem = (array: any[], seed: string) => {
   const index = Math.floor(seedRandom(seed) * array.length);
-  return array[index];
+  
+return array[index];
 };
 
 const getSeededItems = (array: any[], seed: string, count: number) => {
@@ -45,7 +48,6 @@ const getUserSpecificData = (seed: string) => {
     "A versatile professional combining technical expertise with business acumen. Passionate about sustainable innovation and creating solutions that balance profit with purpose.",
     "A dynamic professional with a background in both technology and design. Skilled at bridging the gap between technical requirements and user experience to create intuitive products."
   ];
-
   // Project options
   const projectOptions = [
     {
@@ -74,7 +76,6 @@ const getUserSpecificData = (seed: string) => {
       year: "2023"
     }
   ];
-
   // Achievement options
   const achievementOptions = [
     {
@@ -219,10 +220,14 @@ export default function ProfilePage() {
 }
 
 function ProfileContent() {
+  // eslint-disable-next-line no-unused-vars
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  // eslint-disable-next-line no-unused-vars
   const [isScrolled, setIsScrolled] = useState(false);
+  // eslint-disable-next-line no-unused-vars
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const { user } = useUser();
+  // eslint-disable-next-line no-unused-vars
   const router = useRouter();
   
   interface Project {
@@ -296,7 +301,8 @@ function ProfileContent() {
     };
 
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    
+return () => window.removeEventListener("scroll", handleScroll);
   }, []);
   
   useEffect(() => {
@@ -308,10 +314,10 @@ function ProfileContent() {
   }, [user]);
   if (!user) {
     return (
-      <div className="min-h-screen bg-[#0A0A0A] text-white flex items-center justify-center">
+      <div className="flex min-h-screen items-center justify-center bg-[#0A0A0A] text-white">
         <div className="text-center">
-          <h2 className="text-xl mb-4">Redirecting to login...</h2>
-          <div className="w-12 h-12 border-4 border-t-4 border-t-[#76b900] border-gray-700 rounded-full animate-spin mx-auto"></div>
+          <h2 className="mb-4 text-xl">Redirecting to login...</h2>
+          <div className="mx-auto size-12 animate-spin rounded-full border-4 border-gray-700 border-t-[#76b900]"></div>
         </div>
       </div>
     );
@@ -322,47 +328,46 @@ function ProfileContent() {
   return (
     <div className="min-h-screen bg-[#0A0A0A] text-white">
       <Header />
-      <main className="container mx-auto px-6 pt-32 pb-12">
-        <section className="grid md:grid-cols-2 gap-12 mb-16">
-          <div className="relative flex flex-col items-center animate-fadeIn">
-            <div className="absolute top-0 left-0 w-full h-48 rounded-t-lg overflow-hidden">
+      <main className="container mx-auto px-6 pb-12 pt-32">
+        <section className="mb-16 grid gap-12 md:grid-cols-2">
+          <div className="animate-fadeIn relative flex flex-col items-center">
+            <div className="absolute left-0 top-0 h-48 w-full overflow-hidden rounded-t-lg">
               <Image
                 src={profileBanner}
                 alt="Profile Banner"
-                className="w-full h-full object-cover"
+                className="size-full object-cover"
               />
             </div>
-            <div className="w-48 h-48 rounded-full border-4 border-gradient-to-r from-[#76b900] to-[#34b7b3] p-1 shadow-lg z-10">
+            <div className="border-gradient-to-r z-10 size-48 rounded-full border-4 from-[#76b900] to-[#34b7b3] p-1 shadow-lg">
               <Image
                 src={profileImage}
                 alt="Profile"
                 width={192}
                 height={192}
                 quality={100} 
-                className="w-full h-full object-cover rounded-full"
+                className="size-full rounded-full object-cover"
               />
             </div>
-            <h1 className="mt-6 mb-2 text-4xl font-bold text-[#76b900]">
+            <h1 className="mb-2 mt-6 text-4xl font-bold text-[#76b900]">
               {user?.displayName || "Default"}
             </h1>
-            <span className="mt-2 px-6 py-2 bg-[#76b900] text-black rounded-full text-sm font-medium">
+            <span className="mt-2 rounded-full bg-[#76b900] px-6 py-2 text-sm font-medium text-black">
               {userData.userType}
             </span>
-
-            <div className="mt-4 flex space-x-6 animate-slideIn">
+            <div className="animate-slideIn mt-4 flex space-x-6">
               <SocialLink Icon={Github} href="https://github.com" />
               <SocialLink Icon={Linkedin} href="https://www.linkedin.com/" />
               <SocialLink Icon={Instagram} href="https://www.instagram.com/" />
             </div>
           </div>
-          <div className="bg-[#111111] rounded-xl p-6 shadow-xl hover:shadow-2xl transition-all">
-            <h2 className="text-2xl font-bold mb-4 text-[#76b900]">About</h2>
-            <p className="text-gray-300 leading-relaxed">
+          <div className="rounded-xl bg-[#111111] p-6 shadow-xl transition-all hover:shadow-2xl">
+            <h2 className="mb-4 text-2xl font-bold text-[#76b900]">About</h2>
+            <p className="leading-relaxed text-gray-300">
               {userData.about}
             </p>
             {user && (
-              <div className="mt-4 p-4 bg-[#1a1a1a] rounded-lg">
-                <h3 className="text-xl font-semibold text-[#76b900] mb-2">
+              <div className="mt-4 rounded-lg bg-[#1a1a1a] p-4">
+                <h3 className="mb-2 text-xl font-semibold text-[#76b900]">
                   Contact Information
                 </h3>
                 <p className="text-gray-300">
@@ -373,8 +378,8 @@ function ProfileContent() {
           </div>
         </section>
         <section className="mb-16">
-          <h2 className="text-2xl font-bold mb-6">Projects</h2>
-          <div className="grid md:grid-cols-2 gap-6">
+          <h2 className="mb-6 text-2xl font-bold">Projects</h2>
+          <div className="grid gap-6 md:grid-cols-2">
             {userData.projects.map((project, index) => (
               <ProjectCard
                 key={index}
@@ -386,10 +391,10 @@ function ProfileContent() {
           </div>
         </section>
         <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-6 text-[#76b900]">
+          <h2 className="mb-6 text-3xl font-bold text-[#76b900]">
             Achievements
           </h2>
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
+          <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
             {userData.achievements.map((achievement, index) => (
               <AchievementCard
                 key={index}
@@ -401,10 +406,10 @@ function ProfileContent() {
           </div>
         </section>
         <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-6 text-[#76b900]">
+          <h2 className="mb-6 text-3xl font-bold text-[#76b900]">
             Testimonials
           </h2>
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
+          <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
             {userData.testimonials.map((testimonial, index) => (
               <TestimonialCard
                 key={index}
@@ -416,18 +421,18 @@ function ProfileContent() {
           </div>
         </section>
         <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-6 text-[#76b900]">Skills</h2>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 animate-slideUp">
+          <h2 className="mb-6 text-3xl font-bold text-[#76b900]">Skills</h2>
+          <div className="animate-slideUp grid grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4">
             {userData.skills.map((skill, index) => (
               <Skill key={index} text={skill} />
             ))}
           </div>
         </section>
         <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-6 text-[#76b900]">
+          <h2 className="mb-6 text-3xl font-bold text-[#76b900]">
             Certifications
           </h2>
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
+          <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
             {userData.certifications.map((cert, index) => (
               <CertificationCard
                 key={index}
@@ -439,37 +444,37 @@ function ProfileContent() {
           </div>
         </section>
         <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-6 text-[#76b900]">
+          <h2 className="mb-6 text-3xl font-bold text-[#76b900]">
             Contact Information
           </h2>
-          <div className="grid md:grid-cols-2 gap-6">
-            <div className="bg-[#111111] rounded-xl p-6">
+          <div className="grid gap-6 md:grid-cols-2">
+            <div className="rounded-xl bg-[#111111] p-6">
               <h3 className="text-xl font-bold text-white">Email</h3>
-              <p className="text-gray-300 mt-2 mb-4">
+              <p className="mb-4 mt-2 text-gray-300">
                 {user?.email || "example@gmail.com"}
               </p>
               <Link
                 href={`mailto:${user?.email || "example@gmail.com"}`}
-                className="mt-4 bg-[#76b900] text-black px-6 py-2 rounded-full font-medium hover:bg-opacity-90 transition-all"
+                className="mt-4 rounded-full bg-[#76b900] px-6 py-2 font-medium text-black transition-all hover:bg-opacity-90"
               >
                 Send Email
               </Link>
             </div>
-            <div className="bg-[#111111] rounded-xl p-6">
+            <div className="rounded-xl bg-[#111111] p-6">
               <h3 className="text-xl font-bold text-white">Phone</h3>
-              <p className="text-gray-300 mt-2 mb-5">+917396211824</p>
+              <p className="mb-5 mt-2 text-gray-300">+917396211824</p>
               <Link
                 href="tel:+917396211824"
-                className="mt-4 bg-[#76b900] text-black px-6 py-2 rounded-full font-medium hover:bg-opacity-90 transition-all"
+                className="mt-4 rounded-full bg-[#76b900] px-6 py-2 font-medium text-black transition-all hover:bg-opacity-90"
               >
                 Call
               </Link>
             </div>
           </div>
         </section>
-        <section className="text-center mb-12">
-          <button className="bg-[#76b900] text-black px-10 py-4 rounded-full font-medium hover:bg-opacity-90 transition-colors flex items-center mx-auto">
-            <Mail className="w-5 h-5 mr-2" />
+        <section className="mb-12 text-center">
+          <button className="mx-auto flex items-center rounded-full bg-[#76b900] px-10 py-4 font-medium text-black transition-colors hover:bg-opacity-90">
+            <Mail className="mr-2 size-5" />
             Get in Touch
           </button>
         </section>
@@ -489,9 +494,9 @@ const SocialLink = ({ Icon, href }: SocialLinkProps) => (
     href={href}
     target="_blank"
     rel="noopener noreferrer"
-    className="text-gray-300 hover:text-[#76b900] transition-colors hover:scale-95"
+    className="text-gray-300 transition-colors hover:scale-95 hover:text-[#76b900]"
   >
-    <Icon className="w-6 h-6" />
+    <Icon className="size-6" />
   </a>
 );
 
@@ -502,9 +507,9 @@ interface TestimonialCardProps {
 }
 
 const TestimonialCard = ({ name, role, message }: TestimonialCardProps) => (
-  <div className="bg-[#111111] rounded-xl p-6 shadow-lg hover:shadow-2xl transition-all">
-    <p className="text-gray-300 text-lg italic">"{message}"</p>
-    <p className="mt-4 text-[#76b900] font-semibold">{name}</p>
+  <div className="rounded-xl bg-[#111111] p-6 shadow-lg transition-all hover:shadow-2xl">
+    <p className="text-lg italic text-gray-300">"{message}"</p>
+    <p className="mt-4 font-semibold text-[#76b900]">{name}</p>
     <p className="text-sm text-gray-400">{role}</p>
   </div>
 );
@@ -516,10 +521,10 @@ interface AchievementCardProps {
 }
 
 const AchievementCard = ({ title, year, description }: AchievementCardProps) => (
-  <div className="bg-[#111111] rounded-xl p-6 shadow-lg hover:shadow-2xl transition-all">
+  <div className="rounded-xl bg-[#111111] p-6 shadow-lg transition-all hover:shadow-2xl">
     <h3 className="text-xl font-bold text-white">{title}</h3>
-    <p className="text-gray-300 mt-2">{year}</p>
-    <p className="text-gray-400 mt-2">{description}</p>
+    <p className="mt-2 text-gray-300">{year}</p>
+    <p className="mt-2 text-gray-400">{description}</p>
   </div>
 );
 
@@ -528,7 +533,7 @@ interface SkillProps {
 }
 
 const Skill = ({ text }: SkillProps) => (
-  <span className="px-6 py-3 bg-[#111111] rounded-full text-sm font-medium border-2 border-transparent hover:border-[#76b900] hover:text-[#76b900] transition-all">
+  <span className="rounded-full border-2 border-transparent bg-[#111111] px-6 py-3 text-sm font-medium transition-all hover:border-[#76b900] hover:text-[#76b900]">
     {text}
   </span>
 );
@@ -540,10 +545,10 @@ interface CertificationCardProps {
 }
 
 const CertificationCard = ({ title, issuer, year }: CertificationCardProps) => (
-  <div className="bg-[#111111] rounded-xl p-6 hover:bg-[#1A1A1A] transition-all">
+  <div className="rounded-xl bg-[#111111] p-6 transition-all hover:bg-[#1A1A1A]">
     <h3 className="text-xl font-bold text-white">{title}</h3>
     <p className="text-sm text-gray-400">{issuer}</p>
-    <p className="text-gray-300 mt-2">{year}</p>
+    <p className="mt-2 text-gray-300">{year}</p>
   </div>
 );
 
@@ -554,19 +559,19 @@ interface ProjectCardProps {
 }
 
 const ProjectCard = ({ title, description, year }: ProjectCardProps) => (
-  <div className="bg-[#111111] rounded-xl p-6 hover:bg-[#1A1A1A]">
-    <div className="flex justify-between items-start mb-4">
+  <div className="rounded-xl bg-[#111111] p-6 hover:bg-[#1A1A1A]">
+    <div className="mb-4 flex items-start justify-between">
       <h3 className="text-xl font-bold">{title}</h3>
       <span className="text-sm text-gray-400">{year}</span>
     </div>
-    <p className="text-gray-300 mb-4">{description}</p>
+    <p className="mb-4 text-gray-300">{description}</p>
     <div className="flex space-x-4">
-      <button className="text-sm text-[#76b900] hover:underline flex items-center">
-        <ExternalLink className="w-4 h-4 mr-1" />
+      <button className="flex items-center text-sm text-[#76b900] hover:underline">
+        <ExternalLink className="mr-1 size-4" />
         Live Demo
       </button>
-      <button className="text-sm text-[#76b900] hover:underline flex items-center">
-        <Github className="w-4 h-4 mr-1" />
+      <button className="flex items-center text-sm text-[#76b900] hover:underline">
+        <Github className="mr-1 size-4" />
         View Code
       </button>
     </div>

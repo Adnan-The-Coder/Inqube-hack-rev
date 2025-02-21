@@ -1,7 +1,7 @@
-import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
-import Link from "next/link";
 import { useState } from "react";
+
+import { cn } from "@/lib/utils";
 
 export const HoverEffect = ({
   items,
@@ -26,14 +26,14 @@ export const HoverEffect = ({
       {items.map((item, idx) => (
         <div
           key={item?.link}
-          className="relative group  block p-2 h-full w-full"
+          className="group relative  block size-full p-2"
           onMouseEnter={() => setHoveredIndex(idx)}
           onMouseLeave={() => setHoveredIndex(null)}
         >
           <AnimatePresence>
             {hoveredIndex === idx && (
               <motion.span
-                className="absolute inset-0 h-full w-full bg-[#76b900] block  rounded-3xl"
+                className="absolute inset-0 block size-full rounded-3xl bg-[#76b900]"
                 layoutId="hoverBackground"
                 initial={{ opacity: 0 }}
                 animate={{

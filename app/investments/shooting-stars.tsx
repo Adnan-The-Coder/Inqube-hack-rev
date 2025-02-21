@@ -1,6 +1,7 @@
 "use client";
-import { cn } from "@/lib/utils";
 import React, { useEffect, useState, useRef } from "react";
+
+import { cn } from "@/lib/utils";
 
 interface ShootingStar {
   id: number;
@@ -99,7 +100,8 @@ export const ShootingStars: React.FC<ShootingStarsProps> = ({
           ) {
             return null;
           }
-          return {
+          
+return {
             ...prevStar,
             x: newX,
             y: newY,
@@ -111,7 +113,8 @@ export const ShootingStars: React.FC<ShootingStarsProps> = ({
     };
 
     const animationFrame = requestAnimationFrame(moveStar);
-    return () => cancelAnimationFrame(animationFrame);
+    
+return () => cancelAnimationFrame(animationFrame);
   }, [star]);
 
   return (

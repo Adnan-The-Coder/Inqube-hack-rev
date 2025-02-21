@@ -1,14 +1,14 @@
-import { HoverEffect } from "../components/ui/card-hover-effect";
+import { HoverEffect } from "@/components/ui/card-hover-effect";
 
 export function Testimonials() {
   return (
-    <div className="max-w-5xl mx-auto px-8 pt-[55rem] md:pt-[500px] lg:pt-[160px] pb-20">
-      <div className="text-center flex flex-col gap-5 z-10">
-        <h1 className="text-[#76b900] text-4xl md:text-5xl font-semibold">
+    <div className="mx-auto max-w-5xl px-8 pb-20 pt-[55rem] md:pt-[500px] lg:pt-[160px]">
+      <div className="z-10 flex flex-col gap-5 text-center">
+        <h1 className="text-4xl font-semibold text-[#76b900] md:text-5xl">
           What Our Clients Say?
         </h1>
-        <h2 className="text-[#858585] text-xl font-medium">
-        Real stories from real founders. See how entrepreneurs like you transformed their businesses with our solution. 
+        <h2 className="text-xl font-medium text-[#858585]">
+          Real stories from real founders. See how entrepreneurs like you transformed their businesses with our solution. 
         </h2>
       </div>
       <HoverEffect items={projects} />

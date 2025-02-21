@@ -1,8 +1,9 @@
 "use client";
 import React from "react";
 import Link from "next/link";
-import home from "../Images/home.jpg";
 import Image from "next/image";
+
+import home from "../Images/home.jpg";
 import brand1 from "../Images/brand1.webp";
 import brand2 from "../Images/brand2.webp";
 import brand3 from "../Images/brand3.webp";
@@ -11,38 +12,38 @@ import brand5 from "../Images/brand5.webp";
 
 export function Homepage() {
   return (
-    <div className="relative flex flex-col items-center justify-center min-h-screen w-full bg-neutral-950 text-white overflow-hidden rounded-md antialiased">
-      <div className="z-10 flex flex-col items-center justify-center px-6 md:px-12 gap-6 text-center mt-32 md:mt-28">
-        <h1 className="text-4xl md:text-6xl font-extrabold leading-tight tracking-tight mt-1">
+    <div className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden rounded-md bg-neutral-950 text-white antialiased">
+      <div className="z-10 mt-32 flex flex-col items-center justify-center gap-6 px-6 text-center md:mt-28 md:px-12">
+        <h1 className="mt-1 text-4xl font-extrabold leading-tight tracking-tight md:text-6xl">
           Bridge the Gap Between <br />
-          <span className="text-[#76b900] text-3xl md:text-5xl">
+          <span className="text-3xl text-[#76b900] md:text-5xl">
             Ideas and Investments.
           </span>
         </h1>
-        <div className="flex flex-wrap justify-center gap-4 mt-1">
+        <div className="mt-1 flex flex-wrap justify-center gap-4">
           <Link
             href="/"
-            className="bg-[#76b900] text-white px-6 py-3 rounded-lg text-sm md:text-md font-medium shadow-lg hover:bg-white hover:text-[#76b900] transition duration-300"
+            className="md:text-md rounded-lg bg-[#76b900] px-6 py-3 text-sm font-medium text-white shadow-lg transition duration-300 hover:bg-white hover:text-[#76b900]"
           >
             Explore
           </Link>
           <Link
             href="/marketplace"
-            className="border-[#76b900] border px-6 py-3 rounded-lg text-sm md:text-md font-medium hover:bg-[#76b900] transition duration-300"
+            className="md:text-md rounded-lg border border-[#76b900] px-6 py-3 text-sm font-medium transition duration-300 hover:bg-[#76b900]"
           >
             Marketplace
           </Link>
         </div>
-        <Image src={home} alt="Home" className="w-64 md:w-96 rounded-lg shadow-lg" />
+        <Image src={home} alt="Home" className="w-64 rounded-lg shadow-lg md:w-96" />
       </div>
-      <div className="z-10 mt-28 md:mt-16 mb-24">
-        <div className="flex flex-wrap justify-center items-center gap-10 md:gap-32 px-2">
+      <div className="z-10 mb-24 mt-28 md:mt-16">
+        <div className="flex flex-wrap items-center justify-center gap-10 px-2 md:gap-32">
           {[brand1, brand2, brand3, brand4, brand5].map((brand, index) => (
             <Image
               key={index}
               src={brand}
               alt={`Brand ${index + 1}`}
-              className="w-32 md:w-40 h-auto grayscale hover:scale-105 transition-all ease-in-out cursor-pointer"
+              className="h-auto w-32 cursor-pointer grayscale transition-all ease-in-out hover:scale-105 md:w-40"
             />
           ))}
         </div>

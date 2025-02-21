@@ -1,43 +1,44 @@
 "use client";
 
+import React from "react";
+
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
-import React from "react";
 
 const AboutUs = () => {
   return (
     <div>
-      <div className="bg-[#0a0a0a] text-white min-h-screen p-6 mb-20">
+      <div className="mb-20 min-h-screen bg-[#0a0a0a] p-6 text-white">
         <Header />
-        <div className="max-w-6xl mx-auto">
+        <div className="mx-auto max-w-6xl">
           <header className="mb-12 mt-20">
-            <h1 className="text-3xl lg:text-4xl font-bold text-center text-[#76b900]">
+            <h1 className="text-center text-3xl font-bold text-[#76b900] lg:text-4xl">
               About Us
             </h1>
           </header>
           <section>
-            <h2 className="text-3xl font-bold text-[#ffffff] mb-6">
+            <h2 className="mb-6 text-3xl font-bold text-[#ffffff]">
               Welcome to Inqube
             </h2>
-            <p className="text-gray-300 text-sm lg:text-base mb-6 leading-relaxed">
+            <p className="mb-6 text-sm leading-relaxed text-gray-300 lg:text-base">
               At <strong>Inqube</strong>, we redefine the way innovation meets opportunity. As a dynamic startup, we are committed to bridging the gap between visionary developers and discerning investors. Our platform empowers developers to bring their ideas to life by showcasing their projects through immersive multimedia, detailed descriptions, and precise funding requirements. Simultaneously, we offer investors a curated portfolio of groundbreaking projects powered by AI-driven matchmaking, ensuring seamless collaboration and mutual growth.
             </p>
-            <p className="text-gray-300 text-sm lg:text-base leading-relaxed">
+            <p className="text-sm leading-relaxed text-gray-300 lg:text-base">
               Our mission is simple: to create a thriving ecosystem where technology, creativity, and investment come together to spark innovation and deliver real-world impact.
             </p>
           </section>
           <section className="mt-8">
-            <h2 className="text-2xl font-bold text-[#ffffff] mb-6">Our Vision</h2>
-            <p className="text-gray-300 text-sm lg:text-base leading-relaxed">
+            <h2 className="mb-6 text-2xl font-bold text-[#ffffff]">Our Vision</h2>
+            <p className="text-sm leading-relaxed text-gray-300 lg:text-base">
               We envision a future where innovative ideas are never constrained by resources or opportunities. <strong>Inqube</strong> serves as a launchpad for startups and developers to scale their ambitions and connect with investors who share their passion for transformative technology. By leveraging cutting-edge AI and blockchain technologies, we provide a secure, transparent, and scalable platform that fosters trust and builds enduring partnerships.
             </p>
           </section>
           <section className="mt-8">
-            <h3 className="text-xl font-bold text-[#ffffff] mb-4">Why Choose Inqube?</h3>
-            <p className="text-gray-300 text-sm lg:text-base leading-relaxed mb-4">
+            <h3 className="mb-4 text-xl font-bold text-[#ffffff]">Why Choose Inqube?</h3>
+            <p className="mb-4 text-sm leading-relaxed text-gray-300 lg:text-base">
               <strong>Inqube</strong> stands out with its:
             </p>
-            <ul className="list-disc list-inside space-y-4 text-gray-300 text-sm lg:text-base">
+            <ul className="list-inside list-disc space-y-4 text-sm text-gray-300 lg:text-base">
               <li>
                 <strong className="text-[#76b900]">Innovative Solutions:</strong> AI-powered insights and blockchain technology ensure secure, efficient transactions and matchmaking.
               </li>
@@ -56,11 +57,11 @@ const AboutUs = () => {
             </ul>
           </section>
           <section className="mt-8">
-            <h3 className="text-xl font-bold text-[#ffffff] mb-4">What We Offer</h3>
-            <p className="text-gray-300 text-sm lg:text-base leading-relaxed mb-4">
+            <h3 className="mb-4 text-xl font-bold text-[#ffffff]">What We Offer</h3>
+            <p className="mb-4 text-sm leading-relaxed text-gray-300 lg:text-base">
               At <strong>Inqube</strong>, we are more than just a platform – we are a community where innovators and investors thrive together. Here's how we make it happen:
             </p>
-            <ul className="list-disc list-inside space-y-4 text-gray-300 text-sm lg:text-base">
+            <ul className="list-inside list-disc space-y-4 text-sm text-gray-300 lg:text-base">
               <li>Comprehensive project listings with demo links, videos, and detailed descriptions.</li>
               <li>End-to-end encrypted communication channels for secure collaboration.</li>
               <li>Subscription-based revenue streams, premium services, and transaction fee structures that ensure sustainability.</li>

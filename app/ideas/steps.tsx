@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 const steps = [
     { title: "Choose Your Startup Idea", description: "Pick an innovative idea.", options: ["AI-powered healthcare assistant", "Sustainable e-commerce platform", "Blockchain for supply chain", "Virtual reality fitness app"] },
     { title: "Select Your Industry", description: "Which industry does your idea target?", options: ["Healthcare", "E-commerce", "Technology", "Education"] },

@@ -56,8 +56,8 @@ const Page = () => {
 
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-3xl font-bold text-center mb-6">Add Developer Project</h1>
-      <form onSubmit={handleSubmit} className="max-w-lg mx-auto bg-white p-6 rounded-md shadow-md space-y-4">
+      <h1 className="mb-6 text-center text-3xl font-bold">Add Developer Project</h1>
+      <form onSubmit={handleSubmit} className="mx-auto max-w-lg space-y-4 rounded-md bg-white p-6 shadow-md">
         {/* Project Title */}
         <div>
           <label htmlFor="name" className="block text-sm font-medium text-gray-700">
@@ -70,10 +70,9 @@ const Page = () => {
             value={formData.name}
             onChange={handleInputChange}
             required
-            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
           />
         </div>
-
         {/* Tag */}
         <div>
           <label htmlFor="tag" className="block text-sm font-medium text-gray-700">
@@ -86,10 +85,9 @@ const Page = () => {
             value={formData.tag}
             onChange={handleInputChange}
             required
-            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
           />
         </div>
-
         {/* Project Description */}
         <div>
           <label htmlFor="desc" className="block text-sm font-medium text-gray-700">
@@ -101,10 +99,9 @@ const Page = () => {
             value={formData.desc}
             onChange={handleInputChange}
             required
-            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
           />
         </div>
-
         {/* Status */}
         <div>
           <label htmlFor="status" className="block text-sm font-medium text-gray-700">
@@ -117,10 +114,9 @@ const Page = () => {
             value={formData.status}
             onChange={handleInputChange}
             required
-            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
           />
         </div>
-
         {/* Expected Invested Amount */}
         <div>
           <label htmlFor="Expected_Invested_Amount" className="block text-sm font-medium text-gray-700">
@@ -133,10 +129,9 @@ const Page = () => {
             value={formData.Expected_Invested_Amount}
             onChange={handleInputChange}
             required
-            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
           />
         </div>
-
         {/* Capital */}
         <div>
           <label htmlFor="Capital" className="block text-sm font-medium text-gray-700">
@@ -149,11 +144,9 @@ const Page = () => {
             value={formData.Capital}
             onChange={handleInputChange}
             required
-            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
           />
         </div>
-
-
         {/* Author */}
         <div>
           <label htmlFor="author" className="block text-sm font-medium text-gray-700">
@@ -166,10 +159,9 @@ const Page = () => {
             value={formData.author}
             onChange={handleInputChange}
             required
-            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
           />
         </div>
-
         {/* Is Team Required */}
         <div className="flex items-center">
           <input
@@ -178,13 +170,12 @@ const Page = () => {
             name="IsTeamReq"
             checked={formData.IsTeamReq}
             onChange={handleInputChange}
-            className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
+            className="size-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
           />
           <label htmlFor="IsTeamReq" className="ml-2 block text-sm text-gray-700">
             Is Team Required
           </label>
         </div>
-
         {/* Image Demo */}
         <div>
           <label htmlFor="imageDemo" className="block text-sm font-medium text-gray-700">
@@ -197,10 +188,9 @@ const Page = () => {
             value={formData.imageDemo}
             onChange={handleInputChange}
             required
-            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
           />
         </div>
-
         {/* Price */}
         <div>
           <label htmlFor="price" className="block text-sm font-medium text-gray-700">
@@ -213,15 +203,14 @@ const Page = () => {
             value={formData.price}
             onChange={handleInputChange}
             required
-            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            className="mt-1 block w-full rounded-md border border-gray-300 px-3 py-2 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
           />
         </div>
-
         {/* Submit Button */}
         <div>
           <button
             type="submit"
-            className="w-full mt-4 py-2 px-4 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            className="mt-4 w-full rounded-md bg-indigo-600 px-4 py-2 text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
           >
             Submit
           </button>

@@ -3,8 +3,9 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image, { StaticImageData } from "next/image";
-import { FaLinkedin, FaFacebook, FaInstagram, FaGithub  } from "react-icons/fa";
+import { FaLinkedin, FaInstagram, FaGithub  } from "react-icons/fa";
 import { BsTwitterX } from "react-icons/bs";
+
 import Header from "@/components/Header";
 import mudassir from "@/app/team/mudassir.jpg";
 import aayan from "@/app/team/aayan.jpg";
@@ -108,8 +109,6 @@ const teamMembers: TeamMember[] = [
       },
     },
   ];
-  
-  
 
 const TeamPage: React.FC = () => {
   const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
@@ -118,76 +117,76 @@ const TeamPage: React.FC = () => {
 
   return (
     <div>
-    <div className="bg-[#0a0a0a] min-h-screen py-20 px-6 relative">
-      <Header />
-      <h1 className="text-4xl font-bold text-center text-white mb-12">
-        Meet Our Team
-      </h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        {teamMembers.map((member, index) => (
-          <motion.div
+      <div className="relative min-h-screen bg-[#0a0a0a] px-6 py-20">
+        <Header />
+        <h1 className="mb-12 text-center text-4xl font-bold text-white">
+          Meet Our Team
+        </h1>
+        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+          {teamMembers.map((member, index) => (
+            <motion.div
             key={index}
             whileHover={{ scale: 1.01 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => setSelectedMember(member)}
-            className="group relative bg-[#1B1B1B] rounded-lg shadow-lg overflow-hidden cursor-pointer flex flex-col"
+            className="group relative flex cursor-pointer flex-col overflow-hidden rounded-lg bg-[#1B1B1B] shadow-lg"
           >
-            <Image
+              <Image
               src={member.image}
               alt={member.name}
               width={500}
               height={500}
-              className="w-full h-80 object-cover group-hover:opacity-80 transition-opacity duration-300"
+              className="h-80 w-full object-cover transition-opacity duration-300 group-hover:opacity-80"
             />
-            <div className="p-4 text-center">
-              <h2 className="text-xl font-bold text-white">{member.name}</h2>
-              <p className="text-sm text-gray-400 mt-2">{member.role}</p>
-              <div className="flex space-x-4 justify-center mt-4">
-                <a
+              <div className="p-4 text-center">
+                <h2 className="text-xl font-bold text-white">{member.name}</h2>
+                <p className="mt-2 text-sm text-gray-400">{member.role}</p>
+                <div className="mt-4 flex justify-center space-x-4">
+                  <a
                   href={member.socials.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[#76b900] hover:text-[#76b900] text-2xl"
+                  className="text-2xl text-[#76b900] hover:text-[#76b900]"
                 >
-                  <FaLinkedin />
-                </a>
-                <a
+                    <FaLinkedin />
+                  </a>
+                  <a
                   href={member.socials.twitter}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[#76b900] hover:text-[#9cd041] text-2xl"
+                  className="text-2xl text-[#76b900] hover:text-[#9cd041]"
                 >
-                  <BsTwitterX  />
-                </a>    
-                <a
+                    <BsTwitterX  />
+                  </a>    
+                  <a
                   href={member.socials.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[#76b900] hover:text-[#9cd041] text-2xl"
+                  className="text-2xl text-[#76b900] hover:text-[#9cd041]"
                 >
-                  <FaInstagram />
-                </a>
-                <a
+                    <FaInstagram />
+                  </a>
+                  <a
                   href={member.socials.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[#76b900] hover:text-[#9cd041] text-2xl"
+                  className="text-2xl text-[#76b900] hover:text-[#9cd041]"
                 >
-                  <FaGithub />
-                </a>
+                    <FaGithub />
+                  </a>
+                </div>
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
         ))}
-      </div>
-
-      <AnimatePresence>
-        {selectedMember && (
+        </div>
+        <AnimatePresence>
+          {selectedMember && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black bg-opacity-80 flex justify-center items-center z-50"
+            // eslint-disable-next-line tailwindcss/migration-from-tailwind-2
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-80"
             onClick={closeModal}
           >
             <motion.div
@@ -195,12 +194,12 @@ const TeamPage: React.FC = () => {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
               transition={{ duration: 0.4 }}
-              className="relative bg-[#1b1b1b] rounded-lg shadow-lg max-w-4xl w-full p-6 flex flex-col md:flex-row"
+              className="relative flex w-full max-w-4xl flex-col rounded-lg bg-[#1b1b1b] p-6 shadow-lg md:flex-row"
               onClick={(e) => e.stopPropagation()}
             >
               <button
                 onClick={closeModal}
-                className="absolute top-4 right-4 text-white text-3xl"
+                className="absolute right-4 top-4 text-3xl text-white"
               >
                 &times;
               </button>
@@ -209,20 +208,20 @@ const TeamPage: React.FC = () => {
                 alt={selectedMember.name}
                 width={500}
                 height={500}
-                className="w-full md:w-[50rem] h-[20rem] md:h-[28rem] object-cover rounded-lg"
+                className="h-80 w-full rounded-lg object-cover md:h-[28rem] md:w-[50rem]"
               />
-              <div className="md:ml-6 flex flex-col justify-center">
-                <h2 className="text-3xl font-bold text-white mt-4 md:mt-0">
+              <div className="flex flex-col justify-center md:ml-6">
+                <h2 className="mt-4 text-3xl font-bold text-white md:mt-0">
                   {selectedMember.name}
                 </h2>
-                <p className="text-lg text-gray-300 mt-2">{selectedMember.role}</p>
-                <p className="text-gray-400 hidden md:flex mt-4 text-sm">{selectedMember.about}</p>
-                <div className="flex space-x-4 mt-6">
+                <p className="mt-2 text-lg text-gray-300">{selectedMember.role}</p>
+                <p className="mt-4 hidden text-sm text-gray-400 md:flex">{selectedMember.about}</p>
+                <div className="mt-6 flex space-x-4">
                   <a
                     href={selectedMember.socials.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-[#76b900] hover:text-[#9cd041] text-2xl"
+                    className="text-2xl text-[#76b900] hover:text-[#9cd041]"
                   >
                     <FaLinkedin />
                   </a>
@@ -230,7 +229,7 @@ const TeamPage: React.FC = () => {
                     href={selectedMember.socials.twitter}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-[#76b900] hover:text-[#9cd041] text-2xl"
+                    className="text-2xl text-[#76b900] hover:text-[#9cd041]"
                   >
                     <BsTwitterX  />
                   </a>
@@ -238,7 +237,7 @@ const TeamPage: React.FC = () => {
                     href={selectedMember.socials.instagram}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-[#76b900] hover:text-[#9cd041] text-2xl"
+                    className="text-2xl text-[#76b900] hover:text-[#9cd041]"
                   >
                     <FaInstagram />
                   </a>
@@ -246,7 +245,7 @@ const TeamPage: React.FC = () => {
                     href={selectedMember.socials.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-[#76b900] hover:text-[#9cd041] text-2xl"
+                    className="text-2xl text-[#76b900] hover:text-[#9cd041]"
                   >
                     <FaGithub />
                   </a>
@@ -255,12 +254,12 @@ const TeamPage: React.FC = () => {
             </motion.div>
           </motion.div>
         )}
-      </AnimatePresence>
-      <div className="mt-12">  {/* Added this wrapper with margin-top */}
-      </div>
-    </div>
-        <Footer /> 
+        </AnimatePresence>
+        <div className="mt-12">  {/* Added this wrapper with margin-top */}
         </div>
+      </div>
+      <Footer /> 
+    </div>
   );
 };
 
