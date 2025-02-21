@@ -9,8 +9,35 @@ import profileBanner from "@/app/team/profile-banner.webp";
 import Image from "next/image";
 import Link from "next/link";
 import Footer from "@/components/Footer";
+import { useRouter } from "next/navigation";
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 
-const getRandomAbout = () => {
+const seedRandom = (seed: string): number => {
+  let hash = 0;
+  for (let i = 0; i < seed.length; i++) {
+    const char = seed.charCodeAt(i);
+    hash = ((hash << 5) - hash) + char;
+    hash = hash & hash; 
+  }
+  return Math.abs(hash) / 2147483647;
+};
+const getSeededItem = (array: any[], seed: string) => {
+  const index = Math.floor(seedRandom(seed) * array.length);
+  return array[index];
+};
+
+const getSeededItems = (array: any[], seed: string, count: number) => {
+  const shuffled = [...array];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const r = Math.floor(seedRandom(seed + i) * (i + 1));
+    [shuffled[i], shuffled[r]] = [shuffled[r], shuffled[i]];
+  }
+  
+  return shuffled.slice(0, count);
+};
+
+const getUserSpecificData = (seed: string) => {
+  // About options
   const aboutOptions = [
     "A creative problem-solver with a passion for leadership, collaboration, and innovation. Skilled in organizing events, effective communication, and building meaningful connections.",
     "A strategic thinker with expertise in digital transformation and product development. Passionate about using technology to solve real-world problems and create positive social impact.",
@@ -18,10 +45,8 @@ const getRandomAbout = () => {
     "A versatile professional combining technical expertise with business acumen. Passionate about sustainable innovation and creating solutions that balance profit with purpose.",
     "A dynamic professional with a background in both technology and design. Skilled at bridging the gap between technical requirements and user experience to create intuitive products."
   ];
-  return aboutOptions[Math.floor(Math.random() * aboutOptions.length)];
-};
 
-const getRandomProjects = () => {
+  // Project options
   const projectOptions = [
     {
       title: "Note Sync",
@@ -49,11 +74,8 @@ const getRandomProjects = () => {
       year: "2023"
     }
   ];
-  const shuffled = [...projectOptions].sort(() => 0.5 - Math.random());
-  return shuffled.slice(0, 2);
-};
 
-const getRandomAchievements = () => {
+  // Achievement options
   const achievementOptions = [
     {
       title: "Speaker at International Design Summit",
@@ -86,52 +108,55 @@ const getRandomAchievements = () => {
       description: "Recognized for developing a free coding education program for underprivileged students, reaching over 500 participants."
     }
   ];
-  const shuffled = [...achievementOptions].sort(() => 0.5 - Math.random());
-  return shuffled.slice(0, 3);
-};
 
-const getRandomTestimonials = () => {
-  const nameOptions = ["Syed Shujauddin", "Abid Nafi", "Mohammed Irfan", "Sara Johnson", "Priya Patel", "David Chen", "Anika Gupta"];
-  const roleOptions = ["CEO, Halcyon", "CTO, E-Cell MJCET", "Product Manager, TechStart", "Design Director, CreativeHub", "VP Engineering, InnovateTech"];
-  const messageOptions = [
-    "An exceptional leader who brings fresh ideas and executes them flawlessly. It's always a pleasure working with them.",
-    "Their technical expertise and collaborative approach make them an asset to any team. Highly recommended!",
-    "I've worked with them on several projects, and their dedication and attention to detail are unmatched. A true professional.",
-    "Brings unique perspectives to every project and consistently delivers beyond expectations. A brilliant collaborator!",
-    "Their ability to bridge technical and creative aspects of projects is remarkable. One of the most versatile professionals I've worked with.",
-    "Shows exceptional problem-solving skills and maintains a positive attitude even under pressure. A joy to work with!",
-    "Demonstrates both creativity and analytical thinking in equal measure. Their solutions are always innovative yet practical."
-  ];
-  const testimonials = [];
-  for (let i = 0; i < 3; i++) {
-    const randomName = nameOptions[Math.floor(Math.random() * nameOptions.length)];
-    const randomRole = roleOptions[Math.floor(Math.random() * roleOptions.length)];
-    const randomMessage = messageOptions[Math.floor(Math.random() * messageOptions.length)];
-    
-    testimonials.push({
-      name: randomName,
-      role: randomRole,
-      message: randomMessage
-    });
-    nameOptions.splice(nameOptions.indexOf(randomName), 1);
-    messageOptions.splice(messageOptions.indexOf(randomMessage), 1);
+  interface Testimonial {
+    name: string;
+    role: string;
+    message: string;
   }
-  
-  return testimonials;
-};
 
-const getRandomSkills = () => {
+  const generateTestimonials = (seed: string): Testimonial[] => {
+    const nameOptions: string[] = ["Syed Shujauddin", "Abid Nafi", "Mohammed Irfan", "Sara Johnson", "Priya Patel", "David Chen", "Anika Gupta"];
+    const roleOptions: string[] = ["CEO, Halcyon", "CTO, E-Cell MJCET", "Product Manager, TechStart", "Design Director, CreativeHub", "VP Engineering, InnovateTech"];
+    const messageOptions: string[] = [
+      "An exceptional leader who brings fresh ideas and executes them flawlessly. It's always a pleasure working with them.",
+      "Their technical expertise and collaborative approach make them an asset to any team. Highly recommended!",
+      "I've worked with them on several projects, and their dedication and attention to detail are unmatched. A true professional.",
+      "Brings unique perspectives to every project and consistently delivers beyond expectations. A brilliant collaborator!",
+      "Their ability to bridge technical and creative aspects of projects is remarkable. One of the most versatile professionals I've worked with.",
+      "Shows exceptional problem-solving skills and maintains a positive attitude even under pressure. A joy to work with!",
+      "Demonstrates both creativity and analytical thinking in equal measure. Their solutions are always innovative yet practical."
+    ];
+    
+    const testimonials: Testimonial[] = [];
+    for (let i = 0; i < 3; i++) {
+      const nameSeed = seed + "name" + i;
+      const roleSeed = seed + "role" + i;
+      const messageSeed = seed + "message" + i;
+      
+      const randomName = getSeededItem(nameOptions, nameSeed);
+      const randomRole = getSeededItem(roleOptions, roleSeed);
+      const randomMessage = getSeededItem(messageOptions, messageSeed);
+      
+      testimonials.push({
+        name: randomName,
+        role: randomRole,
+        message: randomMessage
+      });
+    }
+    
+    return testimonials;
+  };
+
+  // Skill options
   const skillOptions = [
     "Designing", "Leadership", "Event Management", "Public Speaking", "Research", "Photoshop",
     "Web Development", "UI/UX Design", "Data Analysis", "Project Management", "Digital Marketing",
     "Content Strategy", "Mobile App Design", "Blockchain", "AI/ML", "JavaScript", "React", "Python",
     "Video Editing", "Brand Strategy", "Social Media", "SEO Optimization", "3D Modeling", "Animation"
   ];
-  const shuffled = [...skillOptions].sort(() => 0.5 - Math.random());
-  return shuffled.slice(0, 6);
-};
 
-const getRandomCertifications = () => {
+  // Certification options
   const certOptions = [
     {
       title: "Adobe Certified Expert",
@@ -174,13 +199,19 @@ const getRandomCertifications = () => {
       year: "2023"
     }
   ];
-  const shuffled = [...certOptions].sort(() => 0.5 - Math.random());
-  return shuffled.slice(0, 3);
-};
 
-const getRandomUserType = () => {
-  const types = ["Investor", "Developer", "Designer", "Product Manager", "Entrepreneur", "Consultant", "Marketing Specialist"];
-  return types[Math.floor(Math.random() * types.length)];
+  // User type options
+  const userTypeOptions = ["Investor", "Developer", "Designer", "Product Manager", "Entrepreneur", "Consultant", "Marketing Specialist"];
+
+  return {
+    userType: getSeededItem(userTypeOptions, seed + "type"),
+    about: getSeededItem(aboutOptions, seed + "about"),
+    projects: getSeededItems(projectOptions, seed + "projects", 2),
+    achievements: getSeededItems(achievementOptions, seed + "achievements", 3),
+    testimonials: generateTestimonials(seed),
+    skills: getSeededItems(skillOptions, seed + "skills", 6),
+    certifications: getSeededItems(certOptions, seed + "certifications", 3)
+  };
 };
 
 export default function ProfilePage() {
@@ -192,6 +223,8 @@ function ProfileContent() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const { user } = useUser();
+  const router = useRouter();
+  
   interface Project {
     title: string;
     description: string;
@@ -216,7 +249,7 @@ function ProfileContent() {
     year: string;
   }
 
-  interface RandomData {
+  interface UserData {
     userType: string;
     about: string;
     projects: Project[];
@@ -226,7 +259,7 @@ function ProfileContent() {
     certifications: Certification[];
   }
 
-  const [randomData, setRandomData] = useState<RandomData>({
+  const [userData, setUserData] = useState<UserData>({
     userType: "",
     about: "",
     projects: [],
@@ -237,6 +270,27 @@ function ProfileContent() {
   });
 
   useEffect(() => {
+    if (!user) {
+      const redirectTimer = setTimeout(() => {
+        handleGoogleLogin();
+      }, 500);
+      
+      return () => clearTimeout(redirectTimer);
+    }
+  }, [user]);
+
+  const handleGoogleLogin = async () => {
+    const auth = getAuth();
+    const provider = new GoogleAuthProvider();
+    
+    try {
+      await signInWithPopup(auth, provider);
+    } catch (error) {
+      console.error("Error during Google login:", error);
+    }
+  };
+
+  useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
     };
@@ -244,20 +298,24 @@ function ProfileContent() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+  
   useEffect(() => {
     if (user) {
-      const seed = user.uid || user.email || "";
-      setRandomData({
-        userType: getRandomUserType(),
-        about: getRandomAbout(),
-        projects: getRandomProjects(),
-        achievements: getRandomAchievements(),
-        testimonials: getRandomTestimonials(),
-        skills: getRandomSkills(),
-        certifications: getRandomCertifications()
-      });
+      const uniqueSeed = user.uid || user.email || "";
+      const data = getUserSpecificData(uniqueSeed);
+      setUserData(data);
     }
   }, [user]);
+  if (!user) {
+    return (
+      <div className="min-h-screen bg-[#0A0A0A] text-white flex items-center justify-center">
+        <div className="text-center">
+          <h2 className="text-xl mb-4">Redirecting to login...</h2>
+          <div className="w-12 h-12 border-4 border-t-4 border-t-[#76b900] border-gray-700 rounded-full animate-spin mx-auto"></div>
+        </div>
+      </div>
+    );
+  }
 
   const profileImage = user?.photoURL ? user.photoURL.replace("s96-c", "s400-c") : defaultpic;
   
@@ -288,7 +346,7 @@ function ProfileContent() {
               {user?.displayName || "Default"}
             </h1>
             <span className="mt-2 px-6 py-2 bg-[#76b900] text-black rounded-full text-sm font-medium">
-              {randomData.userType}
+              {userData.userType}
             </span>
 
             <div className="mt-4 flex space-x-6 animate-slideIn">
@@ -300,7 +358,7 @@ function ProfileContent() {
           <div className="bg-[#111111] rounded-xl p-6 shadow-xl hover:shadow-2xl transition-all">
             <h2 className="text-2xl font-bold mb-4 text-[#76b900]">About</h2>
             <p className="text-gray-300 leading-relaxed">
-              {randomData.about}
+              {userData.about}
             </p>
             {user && (
               <div className="mt-4 p-4 bg-[#1a1a1a] rounded-lg">
@@ -317,7 +375,7 @@ function ProfileContent() {
         <section className="mb-16">
           <h2 className="text-2xl font-bold mb-6">Projects</h2>
           <div className="grid md:grid-cols-2 gap-6">
-            {randomData.projects.map((project, index) => (
+            {userData.projects.map((project, index) => (
               <ProjectCard
                 key={index}
                 title={project.title}
@@ -332,7 +390,7 @@ function ProfileContent() {
             Achievements
           </h2>
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
-            {randomData.achievements.map((achievement, index) => (
+            {userData.achievements.map((achievement, index) => (
               <AchievementCard
                 key={index}
                 title={achievement.title}
@@ -347,7 +405,7 @@ function ProfileContent() {
             Testimonials
           </h2>
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
-            {randomData.testimonials.map((testimonial, index) => (
+            {userData.testimonials.map((testimonial, index) => (
               <TestimonialCard
                 key={index}
                 name={testimonial.name}
@@ -360,7 +418,7 @@ function ProfileContent() {
         <section className="mb-16">
           <h2 className="text-3xl font-bold mb-6 text-[#76b900]">Skills</h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 animate-slideUp">
-            {randomData.skills.map((skill, index) => (
+            {userData.skills.map((skill, index) => (
               <Skill key={index} text={skill} />
             ))}
           </div>
@@ -370,7 +428,7 @@ function ProfileContent() {
             Certifications
           </h2>
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
-            {randomData.certifications.map((cert, index) => (
+            {userData.certifications.map((cert, index) => (
               <CertificationCard
                 key={index}
                 title={cert.title}
@@ -388,10 +446,10 @@ function ProfileContent() {
             <div className="bg-[#111111] rounded-xl p-6">
               <h3 className="text-xl font-bold text-white">Email</h3>
               <p className="text-gray-300 mt-2 mb-4">
-                {user?.email || "afzalsyed.hs@gmail.com"}
+                {user?.email || "example@gmail.com"}
               </p>
               <Link
-                href={`mailto:${user?.email || "afzalsyed.hs@gmail.com"}`}
+                href={`mailto:${user?.email || "example@gmail.com"}`}
                 className="mt-4 bg-[#76b900] text-black px-6 py-2 rounded-full font-medium hover:bg-opacity-90 transition-all"
               >
                 Send Email
