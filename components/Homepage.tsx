@@ -3,20 +3,12 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-import home from "../Images/home.jpg";
-// import brand1 from "../Images/brand1.webp";
-// import brand2 from "../Images/brand2.webp";
-// import brand3 from "../Images/brand3.webp";
-// import brand4 from "../Images/brand4.webp";
-// import brand5 from "../Images/brand5.webp";
-
 export function Homepage() {
   const brand1 = "/assets/Images/brand1.webp";
   const brand2 = "/assets/Images/brand2.webp";
   const brand3 = "/assets/Images/brand3.webp";
   const brand4 = "/assets/Images/brand4.webp";
   const brand5 = "/assets/Images/brand5.webp";
-  const brand6 = "/assets/Images/brand6.webp";
 
   return (
     <div className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden rounded-md bg-neutral-950 text-white antialiased">
