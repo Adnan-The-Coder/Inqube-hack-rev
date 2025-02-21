@@ -197,12 +197,30 @@ const Header = () => {
               </li>
             ))}
           </ul>
-          <div className="mt-8">
-            {user ? (
-              <button onClick={handleSignOut} className="px-6 py-3 bg-red-600 rounded-xl text-white">Sign Out</button>
-            ) : (
-              <button onClick={handleSignIn} className="bg-[#76b900] px-6 py-3 rounded-full hover:bg-[#5e9400]">Sign in</button>
-            )}
+          <div className="mt-5">
+          {user ? (
+            <div className="relative" onMouseEnter={() => setIsProfileHovered(true)} onMouseLeave={() => setIsProfileHovered(false)}>
+              <Link href="/profile">
+                <Image
+                  src={profileImage}
+                  alt="User Profile"
+                  width={50}
+                  height={50}
+                  priority={true}
+                  className="rounded-full shadow-md cursor-pointer object-cover"
+                />
+              </Link>
+                <div className="absolute top-14 right-[-50px] text-white p-3 w-36 rounded-lg shadow-xl">
+                  <button onClick={handleSignOut} className="w-full bg-red-600 text-sm text-white px-4 py-2 rounded-md hover:bg-red-700">
+                    Sign Out
+                  </button>
+                </div>
+            </div>
+          ) : (
+            <button onClick={handleSignIn} className="bg-[#76b900] px-5 py-2 rounded-full shadow-md text-white hover:bg-[#5e9400] hover:scale-105">
+              Sign in
+            </button>
+          )}
           </div>
         </div>
       )}
