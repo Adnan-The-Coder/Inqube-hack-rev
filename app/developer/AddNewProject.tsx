@@ -40,7 +40,6 @@ const AddNewProject: React.FC = () => {
       [field]: file ? file.name : "",
     }));
   };
-  
 
   const handleNextPage = () => {
     setCurrentPage((prev) => prev + 1);
@@ -62,7 +61,7 @@ const AddNewProject: React.FC = () => {
       case 1:
         return (
           <div>
-            <label className="block text-sm font-medium mb-1" htmlFor="projectID">
+            <label className="mb-1 block text-sm font-medium" htmlFor="projectID">
               Project ID
             </label>
             <input
@@ -71,10 +70,10 @@ const AddNewProject: React.FC = () => {
               name="projectID"
               value={formData.projectID || ""}
               onChange={handleInputChange}
-              className="w-full bg-gray-800 rounded-lg py-2 px-3 text-sm focus:outline-none focus:ring-1 focus:ring-[#76b900]"
+              className="w-full rounded-lg bg-gray-800 px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-[#76b900]"
               required
             />
-            <label className="block text-sm font-medium mb-1 mt-4" htmlFor="createdAt">
+            <label className="mb-1 mt-4 block text-sm font-medium" htmlFor="createdAt">
               Created At (Timestamp)
             </label>
             <input
@@ -83,10 +82,10 @@ const AddNewProject: React.FC = () => {
               name="createdAt"
               value={formData.createdAt || ""}
               onChange={handleInputChange}
-              className="w-full bg-gray-800 rounded-lg py-2 px-3 text-sm focus:outline-none focus:ring-1 focus:ring-[#76b900]"
+              className="w-full rounded-lg bg-gray-800 px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-[#76b900]"
               required
             />
-            <label className="block text-sm font-medium mb-1 mt-4" htmlFor="projectTitle">
+            <label className="mb-1 mt-4 block text-sm font-medium" htmlFor="projectTitle">
               Project Title
             </label>
             <input
@@ -95,10 +94,10 @@ const AddNewProject: React.FC = () => {
               name="projectTitle"
               value={formData.projectTitle || ""}
               onChange={handleInputChange}
-              className="w-full bg-gray-800 rounded-lg py-2 px-3 text-sm focus:outline-none focus:ring-1 focus:ring-[#76b900]"
+              className="w-full rounded-lg bg-gray-800 px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-[#76b900]"
               required
             />
-            <label className="block text-sm font-medium mb-1 mt-4" htmlFor="projectDesc">
+            <label className="mb-1 mt-4 block text-sm font-medium" htmlFor="projectDesc">
               Project Description
             </label>
             <textarea
@@ -106,10 +105,10 @@ const AddNewProject: React.FC = () => {
               name="projectDesc"
               value={formData.projectDesc || ""}
               onChange={handleInputChange}
-              className="w-full bg-gray-800 rounded-lg py-2 px-3 text-sm focus:outline-none focus:ring-1 focus:ring-[#76b900]"
+              className="w-full rounded-lg bg-gray-800 px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-[#76b900]"
               required
             ></textarea>
-            <label className="block text-sm font-medium mb-1 mt-4" htmlFor="tag">
+            <label className="mb-1 mt-4 block text-sm font-medium" htmlFor="tag">
               Tag
             </label>
             <input
@@ -118,7 +117,7 @@ const AddNewProject: React.FC = () => {
               name="tag"
               value={formData.tag || ""}
               onChange={handleInputChange}
-              className="w-full bg-gray-800 rounded-lg py-2 px-3 text-sm focus:outline-none focus:ring-1 focus:ring-[#76b900]"
+              className="w-full rounded-lg bg-gray-800 px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-[#76b900]"
               required
             />
           </div>
@@ -126,7 +125,7 @@ const AddNewProject: React.FC = () => {
       case 2:
         return (
           <div>
-            <label className="block text-sm font-medium mb-1" htmlFor="status">
+            <label className="mb-1 block text-sm font-medium" htmlFor="status">
               Status
             </label>
             <input
@@ -135,10 +134,10 @@ const AddNewProject: React.FC = () => {
               name="status"
               value={formData.status || ""}
               onChange={handleInputChange}
-              className="w-full bg-gray-800 rounded-lg py-2 px-3 text-sm focus:outline-none focus:ring-1 focus:ring-[#76b900]"
+              className="w-full rounded-lg bg-gray-800 px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-[#76b900]"
               required
             />
-            <label className="block text-sm font-medium mb-1 mt-4" htmlFor="expectedInv">
+            <label className="mb-1 mt-4 block text-sm font-medium" htmlFor="expectedInv">
               Expected Investment ($)
             </label>
             <input
@@ -147,10 +146,10 @@ const AddNewProject: React.FC = () => {
               name="expectedInv"
               value={formData.expectedInv || ""}
               onChange={handleInputChange}
-              className="w-full bg-gray-800 rounded-lg py-2 px-3 text-sm focus:outline-none focus:ring-1 focus:ring-[#76b900]"
+              className="w-full rounded-lg bg-gray-800 px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-[#76b900]"
               required
             />
-            <label className="block text-sm font-medium mb-1 mt-4" htmlFor="capital">
+            <label className="mb-1 mt-4 block text-sm font-medium" htmlFor="capital">
               Capital
             </label>
             <input
@@ -159,10 +158,10 @@ const AddNewProject: React.FC = () => {
               name="capital"
               value={formData.capital || ""}
               onChange={handleInputChange}
-              className="w-full bg-gray-800 rounded-lg py-2 px-3 text-sm focus:outline-none focus:ring-1 focus:ring-[#76b900]"
+              className="w-full rounded-lg bg-gray-800 px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-[#76b900]"
               required
             />
-            <label className="block text-sm font-medium mb-1 mt-4" htmlFor="author">
+            <label className="mb-1 mt-4 block text-sm font-medium" htmlFor="author">
               Author
             </label>
             <input
@@ -171,7 +170,7 @@ const AddNewProject: React.FC = () => {
               name="author"
               value={formData.author || ""}
               onChange={handleInputChange}
-              className="w-full bg-gray-800 rounded-lg py-2 px-3 text-sm focus:outline-none focus:ring-1 focus:ring-[#76b900]"
+              className="w-full rounded-lg bg-gray-800 px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-[#76b900]"
               required
             />
           </div>
@@ -180,22 +179,22 @@ const AddNewProject: React.FC = () => {
         return (
           <div>
             <div>
-            <label className="block text-sm font-medium mb-1" htmlFor="isTeamReq">
+              <label className="mb-1 block text-sm font-medium" htmlFor="isTeamReq">
                 Is Team Required?
-            </label>
-            <input
+              </label>
+              <input
                 type="checkbox"
                 id="isTeamReq"
                 name="isTeamReq"
                 checked={formData.isTeamReq || false}
                 onChange={handleCheckboxChange}
-                className="mr-2 ml-2"
+                className="mx-2"
             />
-            <span className="text-sm font-medium">
+              <span className="text-sm font-medium">
                 {formData.isTeamReq ? "True" : "False"}
-            </span>
+              </span>
             </div>
-            <label className="block text-sm font-medium mb-1 mt-4" htmlFor="imageDemo">
+            <label className="mb-1 mt-4 block text-sm font-medium" htmlFor="imageDemo">
               Upload Image
             </label>
             <input
@@ -203,9 +202,9 @@ const AddNewProject: React.FC = () => {
               id="imageDemo"
               name="imageDemo"
               onChange={(e) => handleFileChange(e, "imageDemo")}
-              className="w-full bg-gray-800 rounded-lg py-2 px-3 text-sm focus:outline-none focus:ring-1 focus:ring-[#76b900]"
+              className="w-full rounded-lg bg-gray-800 px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-[#76b900]"
             />
-            <label className="block text-sm font-medium mb-1 mt-4" htmlFor="demoURL">
+            <label className="mb-1 mt-4 block text-sm font-medium" htmlFor="demoURL">
               Demo URL
             </label>
             <input
@@ -214,10 +213,10 @@ const AddNewProject: React.FC = () => {
               name="demoURL"
               value={formData.demoURL || ""}
               onChange={handleInputChange}
-              className="w-full bg-gray-800 rounded-lg py-2 px-3 text-sm focus:outline-none focus:ring-1 focus:ring-[#76b900]"
+              className="w-full rounded-lg bg-gray-800 px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-[#76b900]"
               required
             />
-            <label className="block text-sm font-medium mb-1 mt-4" htmlFor="basePrice">
+            <label className="mb-1 mt-4 block text-sm font-medium" htmlFor="basePrice">
               Base Price ($)
             </label>
             <input
@@ -226,7 +225,7 @@ const AddNewProject: React.FC = () => {
               name="basePrice"
               value={formData.basePrice || ""}
               onChange={handleInputChange}
-              className="w-full bg-gray-800 rounded-lg py-2 px-3 text-sm focus:outline-none focus:ring-1 focus:ring-[#76b900]"
+              className="w-full rounded-lg bg-gray-800 px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-[#76b900]"
               required
             />
           </div>
@@ -237,59 +236,56 @@ const AddNewProject: React.FC = () => {
   };
 
   return (
-    <>
-      <div className="mt-10">
-        <button
+    <div className="mt-10">
+      <button
           onClick={() => setIsModalOpen(true)}
-          className="bg-[#76b900] text-white py-2 px-6 rounded-lg hover:bg-[#68a800] transition duration-300"
+          className="rounded-lg bg-[#76b900] px-6 py-2 text-white transition duration-300 hover:bg-[#68a800]"
         >
-          + Add New Project
-        </button>
-
-        {isModalOpen && (
-          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-            <div className="bg-[#181818] rounded-lg shadow-lg w-11/12 max-w-4xl p-8 relative">
-              <button
+        + Add New Project
+      </button>
+      {isModalOpen && (
+      <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+        <div className="relative w-11/12 max-w-4xl rounded-lg bg-[#181818] p-8 shadow-lg">
+          <button
                 onClick={() => setIsModalOpen(false)}
-                className="absolute top-4 right-4 text-gray-400 hover:text-gray-200"
+                className="absolute right-4 top-4 text-gray-400 hover:text-gray-200"
               >
-                <FiX size={24} />
-              </button>
-              <h2 className="text-2xl font-semibold text-[#76b900] mb-4">Add New Project</h2>
-              <form onSubmit={handleSubmit}>
-                {renderPage()}
-                <div className="mt-4 flex justify-between">
-                  <button
+            <FiX size={24} />
+          </button>
+          <h2 className="mb-4 text-2xl font-semibold text-[#76b900]">Add New Project</h2>
+          <form onSubmit={handleSubmit}>
+            {renderPage()}
+            <div className="mt-4 flex justify-between">
+              <button
                     type="button"
                     onClick={handlePreviousPage}
                     disabled={currentPage === 1}
-                    className="bg-gray-600 text-white py-2 px-6 rounded-lg hover:bg-gray-500 transition duration-300"
+                    className="rounded-lg bg-gray-600 px-6 py-2 text-white transition duration-300 hover:bg-gray-500"
                   >
-                    Back
-                  </button>
-                  {currentPage < 3 ? (
-                    <button
+                Back
+              </button>
+              {currentPage < 3 ? (
+                <button
                       type="button"
                       onClick={handleNextPage}
-                      className="bg-[#76b900] text-white py-2 px-6 rounded-lg hover:bg-[#68a800] transition duration-300"
+                      className="rounded-lg bg-[#76b900] px-6 py-2 text-white transition duration-300 hover:bg-[#68a800]"
                     >
-                      Next
-                    </button>
+                  Next
+                </button>
                   ) : (
                     <button
                       type="submit"
-                      className="bg-[#76b900] text-white py-2 px-6 rounded-lg hover:bg-[#68a800] transition duration-300"
+                      className="rounded-lg bg-[#76b900] px-6 py-2 text-white transition duration-300 hover:bg-[#68a800]"
                     >
                       Submit
                     </button>
                   )}
-                </div>
-              </form>
             </div>
-          </div>
-        )}
+          </form>
+        </div>
       </div>
-    </>
+        )}
+    </div>
   );
 };
 

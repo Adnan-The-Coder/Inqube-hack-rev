@@ -1,8 +1,9 @@
 "use client";
 
-import Header from "@/components/Header";
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
+
+import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 interface Blog {
@@ -20,7 +21,7 @@ const BlogCard: React.FC<{
 }> = ({ blog, onClick }) => {
   return (
     <div
-      className="bg-[#1b1b1b] text-white p-6 rounded-lg shadow-lg hover:translate-y-[-2px] hover:shadow-2xl transition-transform cursor-pointer overflow-hidden"
+      className="cursor-pointer overflow-hidden rounded-lg bg-[#1b1b1b] p-6 text-white shadow-lg transition-transform hover:translate-y-[-2px] hover:shadow-2xl"
       onClick={onClick}
     >
       <Image
@@ -28,13 +29,13 @@ const BlogCard: React.FC<{
         alt={blog.title}
         width={400}
         height={400}
-        className="w-full h-48 object-cover rounded-md mb-4"
+        className="mb-4 h-48 w-full rounded-md object-cover"
       />
-      <h2 className="text-2xl font-bold mb-2">{blog.title}</h2>
-      <p className="text-gray-400 mb-4">{blog.description}</p>
-      <div className="flex justify-between items-center">
+      <h2 className="mb-2 text-2xl font-bold">{blog.title}</h2>
+      <p className="mb-4 text-gray-400">{blog.description}</p>
+      <div className="flex items-center justify-between">
         <p className="text-sm text-gray-500">By {blog.author}</p>
-        <span className="inline-block bg-[#76b900] text-black px-3 py-1 rounded-lg text-xs">
+        <span className="inline-block rounded-lg bg-[#76b900] px-3 py-1 text-xs text-black">
           {blog.category}
         </span>
       </div>
@@ -49,19 +50,19 @@ const Modal: React.FC<{
   if (!blog) return null;
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-90 flex justify-center items-center z-50 p-5">
-      <div className="bg-[#1b1b1b] text-white p-8 rounded-lg max-w-4xl mx-auto shadow-lg relative">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-90 p-5">
+      <div className="relative mx-auto max-w-4xl rounded-lg bg-[#1b1b1b] p-8 text-white shadow-lg">
         <Image
           src={blog.image}
           alt={blog.title}
           width={400}
           height={400}
-          className="w-full h-64 object-cover rounded-md mb-6"
+          className="mb-6 h-64 w-full rounded-md object-cover"
         />
-        <h2 className="text-3xl font-bold mb-4">{blog.title}</h2>
-        <p className="text-gray-400 mb-6">{blog.content}</p>
+        <h2 className="mb-4 text-3xl font-bold">{blog.title}</h2>
+        <p className="mb-6 text-gray-400">{blog.content}</p>
         <button
-          className="bg-[#76b900] px-4 py-2 rounded-lg text-black font-semibold hover:bg-[#64a800] transition"
+          className="rounded-lg bg-[#76b900] px-4 py-2 font-semibold text-black transition hover:bg-[#64a800]"
           onClick={onClose}
         >
           Close
@@ -91,14 +92,14 @@ const BlogFormModal: React.FC<{
   };
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-90 flex justify-center items-center z-50 p-5">
-      <div className="bg-[#1b1b1b] text-white p-6 rounded-lg max-w-3xl w-full mx-auto shadow-lg">
-        <h2 className="text-2xl font-bold mb-6">Write a New Blog</h2>
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-90 p-5">
+      <div className="mx-auto w-full max-w-3xl rounded-lg bg-[#1b1b1b] p-6 text-white shadow-lg">
+        <h2 className="mb-6 text-2xl font-bold">Write a New Blog</h2>
         <form onSubmit={handleSubmit}>
           <input
             type="text"
             placeholder="Title"
-            className="w-full mb-6 p-3 bg-[#1f2937] text-white rounded-lg"
+            className="mb-6 w-full rounded-lg bg-[#1f2937] p-3 text-white"
             value={formData.title}
             onChange={(e) =>
               setFormData({ ...formData, title: e.target.value })
@@ -108,7 +109,7 @@ const BlogFormModal: React.FC<{
           <input
             type="text"
             placeholder="Description"
-            className="w-full mb-6 p-3 bg-[#1f2937] text-white rounded-lg"
+            className="mb-6 w-full rounded-lg bg-[#1f2937] p-3 text-white"
             value={formData.description}
             onChange={(e) =>
               setFormData({ ...formData, description: e.target.value })
@@ -118,7 +119,7 @@ const BlogFormModal: React.FC<{
           <input
             type="text"
             placeholder="Author"
-            className="w-full mb-6 p-3 bg-[#1f2937] text-white rounded-lg"
+            className="mb-6 w-full rounded-lg bg-[#1f2937] p-3 text-white"
             value={formData.author}
             onChange={(e) =>
               setFormData({ ...formData, author: e.target.value })
@@ -127,7 +128,7 @@ const BlogFormModal: React.FC<{
           />
           <textarea
             placeholder="Content"
-            className="w-full mb-6 p-3 bg-[#1f2937] text-white rounded-lg"
+            className="mb-6 w-full rounded-lg bg-[#1f2937] p-3 text-white"
             value={formData.content}
             onChange={(e) =>
               setFormData({ ...formData, content: e.target.value })
@@ -137,7 +138,7 @@ const BlogFormModal: React.FC<{
           <input
             type="text"
             placeholder="Category"
-            className="w-full mb-6 p-3 bg-[#1f2937] text-white rounded-lg"
+            className="mb-6 w-full rounded-lg bg-[#1f2937] p-3 text-white"
             value={formData.category}
             onChange={(e) =>
               setFormData({ ...formData, category: e.target.value })
@@ -147,7 +148,7 @@ const BlogFormModal: React.FC<{
           <input
             type="url"
             placeholder="Image URL"
-            className="w-full mb-6 p-3 bg-[#1f2937] text-white rounded-lg"
+            className="mb-6 w-full rounded-lg bg-[#1f2937] p-3 text-white"
             value={formData.image}
             onChange={(e) =>
               setFormData({ ...formData, image: e.target.value })
@@ -156,13 +157,13 @@ const BlogFormModal: React.FC<{
           />
           <button
             type="submit"
-            className="w-full bg-[#76b900] px-4 py-2 rounded-lg text-black font-semibold hover:bg-[#64a800] transition"
+            className="w-full rounded-lg bg-[#76b900] px-4 py-2 font-semibold text-black transition hover:bg-[#64a800]"
           >
             Post Blog
           </button>
         </form>
         <button
-          className="absolute top-4 right-4 text-gray-400 hover:text-white"
+          className="absolute right-4 top-4 text-gray-400 hover:text-white"
           onClick={onClose}
         >
           ✕
@@ -309,9 +310,9 @@ const BlogsPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-black text-white">
       <Header />
-      <div className="container mx-auto py-8 pt-20 px-5 md:px-10 flex flex-col items-center mb-10">
-        <h1 className="text-4xl font-bold mb-6">Blogs</h1>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="container mx-auto mb-10 flex flex-col items-center px-5 py-8 pt-20 md:px-10">
+        <h1 className="mb-6 text-4xl font-bold">Blogs</h1>
+        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {blogs.map((blog, index) => (
             <BlogCard
               key={index}
@@ -322,7 +323,7 @@ const BlogsPage: React.FC = () => {
         </div>
       </div>
       <button
-        className="fixed bottom-8 right-8 bg-[#76b900] text-black px-3 py-3 rounded-full shadow-lg hover:bg-[#64a800] transition"
+        className="fixed bottom-8 right-8 rounded-full bg-[#76b900] p-3 text-black shadow-lg transition hover:bg-[#64a800]"
         onClick={() => setIsFormOpen(true)}
       >
         <Image src="https://img.icons8.com/?size=100&id=1501&format=png&color=000000" alt="+" width={30} height={30}/>

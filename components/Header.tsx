@@ -60,7 +60,6 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
         localStorage.removeItem("user");
       }
     }
-
     // Monitor auth state
     const unsubscribe = auth.onAuthStateChanged((currentUser) => {
       if (currentUser) {
@@ -196,26 +195,26 @@ return () => window.removeEventListener("scroll", handleScroll);
             ))}
           </ul>
           <div className="mt-5">
-          {user ? (
-            <div className="relative" onMouseEnter={() => setIsProfileHovered(true)} onMouseLeave={() => setIsProfileHovered(false)}>
-              <Link href="/profile">
-                <Image
+            {user ? (
+              <div className="relative" onMouseEnter={() => setIsProfileHovered(true)} onMouseLeave={() => setIsProfileHovered(false)}>
+                <Link href="/profile">
+                  <Image
                   src={profileImage}
                   alt="User Profile"
                   width={50}
                   height={50}
                   priority={true}
-                  className="rounded-full shadow-md cursor-pointer object-cover"
+                  className="cursor-pointer rounded-full object-cover shadow-md"
                 />
-              </Link>
-                <div className="absolute top-14 right-[-50px] text-white p-3 w-36 rounded-lg shadow-xl">
-                  <button onClick={handleSignOut} className="w-full bg-red-600 text-sm text-white px-4 py-2 rounded-md hover:bg-red-700">
+                </Link>
+                <div className="absolute right-[-50px] top-14 w-36 rounded-lg p-3 text-white shadow-xl">
+                  <button onClick={handleSignOut} className="w-full rounded-md bg-red-600 px-4 py-2 text-sm text-white hover:bg-red-700">
                     Sign Out
                   </button>
                 </div>
-            </div>
+              </div>
           ) : (
-            <button onClick={handleSignIn} className="bg-[#76b900] px-5 py-2 rounded-full shadow-md text-white hover:bg-[#5e9400] hover:scale-105">
+            <button onClick={handleSignIn} className="rounded-full bg-[#76b900] px-5 py-2 text-white shadow-md hover:scale-105 hover:bg-[#5e9400]">
               Sign in
             </button>
           )}

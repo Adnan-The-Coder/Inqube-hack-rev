@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { createClient } from '@supabase/supabase-js';
+
 import Header from "@/components/Header";
 
 function Page() {
@@ -100,10 +101,10 @@ function Page() {
     return currentCards.map((project, index) => (
       <div
         key={index}
-        className="bg-white p-6 rounded-xl shadow-md mb-6 max-w-md mx-auto"
+        className="mx-auto mb-6 max-w-md rounded-xl bg-white p-6 shadow-md"
       >
-        <div className="flex items-center mb-4">
-          <div className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-white font-bold text-xl">
+        <div className="mb-4 flex items-center">
+          <div className="flex size-12 items-center justify-center rounded-full bg-green-500 text-xl font-bold text-white">
             {project.name?.charAt(0).toUpperCase()}
           </div>
           <div className="ml-4">
@@ -112,8 +113,8 @@ function Page() {
             <p className="text-sm text-gray-600">by {project.Author}</p>
           </div>
         </div>
-        <p className="text-gray-700 mb-4">{project.Project_Desc}</p>
-        <div className="flex justify-between text-sm text-gray-600 mb-4">
+        <p className="mb-4 text-gray-700">{project.Project_Desc}</p>
+        <div className="mb-4 flex justify-between text-sm text-gray-600">
           <span>
             <strong>Expected Investment Amount</strong> ₹
             {project.Expected_Investment_amount || "-"}
@@ -122,10 +123,10 @@ function Page() {
             <strong>Equity:</strong> {project.Equity || "-"}%
           </span>
         </div>
-        <span className="inline-block bg-gray-200 text-gray-800 text-xs font-semibold px-2 py-1 rounded">
+        <span className="inline-block rounded bg-gray-200 px-2 py-1 text-xs font-semibold text-gray-800">
           {project.Tag || "Technology"}
         </span>
-        <button className="mt-4 w-full py-2 bg-gray-900 text-white text-center rounded">
+        <button className="mt-4 w-full rounded bg-gray-900 py-2 text-center text-white">
           View Details
         </button>
       </div>
@@ -161,114 +162,106 @@ function Page() {
       <br />
       <div className="flex flex-col xl:flex-row">
         {/* Filter Section */}
-              <div
-                  className={`bg-[#76b900] mb-10 xl:mb-0 m-6 xl:m-0 xl:w-1/6 rounded-md p-3 gap-6 ${
+        <div
+                  className={`m-6 mb-10 gap-6 rounded-md bg-[#76b900] p-3 xl:m-0 xl:w-1/6 ${
                     isMenuOpen
-                      ? "fixed top-12 inset-0 z-50 xl:h-screen xl:overflow-y-auto"
-                      : "xl:h-screen xl:overflow-y-auto h-full"
-                  } xl:sticky top-0 overflow-y-auto`}
+                      ? "fixed inset-0 top-12 z-50 xl:h-screen xl:overflow-y-auto"
+                      : "h-full xl:h-screen xl:overflow-y-auto"
+                  } top-0 overflow-y-auto xl:sticky`}
                   style={{ zIndex: 10 }}
                 >
-                  <button
-                    className={`bg-[#1b1b1b] text-white px-4 py-2 rounded mb-4 ${
-                      isMenuOpen ? "absolute top-4 right-4" : "xl:hidden"
+          <button
+                    className={`mb-4 rounded bg-[#1b1b1b] px-4 py-2 text-white ${
+                      isMenuOpen ? "absolute right-4 top-4" : "xl:hidden"
                     }`}
                     onClick={() => setIsMenuOpen(!isMenuOpen)}
                   >
-                    {isMenuOpen ? "X" : "Open Filters"}
-                  </button>
-
-                  {(isMenuOpen || !isMenuOpen) && (
-                    <div className={`${isMenuOpen ? "block" : "hidden"} xl:block`}>
-                      <h2 className="text-white text-2xl mb-4">Filters</h2>
-
-                      {/* Tags Section */}
-                      <div className="mb-4">
-                        <h3 className="text-white mb-2 text-xl">Tags</h3>
-                        {tags.map((tag, index) => (
-                          <div key={index} className="mb-2">
-                            <label className="text-white inline-flex items-center text-sm">
-                              <input
+            {isMenuOpen ? "X" : "Open Filters"}
+          </button>
+          {(isMenuOpen || !isMenuOpen) && (
+          <div className={`${isMenuOpen ? "block" : "hidden"} xl:block`}>
+            <h2 className="mb-4 text-2xl text-white">Filters</h2>
+            {/* Tags Section */}
+            <div className="mb-4">
+              <h3 className="mb-2 text-xl text-white">Tags</h3>
+              {tags.map((tag, index) => (
+                <div key={index} className="mb-2">
+                  <label className="inline-flex items-center text-sm text-white">
+                    <input
                                 type="checkbox"
-                                className="form-checkbox text-gray-800 mr-2"
+                                className="form-checkbox mr-2 text-gray-800"
                                 checked={selectedTags.includes(tag)}
                                 onChange={() => handleTagChange(tag)}
                               />
-                              {tag}
-                            </label>
-                          </div>
+                    {tag}
+                  </label>
+                </div>
                         ))}
-                      </div>
-
-                {/* Equity Range Section */}
-                <div className="mb-4">
-                  <h3 className="text-white mb-2 text-xl">Equity Range</h3>
-                  <select
-                    className="w-full p-2 bg-gray-700 text-white rounded text-sm"
+            </div>
+            {/* Equity Range Section */}
+            <div className="mb-4">
+              <h3 className="mb-2 text-xl text-white">Equity Range</h3>
+              <select
+                    className="w-full rounded bg-gray-700 p-2 text-sm text-white"
                     value={equityRange}
                     onChange={handleEquityRangeChange}
                   >
-                    <option value="">All</option>
-                    <option value="0-10">0-10%</option>
-                    <option value="10-30">10-30%</option>
-                    <option value="30-50">30-50%</option>
-                    <option value="50-60">50-60%</option>
-                    <option value="60-80">60-80%</option>
-                  </select>
-                </div>
-
-                {/* Max Investment Amount Section */}
-                <div className="mb-4">
-                  <h3 className="text-white mb-2 text-xl">Max Investment Amount</h3>
-                  <input
+                <option value="">All</option>
+                <option value="0-10">0-10%</option>
+                <option value="10-30">10-30%</option>
+                <option value="30-50">30-50%</option>
+                <option value="50-60">50-60%</option>
+                <option value="60-80">60-80%</option>
+              </select>
+            </div>
+            {/* Max Investment Amount Section */}
+            <div className="mb-4">
+              <h3 className="mb-2 text-xl text-white">Max Investment Amount</h3>
+              <input
                     type="range"
                     min="0"
                     max="1000000"
                     step="10000"
                     value={maxInvestment}
                     onChange={handleMaxInvestmentChange}
-                    className="w-full mb-2"
+                    className="mb-2 w-full"
                   />
-                  <div className="flex justify-between text-white text-sm">
-                    <span>₹0</span>
-                    <span>₹{maxInvestment}</span>
-                  </div>
-                </div>
+              <div className="flex justify-between text-sm text-white">
+                <span>₹0</span>
+                <span>₹{maxInvestment}</span>
               </div>
-            )}
+            </div>
           </div>
-
+            )}
+        </div>
         {/* Project Cards Section */}
-        <div className="md:w-6/6 px-4 md:px-8 md:h-screen md:overflow-y-auto scrollbar">
-          <h1 className="text-white text-4xl mb-4 font-bold">Startups</h1>
+        <div className="md:w-6/6 scrollbar px-4 md:h-screen md:overflow-y-auto md:px-8">
+          <h1 className="mb-4 text-4xl font-bold text-white">Startups</h1>
           {loading && (
-            <div className="flex justify-center items-center h-full">
+            <div className="flex h-full items-center justify-center">
               <div className="loader"></div>
             </div>
           )}
           {error && <p className="text-red-500">{error}</p>}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {renderProjectCards()}
           </div>
-
           {/* Pagination Controls */}
-          <div className="flex justify-between mt-6 items-center">
+          <div className="mt-6 flex items-center justify-between">
             <button
               onClick={prevPage}
-              className="bg-[#1b1b1b] hover:bg-[#76b900] transition-all text-white py-2 px-4 rounded mb-10"
+              className="mb-10 rounded bg-[#1b1b1b] px-4 py-2 text-white transition-all hover:bg-[#76b900]"
               disabled={currentPage === 1}
             >
               Prev
             </button>
-            
             {/* Pagination Info */}
-            <div className="text-white text-md mb-10">
+            <div className="text-md mb-10 text-white">
               Page {currentPage} of {Math.ceil(filteredData.length / cardsPerPage)}
             </div>
-            
             <button
               onClick={nextPage}
-              className="bg-[#1b1b1b] hover:bg-[#76b900] transition-all text-white py-2 px-4 rounded mb-10"
+              className="mb-10 rounded bg-[#1b1b1b] px-4 py-2 text-white transition-all hover:bg-[#76b900]"
               disabled={currentPage === Math.ceil(filteredData.length / cardsPerPage)}
             >
               Next
@@ -276,7 +269,6 @@ function Page() {
           </div>
         </div>
       </div>
-
       <style jsx>{`
         .loader {
           border: 4px solid #76b900;

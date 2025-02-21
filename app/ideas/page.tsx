@@ -1,10 +1,12 @@
 "use client";
 
+import React, { useState } from "react";
+
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+
 import { StarsBackground } from "../investments/stars-background";
 import { ShootingStars } from "../investments/shooting-stars";
-import React, { useState } from "react";
-import Footer from "@/components/Footer";
 
 const ResultPage = ({ result, resetGame }: { result: string; resetGame: () => void }) => {
     const parsedResults = result.split("<br />").reduce((acc: any[], line: string) => {
@@ -12,14 +14,15 @@ const ResultPage = ({ result, resetGame }: { result: string; resetGame: () => vo
       if (match) {
         acc.push({ question: match[1], answer: match[2] });
       }
-      return acc;
+      
+return acc;
     }, []);
 
     return (
-      <div className="flex flex-col items-center justify-center h-screen w-full mt-28 mb-20 md:mt-6 p-3">
-        <h2 className="text-3xl font-bold mb-6">Your Startup Journey</h2>
+      <div className="mb-20 mt-28 flex h-screen w-full flex-col items-center justify-center p-3 md:mt-6">
+        <h2 className="mb-6 text-3xl font-bold">Your Startup Journey</h2>
         <div
-          className="bg-[#1f1f1f] text-sm p-6 rounded-lg shadow-md w-full max-w-3xl text-left"
+          className="w-full max-w-3xl rounded-lg bg-[#1f1f1f] p-6 text-left text-sm shadow-md"
         >
           <div className="grid grid-cols-2 gap-4">
             <div>
@@ -38,7 +41,7 @@ const ResultPage = ({ result, resetGame }: { result: string; resetGame: () => vo
         </div>
         <button
           onClick={resetGame}
-          className="mt-6 bg-[#76b900] text-black px-6 py-3 rounded-lg z-50 transition duration-300"
+          className="z-50 mt-6 rounded-lg bg-[#76b900] px-6 py-3 text-black transition duration-300"
         >
           Play Again
         </button>
@@ -100,26 +103,25 @@ const StartupBuilder = () => {
 
   return (
     <div>
-    <div className="relative flex flex-col items-center justify-center min-h-screen text-white bg-neutral-900">
-      <Header />
-      <StarsBackground />
-      <ShootingStars />
-  
-      {result ? (
-        <ResultPage result={result} resetGame={resetGame} />
+      <div className="relative flex min-h-screen flex-col items-center justify-center bg-neutral-900 text-white">
+        <Header />
+        <StarsBackground />
+        <ShootingStars />
+        {result ? (
+          <ResultPage result={result} resetGame={resetGame} />
       ) : (
-        <div className="w-full max-w-3xl bg-[#2b2b2b] text-white rounded-lg p-8 shadow-2xl z-20">
-          <h1 className="text-4xl font-bold text-center mb-6">Build Your Startup</h1>
-          <h2 className="text-2xl font-semibold mb-2 text-center">{steps[step - 1].title}</h2>
-          <p className="text-sm bg-[#333333] p-4 rounded-lg mb-6 text-center">
+        <div className="z-20 w-full max-w-3xl rounded-lg bg-[#2b2b2b] p-8 text-white shadow-2xl">
+          <h1 className="mb-6 text-center text-4xl font-bold">Build Your Startup</h1>
+          <h2 className="mb-2 text-center text-2xl font-semibold">{steps[step - 1].title}</h2>
+          <p className="mb-6 rounded-lg bg-[#333333] p-4 text-center text-sm">
             {steps[step - 1].description}
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
             {steps[step - 1].options.map((option, index) => (
               <button
                 key={index}
                 onClick={() => handleNextStep(option)}
-                className="px-5 py-3 rounded-lg bg-[#444444] text-white hover:bg-[#76b900] hover:text-black transition duration-300"
+                className="rounded-lg bg-[#444444] px-5 py-3 text-white transition duration-300 hover:bg-[#76b900] hover:text-black"
               >
                 {option}
               </button>
@@ -127,11 +129,10 @@ const StartupBuilder = () => {
           </div>
         </div>
       )}
-    </div>
+      </div>
       <Footer/>
     </div>
   );
-  
 };
 
 export default StartupBuilder;

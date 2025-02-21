@@ -23,7 +23,9 @@ const ChatSection: React.FC = () => {
   const [showOptions, setShowOptions] = useState(false);
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
   const [isRecording, setIsRecording] = useState(false);
+  // eslint-disable-next-line no-unused-vars
   const [audioMessage, setAudioMessage] = useState<Blob | null>(null);
+  // eslint-disable-next-line no-unused-vars
   const [audioUrl, setAudioUrl] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
@@ -105,18 +107,18 @@ const ChatSection: React.FC = () => {
   };
 
   return (
-    <div className="relative flex flex-col w-full bg-[#242424] p-6 mt-10 border border-[#495360] rounded-xl mb-10 shadow-xl">
-      <div className="text-2xl font-semibold text-white mb-4">Chat</div>
-      <div className="flex flex-col space-y-4 max-h-[400px] overflow-auto custom-scrollbar pb-8">
+    <div className="relative my-10 flex w-full flex-col rounded-xl border border-[#495360] bg-[#242424] p-6 shadow-xl">
+      <div className="mb-4 text-2xl font-semibold text-white">Chat</div>
+      <div className="custom-scrollbar flex max-h-[400px] flex-col space-y-4 overflow-auto pb-8">
         {messages.map((message, index) => (
           <div key={index} className={`flex ${message.from === "You" ? "justify-end" : "justify-start"}`}>
             <div
-              className={`max-w-xs px-4 py-3 rounded-lg shadow-md ${message.from === "You" ? "bg-[#76b900] text-white" : "bg-gray-700 text-white"}`}
+              className={`max-w-xs rounded-lg px-4 py-3 shadow-md ${message.from === "You" ? "bg-[#76b900] text-white" : "bg-gray-700 text-white"}`}
             >
               {message.text && <p className="text-lg">{message.text}</p>}
               {message.audioUrl && (
                 <div>
-                  <audio controls className="w-64 mt-2">
+                  <audio controls className="mt-2 w-64">
                     <source src={message.audioUrl} type="audio/wav"/>
                     Your browser does not support the audio element.
                   </audio>
@@ -127,27 +129,26 @@ const ChatSection: React.FC = () => {
           </div>
         ))}
       </div>
-
       <div className="mt-4 flex items-center">
         {showOptions && (
-          <div className="absolute bottom-20 left-20 bg-[#4b5563] text-white p-2 rounded-lg shadow-md space-y-2">
-            <div className="cursor-pointer flex gap-2 items-center" onClick={() => fileInputRef.current?.click()}>
+          <div className="absolute bottom-20 left-20 space-y-2 rounded-lg bg-[#4b5563] p-2 text-white shadow-md">
+            <div className="flex cursor-pointer items-center gap-2" onClick={() => fileInputRef.current?.click()}>
               <File size={20} /> Upload File
             </div>
-            <div className="cursor-pointer flex gap-2 items-center" onClick={handleEmojiToggle}>
+            <div className="flex cursor-pointer items-center gap-2" onClick={handleEmojiToggle}>
               <Smile size={20} /> Emojis
             </div>
             <div
               onClick={isRecording ? stopRecording : startRecording}
-              className="cursor-pointer flex gap-2 items-center"
+              className="flex cursor-pointer items-center gap-2"
             >
               <Mic size={20} /> {isRecording ? "Stop Recording" : "Record Audio"}
             </div>
           </div>
         )}
         {showEmojiPicker && (
-          <div className="absolute bottom-16 left-20 bg-gray-800 text-white p-2 rounded-lg shadow-md">
-            <div className="flex justify-between items-center mb-2">
+          <div className="absolute bottom-16 left-20 rounded-lg bg-gray-800 p-2 text-white shadow-md">
+            <div className="mb-2 flex items-center justify-between">
               <div className="text-lg">Emojis</div>
               <button onClick={closeEmojiPicker} className="text-white">
                 <X size={20} />
@@ -170,7 +171,7 @@ const ChatSection: React.FC = () => {
       <div className="mt-3 flex items-center">
         <button
           onClick={handleToggleOptions}
-          className="text-white bg-[#4b5563] p-3 rounded-lg focus:outline-none hover:bg-[#3c4e5b] mr-3"
+          className="mr-3 rounded-lg bg-[#4b5563] p-3 text-white hover:bg-[#3c4e5b] focus:outline-none"
         >
           {showOptions ? <X size={20} /> : <Plus size={20} />}
         </button>
@@ -179,13 +180,13 @@ const ChatSection: React.FC = () => {
           value={messageInput}
           onChange={(e) => setMessageInput(e.target.value)}
           onKeyDown={handleKeyPress}
-          className="w-full py-2 px-4 rounded-lg text-black placeholder:text-[#a3a3a3]"
+          className="w-full rounded-lg px-4 py-2 text-black placeholder:text-[#a3a3a3]"
           placeholder="Type your message..."
         />
         <button
           onClick={handleSendMessage}
           disabled={!messageInput.trim()}
-          className={`ml-2 p-3 rounded-lg ${!messageInput.trim() ? 'bg-gray-500 cursor-not-allowed' : 'bg-[#4b5563] hover:bg-[#3c4e5b]'} focus:outline-none`}
+          className={`ml-2 rounded-lg p-3 ${!messageInput.trim() ? 'cursor-not-allowed bg-gray-500' : 'bg-[#4b5563] hover:bg-[#3c4e5b]'} focus:outline-none`}
         >
           <MessageCircle size={20} />
         </button>
