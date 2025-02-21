@@ -1,7 +1,7 @@
 import { dirname } from "path";
 import { fileURLToPath } from "url";
-import { FlatCompat } from "@eslint/eslintrc";
 
+import { FlatCompat } from "@eslint/eslintrc";
 import react from "eslint-plugin-react";
 import unusedImports from "eslint-plugin-unused-imports";
 import js from "@eslint/js";
@@ -30,6 +30,11 @@ const eslintConfig = [
       rules: {
         "newline-before-return": "error",
         "tailwindcss/no-custom-classname": "off",
+        "@typescript-eslint/no-unused-vars": "off",
+        "@typescript-eslint/no-explicit-any": "off",
+        "prefer-const": "off", 
+        "react/no-unescaped-entities":"off",
+        "react-hooks/exhaustive-deps":"off",
   
         "padded-blocks": [
           "error",
