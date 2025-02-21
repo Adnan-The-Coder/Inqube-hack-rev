@@ -203,7 +203,7 @@ const getUserSpecificData = (seed: string) => {
   ];
 
   // User type options
-  const userTypeOptions = ["Investor", "Developer", "Designer", "Product Manager", "Entrepreneur", "Consultant", "Marketing Specialist"];
+  const userTypeOptions = ["Investor", "Developer", "Product Manager", "Entrepreneur", "Consultant", "Marketing Specialist"];
 
   return {
     userType: getSeededItem(userTypeOptions, seed + "type"),
