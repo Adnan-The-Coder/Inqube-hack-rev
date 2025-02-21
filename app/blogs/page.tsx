@@ -50,6 +50,7 @@ const Modal: React.FC<{
   if (!blog) return null;
 
   return (
+    // eslint-disable-next-line tailwindcss/migration-from-tailwind-2
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-90 p-5">
       <div className="relative mx-auto max-w-4xl rounded-lg bg-[#1b1b1b] p-8 text-white shadow-lg">
         <Image
@@ -74,6 +75,7 @@ const Modal: React.FC<{
 
 const BlogFormModal: React.FC<{
   onClose: () => void;
+  // eslint-disable-next-line no-unused-vars
   onAddBlog: (blog: Blog) => void;
 }> = ({ onClose, onAddBlog }) => {
   const [formData, setFormData] = useState<Blog>({
@@ -92,6 +94,7 @@ const BlogFormModal: React.FC<{
   };
 
   return (
+    // eslint-disable-next-line tailwindcss/migration-from-tailwind-2
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-90 p-5">
       <div className="mx-auto w-full max-w-3xl rounded-lg bg-[#1b1b1b] p-6 text-white shadow-lg">
         <h2 className="mb-6 text-2xl font-bold">Write a New Blog</h2>

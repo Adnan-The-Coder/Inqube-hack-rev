@@ -244,6 +244,7 @@ const AddNewProject: React.FC = () => {
         + Add New Project
       </button>
       {isModalOpen && (
+      // eslint-disable-next-line tailwindcss/migration-from-tailwind-2
       <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
         <div className="relative w-11/12 max-w-4xl rounded-lg bg-[#181818] p-8 shadow-lg">
           <button

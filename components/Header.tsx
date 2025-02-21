@@ -181,6 +181,7 @@ return () => window.removeEventListener("scroll", handleScroll);
       </div>
       {/* Mobile Menu */}
       {isMenuOpen && (
+        // eslint-disable-next-line tailwindcss/migration-from-tailwind-2
         <div className="fixed inset-0 z-40 flex flex-col items-center justify-center bg-black bg-opacity-90">
           <button className="absolute right-4 top-4 text-3xl text-white" onClick={() => setIsMenuOpen(false)}>
             ✖
