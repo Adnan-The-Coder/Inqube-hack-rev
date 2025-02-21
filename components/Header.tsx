@@ -13,7 +13,7 @@ import {
   User,
 } from "firebase/auth";
 
-import logo from "../Images/logo.png";
+const logo = "/assets/Images/logo.png";
 
 // Create a context for user authentication
 export const UserContext = createContext<{
@@ -154,7 +154,7 @@ const Header = () => {
       )}
       <div className="flex items-center justify-between p-2 text-white md:px-8">
         <Link href="/">
-          <Image src={logo} alt="Logo" className="w-32 md:w-44" />
+          <Image src={logo} width={500} height={500} alt="Logo" className="w-32 md:w-44" />
         </Link>
         {/* Desktop Menu */}
         <ul className="hidden space-x-6 lg:flex">

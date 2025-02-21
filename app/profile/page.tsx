@@ -9,9 +9,10 @@ import { useRouter } from "next/navigation";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 
 import Footer from "@/components/Footer";
-import defaultpic from "@/app/team/defaultpic.jpg";
 import Header, { useUser } from "@/components/Header";
-import profileBanner from "@/app/team/profile-banner.webp";
+
+const defaultpic = "/assets/team/defaultpic.jpg";
+const profileBanner = "/assets/team/profile-banner.webp";
 
 const seedRandom = (seed: string): number => {
   let hash = 0;
@@ -335,6 +336,8 @@ return () => window.removeEventListener("scroll", handleScroll);
               <Image
                 src={profileBanner}
                 alt="Profile Banner"
+                width={800}
+                height={400}
                 className="size-full object-cover"
               />
             </div>

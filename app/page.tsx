@@ -11,9 +11,12 @@ import Plans from "@/components/Plans";
 import Services from "@/components/Services";
 import { Testimonials } from "@/components/Testimonials";
 
+<<<<<<< HEAD
 import arrow from "../Images/arrow.png";
 import General from "@/components/General";
 
+=======
+>>>>>>> d9a11b565199db855e8c90c2dadb80b7318a6a9f
 export default function SparklesPreview() {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -54,7 +57,7 @@ return (
           className="z_class fixed bottom-10 right-10 rounded-full bg-[#76b900] p-3 text-white shadow-lg"
           aria-label="Back to Top"
         >
-      <Image src={arrow} className="w-8" alt="back to top"/>
+      <Image src="/assets/Images/arrow.png" width={500} height={500} className="w-8" alt="back to top"/>
     </button>
       )}
   </div>

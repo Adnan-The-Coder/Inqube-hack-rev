@@ -3,6 +3,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 
+<<<<<<< HEAD
 import home from "../Images/home.png";
 import brand1 from "../Images/brand1.png";
 import brand2 from "../Images/brand2.webp";
@@ -11,7 +12,15 @@ import brand4 from "../Images/brand4.webp";
 import brand5 from "../Images/brand5.png";
 
 
+=======
+>>>>>>> d9a11b565199db855e8c90c2dadb80b7318a6a9f
 export function Homepage() {
+  const brand1 = "/assets/Images/brand1.webp";
+  const brand2 = "/assets/Images/brand2.webp";
+  const brand3 = "/assets/Images/brand3.webp";
+  const brand4 = "/assets/Images/brand4.webp";
+  const brand5 = "/assets/Images/brand5.webp";
+
   return (
     <div className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden rounded-md bg-neutral-950 text-white antialiased">
       <div className="z-10 mt-32 flex flex-col items-center justify-center gap-6 px-6 text-center md:mt-28 md:px-12">
@@ -35,7 +44,7 @@ export function Homepage() {
             Marketplace
           </Link>
         </div>
-        <Image src={home} alt="Home" className="w-64 rounded-lg shadow-lg md:w-96" />
+        <Image src="/assets/Images/home.jpg" width={500} height={500} alt="Home" className="w-64 rounded-lg shadow-lg md:w-96" />
       </div>
       <div className="z-10 mb-24 mt-28 md:mt-16">
         <div className="flex flex-wrap items-center justify-center gap-10 px-2 md:gap-16">
@@ -44,7 +53,13 @@ export function Homepage() {
               key={index}
               src={brand}
               alt={`Brand ${index + 1}`}
+<<<<<<< HEAD
               className="h-auto w-32 transition-all ease-in-out md:w-40"
+=======
+              width={500}
+              height={500}
+              className="h-auto w-32 cursor-pointer grayscale transition-all ease-in-out hover:scale-105 md:w-40"
+>>>>>>> d9a11b565199db855e8c90c2dadb80b7318a6a9f
             />
           ))}
         </div>
