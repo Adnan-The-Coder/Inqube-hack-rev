@@ -2,18 +2,23 @@
 
 import React, { useState, useEffect } from "react";
 import { Github, Linkedin, Instagram, Mail } from "lucide-react";
-import Header from "@/components/Header";
-import afzal from "@/app/team/afzal.jpg";
+import Header, { useUser } from "@/components/Header";
+import defaultpic from "@/app/team/defaultpic.jpg";
 import { ExternalLink } from "lucide-react";
-import profileBanner from "@/app/team/profile-banner.webp"; 
+import profileBanner from "@/app/team/profile-banner.webp";
 import Image from "next/image";
 import Link from "next/link";
 import Footer from "@/components/Footer";
 
-function App() {
+export default function ProfilePage() {
+  return <ProfileContent />;
+}
+
+function ProfileContent() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const { user } = useUser();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,8 +28,8 @@ function App() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+  const profileImage = user?.photoURL ? `${user.photoURL}?t=${new Date().getTime()}` : defaultpic;
 
-  
   return (
     <div className="min-h-screen bg-[#0A0A0A] text-white">
       <Header />
@@ -40,34 +45,46 @@ function App() {
             </div>
             <div className="w-48 h-48 rounded-full border-4 border-gradient-to-r from-[#76b900] to-[#34b7b3] p-1 shadow-lg z-10">
               <Image
-                src={afzal}
+                src={profileImage}
                 alt="Profile"
-                className="w-full h-full rounded-full object-cover"
-              />
+                width={192}
+                height={192}
+                quality={100} 
+                className="w-full h-full object-cover rounded-full"
+            />
             </div>
-
-            <h1 className="mt-6 text-4xl font-extrabold text-[#76b900]">Afzal Hashmi</h1>
+            <h1 className="mt-6 mb-2 text-4xl font-bold text-[#76b900]">
+              {user?.displayName || "Default"}
+            </h1>
             <span className="mt-2 px-6 py-2 bg-[#76b900] text-black rounded-full text-sm font-medium">
-              Execom
+              Investor
             </span>
 
             <div className="mt-4 flex space-x-6 animate-slideIn">
               <SocialLink Icon={Github} href="https://github.com" />
-              <SocialLink
-                Icon={Linkedin}
-                href="https://www.linkedin.com/"
-              />
-              <SocialLink
-                Icon={Instagram}
-                href="https://www.instagram.com/"
-              />
+              <SocialLink Icon={Linkedin} href="https://www.linkedin.com/" />
+              <SocialLink Icon={Instagram} href="https://www.instagram.com/" />
             </div>
           </div>
           <div className="bg-[#111111] rounded-xl p-6 shadow-xl hover:shadow-2xl transition-all">
             <h2 className="text-2xl font-bold mb-4 text-[#76b900]">About</h2>
             <p className="text-gray-300 leading-relaxed">
-              A creative problem-solver with a passion for leadership, collaboration, and innovation. Skilled in organizing events, effective communication, and building meaningful connections. Combines technical expertise with interpersonal skills to embrace challenges and create lasting impact.
+              A creative problem-solver with a passion for leadership,
+              collaboration, and innovation. Skilled in organizing events,
+              effective communication, and building meaningful connections.
+              Combines technical expertise with interpersonal skills to embrace
+              challenges and create lasting impact.
             </p>
+            {user && (
+              <div className="mt-4 p-4 bg-[#1a1a1a] rounded-lg">
+                <h3 className="text-xl font-semibold text-[#76b900] mb-2">
+                  Contact Information
+                </h3>
+                <p className="text-gray-300">
+                  <strong>Email:</strong> {user.email || "Not provided"}
+                </p>
+              </div>
+            )}
           </div>
         </section>
         <section className="mb-16">
@@ -86,27 +103,31 @@ function App() {
           </div>
         </section>
         <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-6 text-[#76b900]">Achievements</h2>
+          <h2 className="text-3xl font-bold mb-6 text-[#76b900]">
+            Achievements
+          </h2>
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
-          <AchievementCard
-            title="Speaker at International Design Summit"
-            year="2023"
-            description="Presented a talk on the evolution of design thinking and its role in shaping modern technology and user experiences."
-          />
-          <AchievementCard
-            title="Creator of Award-Winning User Interface"
-            year="2022"
-            description="Designed an award-winning user interface for a mobile app that improved user engagement by 40%."
-          />
-          <AchievementCard
-            title="Lead Design at ECELL MJCET"
-            year="2021"
-            description="Founded and led the Design Club at MJCET, organizing workshops, design challenges, and collaborations with industry professionals."
-          />
+            <AchievementCard
+              title="Speaker at International Design Summit"
+              year="2023"
+              description="Presented a talk on the evolution of design thinking and its role in shaping modern technology and user experiences."
+            />
+            <AchievementCard
+              title="Creator of Award-Winning User Interface"
+              year="2022"
+              description="Designed an award-winning user interface for a mobile app that improved user engagement by 40%."
+            />
+            <AchievementCard
+              title="Lead Design at ECELL MJCET"
+              year="2021"
+              description="Founded and led the Design Club at MJCET, organizing workshops, design challenges, and collaborations with industry professionals."
+            />
           </div>
         </section>
         <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-6 text-[#76b900]">Testimonials</h2>
+          <h2 className="text-3xl font-bold mb-6 text-[#76b900]">
+            Testimonials
+          </h2>
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
             <TestimonialCard
               name="Syed Shujauddin"
@@ -137,37 +158,53 @@ function App() {
           </div>
         </section>
         <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-6 text-[#76b900]">Certifications</h2>
+          <h2 className="text-3xl font-bold mb-6 text-[#76b900]">
+            Certifications
+          </h2>
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
-          <CertificationCard
-            title="Adobe Certified Expert"
-            issuer="Adobe"
-            year="2024"
-          />
-          <CertificationCard
-            title="Certified UX Designer"
-            issuer="Interaction Design Foundation"
-            year="2023"
-          />
-          <CertificationCard
-            title="UI/UX Design Professional"
-            issuer="Coursera"
-            year="2022"
-          />
+            <CertificationCard
+              title="Adobe Certified Expert"
+              issuer="Adobe"
+              year="2024"
+            />
+            <CertificationCard
+              title="Certified UX Designer"
+              issuer="Interaction Design Foundation"
+              year="2023"
+            />
+            <CertificationCard
+              title="UI/UX Design Professional"
+              issuer="Coursera"
+              year="2022"
+            />
           </div>
         </section>
         <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-6 text-[#76b900]">Contact Information</h2>
+          <h2 className="text-3xl font-bold mb-6 text-[#76b900]">
+            Contact Information
+          </h2>
           <div className="grid md:grid-cols-2 gap-6">
             <div className="bg-[#111111] rounded-xl p-6">
               <h3 className="text-xl font-bold text-white">Email</h3>
-              <p className="text-gray-300 mt-2 mb-4">afzalsyed.hs@gmail.com</p>
-              <Link href="mailto:afzalsyed.hs@gmail.com" className="mt-4 bg-[#76b900] text-black px-6 py-2 rounded-full font-medium hover:bg-opacity-90 transition-all">Send Email</Link>
+              <p className="text-gray-300 mt-2 mb-4">
+                {user?.email || "afzalsyed.hs@gmail.com"}
+              </p>
+              <Link
+                href={`mailto:${user?.email || "afzalsyed.hs@gmail.com"}`}
+                className="mt-4 bg-[#76b900] text-black px-6 py-2 rounded-full font-medium hover:bg-opacity-90 transition-all"
+              >
+                Send Email
+              </Link>
             </div>
             <div className="bg-[#111111] rounded-xl p-6">
               <h3 className="text-xl font-bold text-white">Phone</h3>
               <p className="text-gray-300 mt-2 mb-5">+917396211824</p>
-              <Link href="tel:+917396211824" className="mt-4 bg-[#76b900] text-black px-6 py-2 rounded-full font-medium hover:bg-opacity-90 transition-all">Call</Link>
+              <Link
+                href="tel:+917396211824"
+                className="mt-4 bg-[#76b900] text-black px-6 py-2 rounded-full font-medium hover:bg-opacity-90 transition-all"
+              >
+                Call
+              </Link>
             </div>
           </div>
         </section>
@@ -178,12 +215,17 @@ function App() {
           </button>
         </section>
       </main>
-      <Footer/>
+      <Footer />
     </div>
   );
 }
 
-const SocialLink = ({ Icon, href }: { Icon: any; href: string }) => (
+interface SocialLinkProps {
+  Icon: React.ComponentType<{ className?: string }>;
+  href: string;
+}
+
+const SocialLink = ({ Icon, href }: SocialLinkProps) => (
   <a
     href={href}
     target="_blank"
@@ -194,7 +236,13 @@ const SocialLink = ({ Icon, href }: { Icon: any; href: string }) => (
   </a>
 );
 
-const TestimonialCard = ({ name, role, message }: { name: string, role: string, message: string }) => (
+interface TestimonialCardProps {
+  name: string;
+  role: string;
+  message: string;
+}
+
+const TestimonialCard = ({ name, role, message }: TestimonialCardProps) => (
   <div className="bg-[#111111] rounded-xl p-6 shadow-lg hover:shadow-2xl transition-all">
     <p className="text-gray-300 text-lg italic">"{message}"</p>
     <p className="mt-4 text-[#76b900] font-semibold">{name}</p>
@@ -202,7 +250,13 @@ const TestimonialCard = ({ name, role, message }: { name: string, role: string, 
   </div>
 );
 
-const AchievementCard = ({ title, year, description }: { title: string, year: string, description: string }) => (
+interface AchievementCardProps {
+  title: string;
+  year: string;
+  description: string;
+}
+
+const AchievementCard = ({ title, year, description }: AchievementCardProps) => (
   <div className="bg-[#111111] rounded-xl p-6 shadow-lg hover:shadow-2xl transition-all">
     <h3 className="text-xl font-bold text-white">{title}</h3>
     <p className="text-gray-300 mt-2">{year}</p>
@@ -210,28 +264,37 @@ const AchievementCard = ({ title, year, description }: { title: string, year: st
   </div>
 );
 
-const Skill = ({ text }: { text: string }) => (
+interface SkillProps {
+  text: string;
+}
+
+const Skill = ({ text }: SkillProps) => (
   <span className="px-6 py-3 bg-[#111111] rounded-full text-sm font-medium border-2 border-transparent hover:border-[#76b900] hover:text-[#76b900] transition-all">
     {text}
   </span>
 );
 
-const CertificationCard = ({ title, issuer, year }: { title: string, issuer: string, year: string }) => (
+interface CertificationCardProps {
+  title: string;
+  issuer: string;
+  year: string;
+}
+
+const CertificationCard = ({ title, issuer, year }: CertificationCardProps) => (
   <div className="bg-[#111111] rounded-xl p-6 hover:bg-[#1A1A1A] transition-all">
     <h3 className="text-xl font-bold text-white">{title}</h3>
     <p className="text-sm text-gray-400">{issuer}</p>
     <p className="text-gray-300 mt-2">{year}</p>
   </div>
 );
-const ProjectCard = ({
-  title,
-  description,
-  year,
-}: {
+
+interface ProjectCardProps {
   title: string;
   description: string;
   year: string;
-}) => (
+}
+
+const ProjectCard = ({ title, description, year }: ProjectCardProps) => (
   <div className="bg-[#111111] rounded-xl p-6 hover:bg-[#1A1A1A]">
     <div className="flex justify-between items-start mb-4">
       <h3 className="text-xl font-bold">{title}</h3>
@@ -250,5 +313,3 @@ const ProjectCard = ({
     </div>
   </div>
 );
-
-export default App;
