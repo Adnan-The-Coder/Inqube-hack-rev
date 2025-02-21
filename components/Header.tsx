@@ -19,7 +19,7 @@ export const UserContext = createContext<{
   handleSignIn: () => Promise<void>;
   handleSignOut: () => void;
   authError: string | null;
-}>( {
+}>({
   user: null,
   handleSignIn: async () => {},
   handleSignOut: () => {},
@@ -138,6 +138,8 @@ const Header = () => {
         <Link href="/">
           <Image src={logo} alt="Logo" className="w-32 md:w-44" />
         </Link>
+
+        {/* Desktop Menu */}
         <ul className="hidden lg:flex space-x-6">
           {menuItems.map((item, index) => (
             <li key={index} className="hover:text-[#76b900] transition-all">
@@ -145,6 +147,8 @@ const Header = () => {
             </li>
           ))}
         </ul>
+
+        {/* User Profile / Auth Buttons */}
         <div className="hidden lg:flex items-center space-x-4">
           {user ? (
             <div className="relative" onMouseEnter={() => setIsProfileHovered(true)} onMouseLeave={() => setIsProfileHovered(false)}>
@@ -171,7 +175,37 @@ const Header = () => {
             </button>
           )}
         </div>
+
+        {/* Hamburger Menu */}
+        <button className="lg:hidden text-3xl" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+          {isMenuOpen ? "✖" : "☰"}
+        </button>
       </div>
+
+      {/* Mobile Menu */}
+      {isMenuOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-90 z-40 flex flex-col items-center justify-center">
+          <button className="absolute top-4 right-4 text-3xl text-white" onClick={() => setIsMenuOpen(false)}>
+            ✖
+          </button>
+          <ul className="space-y-6 text-center">
+            {menuItems.map((item, index) => (
+              <li key={index}>
+                <Link href={item.href} className="text-xl text-white hover:text-[#76b900]" onClick={() => setIsMenuOpen(false)}>
+                  {item.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <div className="mt-8">
+            {user ? (
+              <button onClick={handleSignOut} className="px-6 py-3 bg-red-600 rounded-xl text-white">Sign Out</button>
+            ) : (
+              <button onClick={handleSignIn} className="bg-[#76b900] px-6 py-3 rounded-full hover:bg-[#5e9400]">Sign in</button>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 };
