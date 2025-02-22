@@ -4,11 +4,11 @@ import Link from "next/link";
 import Image from "next/image";
 
 export function Homepage() {
-  const brand1 = "/assets/Images/brand1.webp";
+  const brand1 = "/assets/Images/brand1.png";
   const brand2 = "/assets/Images/brand2.webp";
   const brand3 = "/assets/Images/brand3.webp";
   const brand4 = "/assets/Images/brand4.webp";
-  const brand5 = "/assets/Images/brand5.webp";
+  const brand5 = "/assets/Images/brand5.png";
 
   return (
     <div className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden rounded-md bg-neutral-950 text-white antialiased">
@@ -21,10 +21,10 @@ export function Homepage() {
         </h1>
         <div className="mt-1 flex flex-wrap justify-center gap-4">
           <Link
-            href="/"
+            href="/authenticate"
             className="md:text-md rounded-lg bg-[#76b900] px-6 py-3 text-sm font-medium text-white shadow-lg transition duration-300 hover:bg-white hover:text-[#76b900]"
           >
-            Explore Oppurtunities
+            Explore Opportunities
           </Link>
           <Link
             href="/marketplace"
@@ -33,8 +33,14 @@ export function Homepage() {
             Marketplace
           </Link>
         </div>
-        <Image src="/assets/Images/home.jpg" width={500} height={500} alt="Home" className="w-64 rounded-lg shadow-lg md:w-96" />
       </div>
+      <Image
+        src="/assets/Images/home.png"
+        width={500}
+        height={500}
+        alt="Home"
+        className="w-64 rounded-lg shadow-lg md:w-96"
+      />
       <div className="z-10 mb-24 mt-28 md:mt-16">
         <div className="flex flex-wrap items-center justify-center gap-10 px-2 md:gap-16">
           {[brand1, brand2, brand3, brand4, brand5].map((brand, index) => (

@@ -1,5 +1,6 @@
-/* eslint-disable tailwindcss/migration-from-tailwind-2 */
- 
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
 "use client";
 import Link from "next/link";
 import React, { useState } from "react";
@@ -73,7 +74,7 @@ const Page: React.FC = () => {
                 placeholder="Enter your email"
                 className="w-full rounded-lg border border-gray-300 p-2 focus:border-yellow-400 focus:outline-none"
               />
-            </div>
+            </div>    
             <div className="mb-4">
               <label className="mb-2 block text-[#ffffff]">I am a:</label>
               <div className="mt-2 grid grid-cols-3 gap-3">
@@ -88,9 +89,9 @@ const Page: React.FC = () => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <FaBuilding className="mb-1 text-xl text-[#76b900]" />
-                  <span className="text-sm text-white">Startup</span>
-                </motion.button>
+                  <FaBuilding className="text-xl mb-1 text-[#76b900]" />
+                  <span className="text-white text-sm">Startup</span>
+                </motion.button>     
                 <motion.button
                   type="button"
                   className={`flex flex-col items-center justify-center rounded-lg border p-3 transition-all ${
@@ -102,9 +103,9 @@ const Page: React.FC = () => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <FaChartLine className="mb-1 text-xl text-[#76b900]" />
-                  <span className="text-sm text-white">Investor</span>
-                </motion.button>
+                  <FaChartLine className="text-xl mb-1 text-[#76b900]" />
+                  <span className="text-white text-sm">Investor</span>
+                </motion.button>     
                 <motion.button
                   type="button"
                   className={`flex flex-col items-center justify-center rounded-lg border p-3 transition-all ${

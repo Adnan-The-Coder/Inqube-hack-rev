@@ -72,22 +72,20 @@ const General = () => {
         {faqData.map((faq, index) => (
           <div key={index} className="border-t border-gray-300">
             <button
-              className="flex w-full items-center justify-between py-4 text-left text-lg font-medium text-white hover:text-orange-500"
+              className="flex w-full items-center justify-between py-4 text-left text-lg font-medium text-white hover:text-[#cfcbcb]"
               onClick={() => toggleFAQ(index)}
             >
               {faq.question}
               {openIndex === index ? <ChevronUp /> : <ChevronDown />}
             </button>
-            {openIndex === index && (
-              <motion.div
+            <motion.div
                 className="px-4 pb-4 text-[#858585]"
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: "auto" }}
                 exit={{ opacity: 0, height: 0 }}
               >
-                {faq.answer}
-              </motion.div>
-            )}
+              {faq.answer}
+            </motion.div>
           </div>
         ))}
       </div>
