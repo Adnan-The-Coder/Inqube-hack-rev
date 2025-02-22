@@ -72,8 +72,7 @@ const Page: React.FC = () => {
                 placeholder="Enter your email"
                 className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-yellow-400"
               />
-            </div>
-            
+            </div>    
             <div className="mb-4">
               <label className="text-[#ffffff] mb-2 block">I am a:</label>
               <div className="grid grid-cols-3 gap-3 mt-2">
@@ -90,8 +89,7 @@ const Page: React.FC = () => {
                 >
                   <FaBuilding className="text-xl mb-1 text-[#76b900]" />
                   <span className="text-white text-sm">Startup</span>
-                </motion.button>
-                
+                </motion.button>     
                 <motion.button
                   type="button"
                   className={`p-3 flex flex-col items-center justify-center rounded-lg border transition-all ${
@@ -105,8 +103,7 @@ const Page: React.FC = () => {
                 >
                   <FaChartLine className="text-xl mb-1 text-[#76b900]" />
                   <span className="text-white text-sm">Investor</span>
-                </motion.button>
-                
+                </motion.button>     
                 <motion.button
                   type="button"
                   className={`p-3 flex flex-col items-center justify-center rounded-lg border transition-all ${
@@ -128,7 +125,6 @@ const Page: React.FC = () => {
                 </p>
               )}
             </div>
-
             <motion.button
               type="submit"
               className={`w-full py-3 mt-5 bg-gradient-to-r from-[#76b900] to-[#76b900] text-white font-bold rounded-lg shadow-lg 
