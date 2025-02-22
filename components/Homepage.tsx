@@ -34,8 +34,6 @@ export function Homepage() {
           </Link>
         </div>
       </div>
-
-      {/* Home Image */}
       <Image
         src="/assets/Images/home.png"
         width={500}
@@ -43,8 +41,6 @@ export function Homepage() {
         alt="Home"
         className="w-64 rounded-lg shadow-lg md:w-96"
       />
-
-      {/* Brands Section */}
       <div className="z-10 mb-24 mt-28 md:mt-16">
         <div className="flex flex-wrap items-center justify-center gap-10 px-2 md:gap-16">
           {[brand1, brand2, brand3, brand4, brand5].map((brand, index) => (

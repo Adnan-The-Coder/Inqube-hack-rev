@@ -114,8 +114,6 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isProfileHovered, setIsProfileHovered] = useState(false);
   const { user, handleSignIn, handleSignOut, authError } = useUser();
-  const router = useRouter();
-
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 10);
     window.addEventListener("scroll", handleScroll);
