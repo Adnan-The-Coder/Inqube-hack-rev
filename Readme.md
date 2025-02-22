@@ -56,8 +56,30 @@ Branch naming convention:
 After completing your task, push your changes and create a PR to merge your branch into the dev branch.
 Provide a clear description of the changes in the PR.
 ### Step 2: Testing
-Once all changes are merged into the dev branch by all contributors, a PR should be created from dev to the test branch.
-Ensure the code is properly tested.
+Test your code locally before creating a Pull Request merge with the main.
+```
+bun run deploy
+```
+# For Windows systems use wsl
+```
+wsl --install
+wsl --install -d Ubuntu-22.04
+sudo apt update
+sudo apt full-upgrade -y
+sudo apt install curl
+sudo apt install unzip
+curl -fsSL https://bun.sh/install | bash
+source ~/.bashrc
+```
+**Verify Installation**
+```
+bun --version
+```
+**Now test the deployement locally**
+```
+bun run deploy
+```
+
 At least 2 members must review and approve the PR before merging into the test branch.
 ### Step 3: Production
 After successful testing, create a PR from the test branch to the main branch.
