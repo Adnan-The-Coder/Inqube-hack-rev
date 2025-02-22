@@ -10,13 +10,8 @@ import { Homepage } from "@/components/Homepage";
 import Plans from "@/components/Plans";
 import Services from "@/components/Services";
 import { Testimonials } from "@/components/Testimonials";
-
-<<<<<<< HEAD
-import arrow from "../Images/arrow.png";
 import General from "@/components/General";
 
-=======
->>>>>>> d9a11b565199db855e8c90c2dadb80b7318a6a9f
 export default function SparklesPreview() {
   const [isVisible, setIsVisible] = useState(false);
 
