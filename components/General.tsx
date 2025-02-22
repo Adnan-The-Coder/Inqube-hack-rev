@@ -61,27 +61,26 @@ const General = () => {
   };
 
   return (
-    <div className="max-w-6xl mx-auto px-10 pb-20">
-      <h1 className="text-4xl text-center font-semibold text-[#76b900] md:text-5xl mb-5">
-          Unlocking Answers
-        </h1>
-        <h2 className="text-xl text-center font-medium text-[#858585] mb-10">
-            Your Essential FAQ Companion
-        </h2>
-      <div className="grid md:grid-cols-2 gap-6 mt-6">
+    <div className="mx-auto max-w-6xl px-10 pb-20">
+      <h1 className="mb-5 text-center text-4xl font-semibold text-[#76b900] md:text-5xl">
+        Unlocking Answers
+      </h1>
+      <h2 className="mb-10 text-center text-xl font-medium text-[#858585]">
+        Your Essential FAQ Companion
+      </h2>
+      <div className="mt-6 grid gap-6 md:grid-cols-2">
         {faqData.map((faq, index) => (
           <div key={index} className="border-t border-gray-300">
             <button
-              className="w-full flex justify-between items-center py-4 text-left text-lg font-medium text-white hover:text-orange-500"
+              className="flex w-full items-center justify-between py-4 text-left text-lg font-medium text-white hover:text-orange-500"
               onClick={() => toggleFAQ(index)}
             >
               {faq.question}
               {openIndex === index ? <ChevronUp /> : <ChevronDown />}
             </button>
-
             {openIndex === index && (
               <motion.div
-                className="text-[#858585] px-4 pb-4"
+                className="px-4 pb-4 text-[#858585]"
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: "auto" }}
                 exit={{ opacity: 0, height: 0 }}

@@ -114,6 +114,7 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isProfileHovered, setIsProfileHovered] = useState(false);
   const { user, handleSignIn, handleSignOut, authError } = useUser();
+  // eslint-disable-next-line no-unused-vars
   const router = useRouter();
 
   useEffect(() => {

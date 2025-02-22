@@ -19,6 +19,8 @@
 
 # production
 /build
+/.wrangler/
+/.vercel/
 
 # misc
 .DS_Store
