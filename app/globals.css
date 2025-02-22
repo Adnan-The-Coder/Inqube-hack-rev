@@ -119,3 +119,6 @@
 .custom-scrollbar {
   scrollbar-width: none; 
 }
+.back-top{
+  z-index: 100000000000000 !important;
+}
