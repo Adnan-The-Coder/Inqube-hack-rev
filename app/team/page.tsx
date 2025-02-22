@@ -188,7 +188,7 @@ const TeamPage: React.FC = () => {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
               transition={{ duration: 0.4 }}
-              className="relative flex w-full max-w-4xl flex-col rounded-lg bg-[#1b1b1b] p-6 shadow-lg md:flex-row"
+              className="relative flex w-full max-w-4xl flex-col rounded-lg bg-[#1b1b1b] p-6 shadow-lg lg:flex-row"
               onClick={(e) => e.stopPropagation()}
             >
               <button
@@ -202,14 +202,14 @@ const TeamPage: React.FC = () => {
                 alt={selectedMember.name}
                 width={500}
                 height={500}
-                className="h-80 w-full rounded-lg object-cover md:h-[28rem] md:w-[50rem]"
+                className="h-80 w-full rounded-lg object-cover lg:h-[28rem] lg:w-[50rem]"
               />
-              <div className="flex flex-col justify-center md:ml-6">
-                <h2 className="mt-4 text-3xl font-bold text-white md:mt-0">
+              <div className="flex flex-col justify-center lg:ml-6">
+                <h2 className="mt-4 text-3xl font-bold text-white lg:mt-0">
                   {selectedMember.name}
                 </h2>
                 <p className="mt-2 text-lg text-gray-300">{selectedMember.role}</p>
-                <p className="mt-4 hidden text-sm text-gray-400 md:flex">{selectedMember.about}</p>
+                <p className="mt-4 hidden text-sm text-gray-400 lg:flex">{selectedMember.about}</p>
                 <div className="mt-6 flex space-x-4">
                   <a
                     href={selectedMember.socials.linkedin}
