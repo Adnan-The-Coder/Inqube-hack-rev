@@ -6,7 +6,7 @@ const Plans: React.FC = () => {
 
   return (
     <div
-      className="relative flex size-full flex-col items-center justify-center bg-[#0a0a0a] pb-10 pt-[900px] text-white md:pt-[390px] lg:pt-[100px]"
+      className="relative flex size-full flex-col items-center justify-center bg-[#0a0a0a] pb-10 pt-[100px] text-white md:pt-[390px] lg:pt-[100px]"
       id="plans"
     >
       <Image
