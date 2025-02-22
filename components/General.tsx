@@ -78,8 +78,6 @@ const General = () => {
               {faq.question}
               {openIndex === index ? <ChevronUp /> : <ChevronDown />}
             </button>
-
-            {openIndex === index && (
               <motion.div
                 className="text-[#858585] px-4 pb-4"
                 initial={{ opacity: 0, height: 0 }}
@@ -88,7 +86,6 @@ const General = () => {
               >
                 {faq.answer}
               </motion.div>
-            )}
           </div>
         ))}
       </div>
