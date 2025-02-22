@@ -72,7 +72,7 @@ const General = () => {
         {faqData.map((faq, index) => (
           <div key={index} className="border-t border-gray-300">
             <button
-              className="w-full flex justify-between items-center py-4 text-left text-lg font-medium text-white hover:text-orange-500"
+              className="w-full flex justify-between items-center py-4 text-left text-lg font-medium text-white hover:text-[#cfcbcb]"
               onClick={() => toggleFAQ(index)}
             >
               {faq.question}
