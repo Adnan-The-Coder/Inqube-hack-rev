@@ -3,7 +3,7 @@
 import React, { useState, useEffect, createContext, useContext } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+//import { useRouter } from "next/navigation";
 import { initializeApp } from "firebase/app";
 import {
   getAuth,
@@ -50,7 +50,7 @@ const provider = new GoogleAuthProvider();
 export const UserProvider = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
   const [authError, setAuthError] = useState<string | null>(null);
-  const router = useRouter();
+  //const router = useRouter();
 
   useEffect(() => {
     const savedUser = localStorage.getItem("user");
