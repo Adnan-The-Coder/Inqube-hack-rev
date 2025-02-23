@@ -1,11 +1,10 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-
+/* eslint-disable tailwindcss/migration-from-tailwind-2 */
 "use client";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaUser, FaEnvelope, FaBuilding, FaChartLine, FaCode } from "react-icons/fa";
 import { motion } from "framer-motion";
+import { Magic } from "magic-sdk";
 
 type UserType = 'startup' | 'investor' | 'developer' | '';
 
@@ -16,13 +15,37 @@ const Page: React.FC = () => {
     userType: "" as UserType
   });
 
-  // Disable button if any field is empty
+  const [magic, setMagic] = useState<Magic | null>(null);
+
+  // Initialize Magic SDK only on the client side
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const magicInstance = new Magic('pk_live_CABFBE82906BEF8B', {
+        network: 'sepolia', // or 'mainnet'
+      });
+      setMagic(magicInstance);
+    }
+  }, []);
+
   const isButtonDisabled = !user.username || !user.email || !user.userType;
 
-  // Simple redirect function - no API calls, just redirect
-  const handleAuthenticate = (e: React.FormEvent) => {
+  const handleAuthenticate = async (e: React.FormEvent, emailAddress: string) => {
     e.preventDefault();
-    
+
+    if (!magic) {
+      console.error("Magic SDK is not initialized");
+      
+      return;
+    }
+
+    try {
+      await magic.auth.loginWithMagicLink({ email: emailAddress });
+      const userInfo = await magic.user.getInfo();
+      console.log(`UserInfo: ${userInfo}`);
+    } catch (error: any) {
+      console.log(error);
+    }
+
     if (user.userType === 'investor') {
       window.location.href = '/investor';
     } else {
@@ -46,7 +69,7 @@ const Page: React.FC = () => {
           Establish your identity
         </h2>
         <div className="w-full">
-          <form onSubmit={handleAuthenticate}>
+          <form onSubmit={(e) => handleAuthenticate(e, user.email)}>
             <div className="mb-4">
               <label htmlFor="username" className="mb-2 flex items-center text-[#ffffff]">
                 <FaUser className="mr-2" />
@@ -80,39 +103,27 @@ const Page: React.FC = () => {
               <div className="mt-2 grid grid-cols-3 gap-3">
                 <motion.button
                   type="button"
-                  className={`flex flex-col items-center justify-center rounded-lg border p-3 transition-all ${
-                    user.userType === 'startup' 
-                      ? 'border-[#76b900] bg-[#76b900] bg-opacity-20' 
-                      : 'border-gray-600 hover:border-[#76b900]'
-                  }`}
+                  className={`flex flex-col items-center justify-center rounded-lg border p-3 transition-all ${user.userType === 'startup' ? 'border-[#76b900] bg-[#76b900] bg-opacity-20' : 'border-gray-600 hover:border-[#76b900]'}`}
                   onClick={() => handleUserTypeSelection('startup')}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <FaBuilding className="text-xl mb-1 text-[#76b900]" />
-                  <span className="text-white text-sm">Startup</span>
+                  <FaBuilding className="mb-1 text-xl text-[#76b900]" />
+                  <span className="text-sm text-white">Startup</span>
                 </motion.button>     
                 <motion.button
                   type="button"
-                  className={`flex flex-col items-center justify-center rounded-lg border p-3 transition-all ${
-                    user.userType === 'investor' 
-                      ? 'border-[#76b900] bg-[#76b900] bg-opacity-20' 
-                      : 'border-gray-600 hover:border-[#76b900]'
-                  }`}
+                  className={`flex flex-col items-center justify-center rounded-lg border p-3 transition-all ${user.userType === 'investor' ? 'border-[#76b900] bg-[#76b900] bg-opacity-20' : 'border-gray-600 hover:border-[#76b900]'}`}
                   onClick={() => handleUserTypeSelection('investor')}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <FaChartLine className="text-xl mb-1 text-[#76b900]" />
-                  <span className="text-white text-sm">Investor</span>
+                  <FaChartLine className="mb-1 text-xl text-[#76b900]" />
+                  <span className="text-sm text-white">Investor</span>
                 </motion.button>     
                 <motion.button
                   type="button"
-                  className={`flex flex-col items-center justify-center rounded-lg border p-3 transition-all ${
-                    user.userType === 'developer' 
-                      ? 'border-[#76b900] bg-[#76b900] bg-opacity-20' 
-                      : 'border-gray-600 hover:border-[#76b900]'
-                  }`}
+                  className={`flex flex-col items-center justify-center rounded-lg border p-3 transition-all ${user.userType === 'developer' ? 'border-[#76b900] bg-[#76b900] bg-opacity-20' : 'border-gray-600 hover:border-[#76b900]'}`}
                   onClick={() => handleUserTypeSelection('developer')}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -129,10 +140,7 @@ const Page: React.FC = () => {
             </div>
             <motion.button
               type="submit"
-              className={`mt-5 w-full rounded-lg bg-gradient-to-r from-[#76b900] to-[#76b900] py-3 font-bold text-white shadow-lg 
-                transition duration-200 hover:from-[#76b900] 
-                hover:to-[#76b900] focus:outline-none focus:ring-2 
-                focus:ring-green-500 focus:ring-offset-2 ${isButtonDisabled ? 'cursor-not-allowed opacity-50' : ''}`}
+              className={`mt-5 w-full rounded-lg bg-gradient-to-r from-[#76b900] to-[#76b900] py-3 font-bold text-white shadow-lg transition duration-200 hover:from-[#76b900] hover:to-[#76b900] focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 ${isButtonDisabled ? 'cursor-not-allowed opacity-50' : ''}`}
               disabled={isButtonDisabled}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}

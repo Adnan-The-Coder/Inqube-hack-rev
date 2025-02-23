@@ -46,13 +46,13 @@ export default function SparklesPreview() {
               setIsLoading(false);
               sessionStorage.setItem("loadingDone", "true");
             }, 500);
-            
-return 100;
+                  
+            return 100;
           }
-          
-return prev + 1;
-        });
-      }, 15);
+                
+      return prev + 1;
+              });
+            }, 15);
 
       return () => clearInterval(interval);
     }
@@ -96,7 +96,7 @@ return prev + 1;
   return (
     <div className="text-white">
       <Header />
-      <Homepage />
+      <Homepage />  
       <Additional />
       <Services />
       <FAQ />
