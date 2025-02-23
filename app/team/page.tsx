@@ -28,7 +28,7 @@ const teamMembers: TeamMember[] = [
     role: "CEO",
     image: "/assets/team/adnan.jpg",
     about:
-    "Syed Adnan Ali is a versatile full-stack developer with a strong grasp of both client-side and server-side technologies. He has experience in building end-to-end web applications, from designing interactive user interfaces to developing scalable back-end systems. His technical expertise includes JavaScript, Node.js, Express, MongoDB, and React, which allows him to deliver feature-rich, performant applications. Adnan has a passion for problem-solving and optimizing code to improve efficiency. With his holistic approach to development, he excels at creating seamless integrations between front-end and back-end systems, ensuring a smooth user experience across the entire application.",
+    "Syed Adnan Ali is an innovative leader with a strong foundation in full-stack development and business strategy. As CEO, he combines his technical expertise in JavaScript, Node.js, Express, and MongoDB with a visionary approach to scaling businesses. Adnan excels at building teams, driving growth, and identifying key market opportunities. His comprehensive understanding of both the front-end and back-end of web applications allows him to guide projects seamlessly from concept to completion. With a passion for solving complex problems and delivering solutions that exceed expectations, Adnan fosters a culture of continuous improvement and innovation.",
     socials: {
         linkedin: "https://linkedin.com/in/syedadnanali99/",
         twitter: "https://x.com",
@@ -42,7 +42,7 @@ const teamMembers: TeamMember[] = [
     image:
       "/assets/team/nazish.jpg",
     about:
-      "Nazish Ahmed is a passionate full-stack developer with a keen focus on delivering scalable, high-performance, and user-centric web applications. With extensive experience working across both the front-end and back-end, Nazish has a deep understanding of web technologies such as JavaScript, Node.js, React, and more. His approach combines technical expertise with a strong emphasis on user experience and efficiency, ensuring seamless integration of front-end and back-end services. Nazish is dedicated to continuous learning and growth, constantly exploring new technologies to stay ahead in the fast-evolving field of web development.",
+      "Nazish Ahmed is a highly skilled full-stack developer and a technical visionary driving the company's technology strategy as CTO. He has a deep proficiency in modern web development technologies like React, Node.js, and JavaScript, which he leverages to architect and implement scalable, high-performance applications. Nazish is committed to creating an efficient, secure, and robust technical infrastructure, ensuring seamless integration between the front-end and back-end. His leadership in technical innovation, combined with a focus on user experience, positions him as a critical force behind the company's growth and technical success.",
     socials: {
       linkedin: "https://linkedin.com",
       twitter: "https://x.com",
@@ -55,7 +55,7 @@ const teamMembers: TeamMember[] = [
       role: "COO",
       image: "/assets/team/afzal.jpg",
       about:
-        "Afzal Hashmi Syed is an experienced leader in the tech industry, bringing over two years of successful team leadership and project management. With a strong background in driving innovation, Afzal has led cross-functional teams to deliver large-scale projects on time and within budget. His leadership approach is centered on fostering collaboration, driving continuous improvement, and solving complex challenges. Afzal is passionate about leveraging technology to create impactful solutions and empowering teams to reach their full potential.",
+        "Afzal Hashmi Syed is a dynamic operations leader with an exceptional ability to manage large-scale projects and lead cross-functional teams. As COO, he brings over two years of experience in ensuring operational efficiency, maintaining high performance across departments, and fostering collaboration to deliver successful outcomes. Afzal excels in problem-solving, workflow optimization, and strategic planning, making him an integral part of driving the company’s business growth. His expertise lies in streamlining operations to achieve long-term sustainability while keeping the team focused on delivering value to clients.",
       socials: {
         linkedin: "https://linkedin.com",
         twitter: "https://x.com",
@@ -68,7 +68,7 @@ const teamMembers: TeamMember[] = [
         role: "Co-Founder",
         image: "/assets/team/aayan.jpg",
         about:
-        "Aayan Sayed is a seasoned front-end engineer with a specialization in building highly interactive, visually appealing, and user-friendly interfaces. He combines his expertise in HTML, CSS, and JavaScript with modern frameworks like React and Vue to create smooth and responsive web experiences. Aayan is passionate about crafting web applications that not only look great but are also intuitive and easy to navigate. His focus on design principles and user experience ensures that every project he works on provides seamless usability while adhering to high performance and accessibility standards.",
+        " Aayan Sayed is a forward-thinking front-end engineer and Co-Founder with a talent for creating visually engaging and highly interactive user interfaces. He blends creativity with technical acumen, specializing in modern web frameworks like React and Vue to design responsive, intuitive web experiences. Aayan’s keen eye for design and focus on user experience ensures that every project he touches is not only aesthetically pleasing but also functional and user-centric. His commitment to delivering elegant solutions that combine form and function makes him an invaluable asset to the team.",
         socials: {
             linkedin: "https://linkedin.com",
         twitter: "https://x.com",
@@ -81,7 +81,7 @@ const teamMembers: TeamMember[] = [
   role: "Co-Founder",
   image: "/assets/team/mudassir.jpg",
   about:
-    "Mudassir Ahmed is an accomplished Machine Learning Engineer with a robust background in AI model development, data science, and automation. His expertise spans across designing, implementing, and optimizing machine learning models, as well as working with big data to derive actionable insights. Mudassir is adept at using various machine learning frameworks and tools, including TensorFlow, Scikit-learn, and PyTorch, to build intelligent systems that can automate processes and enhance decision-making. With a keen interest in artificial intelligence, he continuously seeks innovative ways to leverage machine learning to drive business success and technological advancement.",
+    "Mudassir Ahmed is a cutting-edge Machine Learning Engineer and Co-Founder, bringing expertise in AI, data science, and automation to the forefront of the company's innovation strategy. With an extensive background in developing AI-driven models and leveraging big data for predictive insights, Mudassir is dedicated to creating intelligent systems that optimize operations and enhance decision-making processes. His versatility in working with various machine learning frameworks like TensorFlow and PyTorch positions him as a leader in utilizing AI to solve complex business challenges, paving the way for future growth.",
   socials: {
     linkedin: "https://linkedin.com",
     twitter: "https://x.com",
@@ -94,7 +94,7 @@ const teamMembers: TeamMember[] = [
       role: "Speaker",
       image: "/assets/team/haseeb.jpg",
       about:
-        "Haseeb Rahman is a dedicated and results-driven Support Specialist, known for providing exceptional customer service and technical support. With an in-depth understanding of the company's products and services, Haseeb excels at troubleshooting issues, guiding customers through problem-solving processes, and ensuring that users receive the best possible experience. His approach emphasizes clear communication, empathy, and efficiency, ensuring prompt resolution of customer queries and issues. Haseeb is always focused on delivering high-quality support, enhancing user satisfaction, and maintaining strong customer relationships.",
+        "Haseeb Rahman is an eloquent communicator and tech support specialist who excels in bridging the gap between technology and users. As a public speaker and support specialist, Haseeb is known for his ability to simplify complex technical concepts and deliver them in an engaging and approachable way. He has a strong passion for customer service, ensuring that users feel heard and supported at every step. His versatility as a speaker and support professional allows him to represent the company effectively at events, conferences, and customer interactions, building lasting relationships with clients and partners.",
       socials: {
         linkedin: "https://linkedin.com",
         twitter: "https://x.com",
