@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FiBarChart2, FiSettings, FiChevronLeft, FiChevronRight, FiX, FiMapPin } from 'react-icons/fi';
+import { FiSettings, FiChevronLeft, FiChevronRight, FiX, FiMapPin } from 'react-icons/fi';
 import { Users } from 'lucide-react';
 
 const CalendarView = () => {
@@ -293,14 +293,11 @@ const CalendarView = () => {
             </button>
           </div>
           <div className="flex space-x-2">
-            <button className="rounded-lg bg-[#1e1e1e] p-2 hover:bg-[#2e2e2e]">
-              <FiBarChart2 size={20} />
-            </button>
             <button 
-              className="flex items-center rounded-lg bg-[#76b900] p-2 text-black hover:bg-[#6aa800]"
+              className="flex items-center rounded-lg bg-[#76b900] p-2 text-sm text-black hover:bg-[#6aa800]"
               onClick={handleNewEvent}
             >
-              <span className="mr-1">+</span> New Event
+              <span className="mr-1">+</span>Event
             </button>
           </div>
         </div>
