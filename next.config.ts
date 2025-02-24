@@ -1,9 +1,8 @@
 import { setupDevPlatform } from '@cloudflare/next-on-pages/next-dev';
-import { Images } from "lucide-react";
 
 const nextConfig = {
     images: {
-        domains: ["img.icons8.com", "images.pexels.com", "images.unsplash.com", "lh3.googleusercontent.com"],
+        domains: ["img.icons8.com", "images.pexels.com", "images.unsplash.com", "lh3.googleusercontent.com", "assets.aceternity.com"],
     }
 };
 async function setup() {
