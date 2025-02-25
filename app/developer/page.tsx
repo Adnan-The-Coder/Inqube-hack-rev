@@ -11,6 +11,7 @@ import CalendarView from "./CalendarView";
 import AddNewProject from "./AddNewProject";
 import SettingsView from "./SettingsView";
 import MessagesView from "./MessagesView";
+import AnalyticsView from "./AnalyticsView";
 
 const Developers: React.FC = () => {
   const [selectedChat, setSelectedChat] = useState<number | null>(null);
@@ -456,46 +457,6 @@ const Developers: React.FC = () => {
     </>
   );
 
-  const AnalyticsView = () => (
-    <>
-      <div className="mb-8">
-        <h1 className="text-2xl font-bold tracking-wide text-white lg:text-4xl">Analytics Dashboard</h1>
-        <p className="mt-2 text-gray-400">Get insights into your projects and performance</p>
-      </div>
-      <div className="mb-8 grid grid-cols-1 gap-6 lg:grid-cols-2">
-        <div className="rounded-xl border border-gray-600 bg-[#242424] p-6">
-          <h3 className="mb-4 text-xl font-bold">Project Performance</h3>
-          <div className="h-64 w-full rounded-lg bg-[#1e1e1e] p-4">
-            <p className="text-center text-gray-400">Performance metrics chart will render here</p>
-          </div>
-        </div>
-        <div className="rounded-xl border border-gray-600 bg-[#242424] p-6">
-          <h3 className="mb-4 text-xl font-bold">Funding Overview</h3>
-          <div className="h-64 w-full rounded-lg bg-[#1e1e1e] p-4">
-            <p className="text-center text-gray-400">Funding metrics chart will render here</p>
-          </div>
-        </div>
-      </div>
-      <div className="rounded-xl border border-gray-600 bg-[#242424] p-6">
-        <h3 className="mb-4 text-xl font-bold">Project Timeline</h3>
-        <div className="overflow-x-auto">
-          <div className="min-w-[800px]">
-            <div className="grid h-80 grid-cols-12 gap-4">
-              {Array.from({ length: 12 }).map((_, index) => (
-                <div key={index} className="flex flex-col">
-                  <span className="mb-2 text-center text-sm text-gray-400">
-                    {new Date(2025, index).toLocaleDateString('en-US', { month: 'short' })}
-                  </span>
-                  <div className="flex-1 rounded bg-[#1e1e1e]"></div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
-    </>
-  );
-
   return (
     <div className="flex h-screen bg-[#121212] text-white">
       <button 
@@ -676,20 +637,13 @@ const Developers: React.FC = () => {
                           Security
                         </button>
                       </li>
-                      <li>
-                        <button 
-                          className="w-full rounded-lg px-3 py-1 text-left text-sm text-gray-300 hover:bg-[#242424]"
-                        >
-                          API Keys
-                        </button>
-                      </li>
                     </ul>
                   )}
                 </div>
               </li>
             </ul>
           </nav>
-          <div className="mt-6 rounded-lg bg-[#242424] p-4">
+          <div onClick={() => setActiveDashboardTab("settings")} className="mt-6 cursor-pointer rounded-lg bg-[#242424] p-4">
             <div className="flex items-center space-x-3">
               <div className="relative">
                 <Image
