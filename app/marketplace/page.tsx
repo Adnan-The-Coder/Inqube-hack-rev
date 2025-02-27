@@ -1,10 +1,15 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { createClient } from '@supabase/supabase-js';
+import { getAuth, signInWithPopup, GoogleAuthProvider, User } from "firebase/auth";
 
 import Header from "@/components/Header";
 
 function Page() {
+  // Firebase Authentication
+  const [user, setUser] = useState<User | null>(null);
+  const [authLoading, setAuthLoading] = useState(true);
+
   // Initialize Supabase client
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
   const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
@@ -23,6 +28,32 @@ function Page() {
   // Pagination state
   const [currentPage, setCurrentPage] = useState(1);
   const cardsPerPage = 6;
+
+  // Check if user is authenticated
+  useEffect(() => {
+    const auth = getAuth();
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      setUser(user);
+      setAuthLoading(false);
+    });
+
+    return () => unsubscribe();
+  }, []);
+
+  // Handle Google login
+  const handleGoogleLogin = async () => {
+    const auth = getAuth();
+    const provider = new GoogleAuthProvider();
+    
+    setAuthLoading(true);
+    try {
+      await signInWithPopup(auth, provider);
+    } catch (error) {
+      console.error("Error during Google login:", error);
+    } finally {
+      setAuthLoading(false);
+    }
+  };
 
   // Function to fetch data directly from Supabase table
   async function fetchData(tableName: string): Promise<void> {
@@ -44,6 +75,13 @@ function Page() {
       setLoading(false);
     }
   }
+
+  // Fetch data when user is authenticated
+  useEffect(() => {
+    if (user) {
+      fetchData("Developer_Projects");
+    }
+  }, [user]);
 
   const applyFilters = () => {
     let filtered = data;
@@ -147,13 +185,39 @@ function Page() {
   };
 
   useEffect(() => {
-    fetchData("Developer_Projects");
-  }, []);
-
-  useEffect(() => {
     applyFilters();
   }, [selectedTags, equityRange, maxInvestment, data]);
 
+  // If still checking authentication status, show loading
+  if (authLoading) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-[#0A0A0A] text-white">
+        <div className="text-center">
+          <h2 className="mb-4 text-xl">Loading...</h2>
+          <div className="mx-auto size-12 animate-spin rounded-full border-4 border-gray-700 border-t-[#76b900]"></div>
+        </div>
+      </div>
+    );
+  }
+
+  // If user is not authenticated, show login prompt
+  if (!user) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-[#0A0A0A] text-white">
+        <div className="text-center">
+          <h2 className="mb-6 text-2xl font-bold">Please sign in to access the marketplace</h2>
+          <button 
+            onClick={handleGoogleLogin}
+            className="rounded-full bg-[#76b900] px-6 py-3 font-medium text-black transition-all hover:bg-opacity-90"
+          >
+            Sign in with Google
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  // If user is authenticated, show the marketplace
   return (
     <>
       <Header />
@@ -163,19 +227,19 @@ function Page() {
       <div className="flex flex-col xl:flex-row">
         {/* Filter Section */}
         <div
-                  className={`m-6 mb-10 gap-6 rounded-md bg-[#76b900] p-3 xl:m-0 xl:w-1/6 ${
-                    isMenuOpen
-                      ? "fixed inset-0 top-12 z-50 xl:h-screen xl:overflow-y-auto"
-                      : "h-full xl:h-screen xl:overflow-y-auto"
-                  } top-0 overflow-y-auto xl:sticky`}
-                  style={{ zIndex: 10 }}
-                >
+          className={`m-6 mb-10 gap-6 rounded-md bg-[#76b900] p-3 xl:m-0 xl:w-1/6 ${
+            isMenuOpen
+              ? "fixed inset-0 top-12 z-50 xl:h-screen xl:overflow-y-auto"
+              : "h-full xl:h-screen xl:overflow-y-auto"
+          } top-0 overflow-y-auto xl:sticky`}
+          style={{ zIndex: 10 }}
+        >
           <button
-                    className={`mb-4 rounded bg-[#1b1b1b] px-4 py-2 text-white ${
-                      isMenuOpen ? "absolute right-4 top-4" : "xl:hidden"
-                    }`}
-                    onClick={() => setIsMenuOpen(!isMenuOpen)}
-                  >
+            className={`mb-4 rounded bg-[#1b1b1b] px-4 py-2 text-white ${
+              isMenuOpen ? "absolute right-4 top-4" : "xl:hidden"
+            }`}
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
             {isMenuOpen ? "X" : "Open Filters"}
           </button>
           {(isMenuOpen || !isMenuOpen) && (
@@ -188,24 +252,24 @@ function Page() {
                 <div key={index} className="mb-2">
                   <label className="inline-flex items-center text-sm text-white">
                     <input
-                                type="checkbox"
-                                className="form-checkbox mr-2 text-gray-800"
-                                checked={selectedTags.includes(tag)}
-                                onChange={() => handleTagChange(tag)}
-                              />
+                      type="checkbox"
+                      className="form-checkbox mr-2 text-gray-800"
+                      checked={selectedTags.includes(tag)}
+                      onChange={() => handleTagChange(tag)}
+                    />
                     {tag}
                   </label>
                 </div>
-                        ))}
+              ))}
             </div>
             {/* Equity Range Section */}
             <div className="mb-4">
               <h3 className="mb-2 text-xl text-white">Equity Range</h3>
               <select
-                    className="w-full rounded bg-gray-700 p-2 text-sm text-white"
-                    value={equityRange}
-                    onChange={handleEquityRangeChange}
-                  >
+                className="w-full rounded bg-gray-700 p-2 text-sm text-white"
+                value={equityRange}
+                onChange={handleEquityRangeChange}
+              >
                 <option value="">All</option>
                 <option value="0-10">0-10%</option>
                 <option value="10-30">10-30%</option>
@@ -218,21 +282,21 @@ function Page() {
             <div className="mb-4">
               <h3 className="mb-2 text-xl text-white">Max Investment Amount</h3>
               <input
-                    type="range"
-                    min="0"
-                    max="1000000"
-                    step="10000"
-                    value={maxInvestment}
-                    onChange={handleMaxInvestmentChange}
-                    className="mb-2 w-full"
-                  />
+                type="range"
+                min="0"
+                max="1000000"
+                step="10000"
+                value={maxInvestment}
+                onChange={handleMaxInvestmentChange}
+                className="mb-2 w-full"
+              />
               <div className="flex justify-between text-sm text-white">
                 <span>₹0</span>
                 <span>₹{maxInvestment}</span>
               </div>
             </div>
           </div>
-            )}
+          )}
         </div>
         {/* Project Cards Section */}
         <div className="md:w-6/6 scrollbar px-4 md:h-screen md:overflow-y-auto md:px-8">
