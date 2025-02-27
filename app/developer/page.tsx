@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import {FiX, FiHome, FiGrid, FiBarChart2, FiSettings, FiLock, FiMenu } from "react-icons/fi";
-import { MessageCircle, Calendar, ChevronDown } from "lucide-react";
+import { MessageCircle, Calendar, ChevronDown, Landmark } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -12,6 +12,7 @@ import AddNewProject from "./AddNewProject";
 import SettingsView from "./SettingsView";
 import MessagesView from "./MessagesView";
 import AnalyticsView from "./AnalyticsView";
+import MentorshipCourses from "./MentorshipCourses";
 
 const Developers: React.FC = () => {
   const [selectedChat, setSelectedChat] = useState<number | null>(null);
@@ -585,6 +586,19 @@ const Developers: React.FC = () => {
               </li>
               <li>
                 <button 
+                  onClick={() => setActiveDashboardTab("mentorship")}
+                  className={`flex w-full items-center rounded-lg px-4 py-2 ${
+                    activeDashboardTab === "mentorship" 
+                      ? "bg-[#242424] text-[#76b900]" 
+                      : "text-gray-300 hover:bg-[#242424]"
+                  }`}
+                >
+                  <Landmark className="mr-3" size={18} />
+                  Mentorship
+                </button>
+              </li>
+              <li>
+                <button 
                   onClick={() => setActiveDashboardTab("messages")}
                   className={`flex w-full items-center justify-between rounded-lg px-4 py-2 ${
                     activeDashboardTab === "messages" 
@@ -668,6 +682,7 @@ const Developers: React.FC = () => {
         {activeDashboardTab === "projects" && <ProjectsView />}
         {activeDashboardTab === "analytics" && <AnalyticsView />}
         {activeDashboardTab === "calendar" && <CalendarView />}
+        {activeDashboardTab === "mentorship" && <MentorshipCourses />}
         {activeDashboardTab === "messages" && <MessagesView />}
         {activeDashboardTab === "settings" && <SettingsView />}
       </div>
