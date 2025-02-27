@@ -204,7 +204,7 @@ return chat;
   const activeChat = chats.find(chat => chat.id === selectedChat);
 
   return (
-    <div className="flex min-h-screen flex-col bg-black p-2 text-white md:p-6">
+    <div className="flex min-h-screen flex-col p-1 text-white">
       <div className="mb-4 md:mb-6">
         <h1 className="text-2xl font-bold text-white md:text-4xl">Messages</h1>
         <p className="mt-1 text-sm text-gray-400 md:mt-2 md:text-base">End-to-end encrypted communication with your team and investors</p>
