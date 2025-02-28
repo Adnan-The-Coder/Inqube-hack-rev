@@ -12,7 +12,8 @@
     "lint": "next lint",
     "pages:build": "bunx @cloudflare/next-on-pages",
     "preview": "bun run pages:build && wrangler pages dev",
-    "deploy": "bun run pages:build && wrangler pages deploy"
+    "deploy": "bun run pages:build && wrangler pages deploy",
+    "test": "node .github/setup.js"
   },
   "dependencies": {
     "@cloudflare/next-on-pages": "^1.13.5",
